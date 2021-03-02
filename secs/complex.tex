@@ -40,3 +40,15 @@
   \end{align*}
   dove la seconda disugaglianza segue dal fatto che la funzione $\frac{t}{t-|z_0|}$ è decrescente. In questo caso, vale la maggiorazione opposta a quella dell'osservazione \ref{1.1.2}.
 \end{ex}
+
+\begin{lm} \label{1.1.4}
+  Sia $f$ meromorfa con poli semplici nei punti $z_n\not=0$, con residui $m_n \in \mathbb{Z}$, e t.c. $|z_n| \longrightarrow +\infty$ per $n \longrightarrow +\infty$. Allora la funzione
+  $$\varphi(z)=\exp{\int_0^z f(w)\diff w}$$
+  è meromorfa, con zeri $z_n$ con molteplicità $m_n$ se $m_n>0$ e poli $z_n$ con molteplicità $-m_n$ se $m_n<0$.
+\end{lm}
+
+\begin{oss}
+  Sia $\gamma$ il cammino dell'integrale del lemma \ref{1.1.4} e $\gamma'$ un altro cammino, t.c. $\gamma \cup \gamma'$ sia una curva di Jordan (piana, semplice, chiusa) contenuta in $\mathbb{C}\setminus\{z_1,z_2,\dots\}$. A patto di scegliere correttamente il verso di percorrenza, per il teorema dei residui si ha
+  $$\int_{\gamma}f(w)\diff w=\int_{\gamma'}f(w)\diff w+2\pi iR,$$
+  con $R=\displaystyle\sum_{\substack{n:z_n \in A, \\ \partial A=\gamma\cup\gamma'}} m_n$. Dunque $\displaystyle\varphi(z)=\exp\left(\int_{\gamma'}f(w)\diff w\right)e^{2\pi iR}$.
+\end{oss}
