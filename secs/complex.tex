@@ -1,1 +1,42 @@
-aaa
+\begin{lm}
+  (Mittag-Leffler) Sia $(z_n)_{n \in \mathbb{N}}$ una successione di numeri complessi t.c. $|z_n| \longrightarrow \infty$ per $n \longrightarrow \infty$ e $0<|z_n| \le |z_{n+1}|$ per ogni $n$. Sia inoltre $(m_n)_{n \in \mathbb{N}}$ un'altra successione con $m_n \in \mathbb{C}^*$ per ogni $n$. Allora esistono $p_n \in \mathbb{N}\cup \{0\}$ t.c.
+  $$f(z)=\sum_{n=1}^{+\infty} \left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n}$$
+  converge in $K \subset \mathbb{C}\setminus\{z_1, z_2, \dots\}$ compatto. Inoltre, se $|z|<|z_1|$, si ha
+  $$f(z)=-\sum_{k=1}{+\infty} \left(\sum_{n:p_n<k}m_nz_n^{-k}\right)z^{k-1}.$$
+\end{lm}
+
+\begin{proof}
+  Prendiamo $r_n$ reali positivi con $r_n \le r_{n+1}$ e $r_n \longrightarrow +\infty$ per $n \longrightarrow +\infty$, e t.c. $r_n<|z_n|$. Per $|z| \le r_n$ si ha
+  $$\left|\frac{m_n}{z-z_n}\right| \le \frac{m_n}{|z_n|-r_n}, \quad \left|\frac{z}{z_n}\right|<\frac{|z|}{r_n} \le 1 \implies$$
+  perciò si ha che esistono $p_n \in \mathbb{N}\cup\{0\}$ t.c. $\displaystyle \left|\frac{z}{z_n}\right|^{p_n} <\epsilon_n \frac{|z_n|-r_n}{|m_n|}$, con $\epsilon_n>0$ e $\displaystyle \sum_{n=1}^{+\infty} \epsilon_n<+\infty$.
+  Abbiamo dunque $\displaystyle \left|\left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n}\right| \le \left|\frac{z}{z_n}\right|^{p_n} \frac{|m_n|}{|z_n|-r_n}<\epsilon_n$. Fissiamo ora il compatto $K$ e consideriamo $N$ t.c. $|z| \le r_N$ per ogni $z \in K$.
+  Poniamo $\displaystyle M_n=\max_{z \in K} \left|\left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n}\right|$, per $n \le N-1$. Per ogni $z \in K$ si ha che
+  $$\sum_{n=1}^{+\infty} \left|\left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n}\right| \le \sum_{n=1}^{N-1} M_n+\sum_{n=N}^{+\infty} \epsilon_n<+\infty.$$
+
+  Se $|z|<|z_1|$, possiamo scrivere
+  \begin{align*}
+    f(z) & =\sum_{n=1}^{+\infty} \left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n} \\
+    & =-\sum_{n=1}^{+\infty} \frac{m_nz^{p_n}}{z_n^{p_n+1}}\frac{1}{1-z/z_n}=-\sum_{n=1}^{+\infty}m_n\sum_{k=p_n+1}^{+\infty} \frac{z^{k-1}}{z_n^k}.
+  \end{align*}
+  Poiché nella prima parte della dimostrazione abbiamo visto che c'è convergenza totale, possiamo scambiare le due sommatorie ottenendo così la seconda parte della tesi.
+\end{proof}
+
+\begin{oss} \label{1.1.2}
+  Per $|z| \le r_n$ si ha
+  \begin{gather*}
+    \left|\frac{z}{z_n}\right|=\frac{2|z|}{|z_n|+|z_n|}<\frac{2|z|}{|z_n|+r_n} \le \frac{2|z|}{|z-z_n|} \\
+    |m_m| \left|\frac{z}{z_n}\right|^{p_n+1} \le \frac{2|z|}{|z-z_n|}\left|\frac{z}{z_n}\right|^{p_n}|m_n|=2|z|\left|\left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n}\right| \\
+    \sum_{n=1}^{+\infty} |m_n|\left|\frac{z}{z_n}\right|^{p_n+1} \le 2|z|\sum_{n=1}^{+\infty} \left|\left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n}\right|<+\infty.
+  \end{gather*}
+\end{oss}
+
+\begin{ex}
+  Se $z_n=n$ e $m_n=1$ per ogni $n$, basta prendere $p_n=1$.
+
+  Sia invece $\displaystyle |z_0|>\max_K |z|$ e consideriamo $|z_n|>|z_0|+1$. Si ha che
+  \begin{align*}
+    \left|\left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n}\right| & \le \left|\frac{z_0}{z_n}\right|^{p_n+1}\frac{|m_n|}{|z_n|-|z_0|}\frac{|z_n|}{|z_0|} \\
+    & \le \left|\frac{z_0}{z_n}\right|^{p_n+1}\frac{|z_0|+1}{|z_0|+1-|z_0|}\frac{|m_n|}{|z_0|}=|m_n|\left|\frac{z_0}{z_n}\right|^{p_n+1}\left(1+\frac{1}{|z_0|}\right),
+  \end{align*}
+  dove la seconda disugaglianza segue dal fatto che la funzione $\frac{t}{t-|z_0|}$ è decrescente. In questo caso, vale la maggiorazione opposta a quella dell'osservazione \ref{1.1.2}.
+\end{ex}
