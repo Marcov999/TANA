@@ -89,3 +89,20 @@ Con i due lemmi appena mostrati si può costruire una funzione meromorfa su $\ma
 \begin{oss}
   Se $F(z)$ ha uno zero o un polo di molteplicità $|m|$ in $0$, basta applicare il teorema \ref{wprod} alla funzione $\tilde{F}(z)=F(z)/z^m$.
 \end{oss}
+
+\begin{cor}
+  Sia $F$ come nel teorema \ref{wprod}, indichiamo con $D^k$ la derivata $k$-esima. Si ha
+  $$G(z)=\log{F(0)}+\sum_{k=1}^{+\infty}\Bigg(\frac{1}{k!}D^{k-1}\left(\frac{F'}{F}(z)\right)_{z=0}+\frac{1}{k}\sum_{n:p_n<k}m_nz_n^{-k}\Bigg)z^k.$$
+\end{cor}
+
+\begin{proof}
+  Dalla dimostrazione del teorema \ref{wprod} e prendendo il logaritmo otteniamo
+  $$G(z)+\int_0^z\sum_{n=1}^{+\infty}\left(\frac{w}{z_n}\right)^{p_n}\frac{m_n}{w-z_n}\diff w=\log{F(z)}.$$
+  Ovviamente $\displaystyle \log{F(z)}=\log{F(0)}+\sum_{k=1}^{+\infty} \frac{D^{k-1}\left(\frac{F'}{F}(z)\right)_{z=0}}{k!}z^k$. Inoltre
+  \begin{gather*}
+    -\int_0^z \sum_{n=1}^{+\infty} \left(\frac{w}{z_n}\right)^{p_n}\frac{m_n}{w-z_n}\diff w=\int_0^z \sum_{k=1}^{+\infty} \sum_{n: p_n<k} (m_nz_n^{-k})w^{k-1}\diff w= \\
+    =\sum_{k=1}^{+\infty} \frac{1}{k}\left(\sum_{n: p_n<k}m_mz_n^{-k}\right)z^k.
+  \end{gather*}
+\end{proof}
+
+Avviciniamoci alla notazione canonica del prodotto di Weierstrass per una funzione intera: $\displaystyle F(z)=e^{G(z)}\prod_{n=1}^{+\infty}\left(1-\frac{z}{z_n}\right)\exp\Bigg(\sum_{k=1}^{p_n}\left(\frac{z}{z_n}\right)^k\Bigg)$, dove gli zeri vengono contati con molteplicità (e d'ora in avanti si sottindenderà sempre così).

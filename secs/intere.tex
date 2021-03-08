@@ -1,0 +1,56 @@
+Introduciamo ora un argomento importante: le funzioni intere di ordine finito.
+
+Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f(z)=O\big(g(z)\big)$. Inoltre, scriveremo $\ll_{\epsilon}$ per indicare che la costante dell'$O$-grande dipende da un parametro $\epsilon$.
+
+\begin{defn}
+  Data $F$ intera, si dice che ha \textit{ordine} $\alpha \ge 0$ se
+  $$F(z) \ll_{\epsilon} e^{|z|^{\alpha+\epsilon}} \, (z \longrightarrow +\infty)$$
+  per ogni $\epsilon>0$ e $\alpha$ è il minimo valore positivo per cui vale questa cosa. Equivalentemente, $\alpha=\inf\{A \ge 0 \mid F(z) \ll_A e^{|z|^A}\}$.
+
+  Se non vale $F(z) \ll_A e^{|z|^A}$ per nessun $A$ diciamo che $F$ ha ordine infinito.
+\end{defn}
+
+\begin{ex}
+  \begin{enumerate}
+    \item Sia $p$ un polinomio di grado $k$, allora $|p(z)| \le |a_k||z|^k\big(1+o(1)\big) \ll_{\epsilon} e^{|z|^{\epsilon}}$ per ogni $\epsilon>0$, dunque $p$ ha ordine $0$.
+    \item $|e^{az+b}|=e^{\mathfrak{Re}(az+b)} \ll_{\epsilon} e^{|z|^{1+\epsilon}}$ per ogni $\epsilon>0$.
+    \item Più in generale, dato $p_k$ un generico polinomio di grado $k$ abbiamo che $|e^{p_k(z)}|=e^{\mathfrak{Re}\big(p_k(z)\big)} \le e^{|p_k(z)|} \le e^{|a_k||z|^k\big(1+o(1)\big)} \ll_{\epsilon} e^{|z|^{k+\epsilon}}$ per ogni $\epsilon>0$.
+
+    Inoltre, prendendo $z$ sulla retta $arg(z)=-arg(a_k)/k$, abbiamo che vale $|e^{p_k(z)}|=e^{\mathfrak{Re}\big(p_k(z)\big)}=e^{a_kz^k\big(1+o(1)\big)}=e^{|a_k||z|^k\big(1+o(1)\big)} \gg_{\epsilon} e^{|a_k||z|^k}$. Dunque l'ordine è $k$ e l'$\inf$ nella definizione non viene raggiunto.
+  \end{enumerate}
+\end{ex}
+
+\begin{oss}
+  Se $F_1$ e $F_2$ hanno ordine $\alpha_1$ e $\alpha_2$, allora $F_1+F_2$ e $F_1 \cdot F_2$ hanno ordine minore o uguale di $\max\{\alpha_1,\alpha_2\}$. La dimostrazione è lasciata come esercizio per il lettore.
+\end{oss}
+
+\begin{lm} \label{1.2.4}
+  Sia $f$ olomorfa in $|z-z_0| \le R$ non costantemente nulla e sia $0<r<R$. Sia inoltre $N=\sharp\{z \in \mathbb{C} \mid |z-z_0| \le r, f(z)=0\}$ (ricordiamo che sono contati con molteplicità). Allora
+  $$|f(z_0)| \le \left(\frac{r}{R}\right)^N\max_{|z-z_0|=R}|f(z)|.$$
+\end{lm}
+
+\begin{proof}
+  Consideriamo senza perdita di generalità, a meno di una traslazione e di un'omotetia, $R=1,z_0=0$. Siano $z_n$ gli zeri di $f$ in $|z| \le r$ contati con molteplicità e sia $\displaystyle g(z)=f(z)\prod_{n=1}^N \frac{1-\bar{z}_nz}{z-z_n}$. Per $|z|=1$ scriviamo $z=e^{i\theta},\theta \in \mathbb{R}$.
+  Allora $\displaystyle \left|\frac{1-\bar{z}_ne^{i\theta}}{e^{i\theta}-z_n}\right|=|e^{i\theta}|\left|\frac{\bar{z}_n-e^{-i\theta}}{z_n-e^{i\theta}}\right|=1,$ quindi, per il principio del massimo modulo per funzioni olomorfe (che d'ora in avanti useremo senza menzionarlo esplicitamente), $\displaystyle |g(z)| \le \max_{|z|=1} |f(z)|$ per $|z| \le 1$. Si ha dunque
+  \begin{gather*}
+    |f(w)|=|g(w)|\prod_{n=1}^N\left|\frac{w-z_n}{1-\bar{z}_nw}\right| \le \max_{|z|=1} |f(z)| \prod_{n=1}^N \left|\frac{w-z_n}{1-\bar{z}_nw}\right| \implies \\
+    \implies |f(0)| \le \max_{|z|=1} |f(z)| \prod_{n=1}^N |z_n| \le r^N \max_{|z|=1} |f(z)|.
+  \end{gather*}
+\end{proof}
+
+\begin{cor}
+  Siano $f, r, R, N$ come nel lemma \ref{1.2.4}. Se $f(z_0)\not=0$ allora
+  $$N \le \frac{1}{\log(R/r)}\log\left(\frac{\max_{|z-z_0|=R}|f(z)|}{|f(z_0)|}\right).$$
+\end{cor}
+
+\begin{proof}
+  Basta prendere la disugaglianza data dal lemma \ref{1.2.4}, portarla nella forma $\left(\frac{R}{r}\right)^N \le (\dots)$, prendere il logaritmo e dividere per $\log(R/r)$.
+\end{proof}
+
+\begin{thm}
+  Sia $F$ una funzione intera di ordine $\alpha<+\infty$ e consideriamo $N(r)=\sharp\{z \in \mathbb{C} \mid F(z)=0, |z| \le r\}$. Allora $N(r) \ll_{\epsilon} r^{\alpha+\epsilon}$ per ogni $\epsilon>0$.
+\end{thm}
+
+\begin{proof}
+  Da scrivere.
+\end{proof}
