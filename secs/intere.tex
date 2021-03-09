@@ -100,3 +100,24 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
   \end{enumerate}
   Abbiamo dunque $\beta-1 \le p \le \beta \le \alpha$. Scrivendo la fattorizzazione di Weierstrass come in \eqref{wfattoformula} usando il miglior $p$ possibile si ha la forma canonica.
 \end{oss}
+
+\begin{thm}
+  (Borel-Carathéodory) Siano $0<r<R$ e sia $f$ olomorfa in $|z-z_0| \le R$. Allora
+  \begin{equation*}
+    \max_{|z-z_0|=r}|f(z)| \le \frac{2r}{R-r}\max_{|z-z_0|=R}\mathfrak{Re}\big(f(z)\big)+\frac{R+r}{R-r}|f(z_0)|.
+  \end{equation*}
+  Se inoltre $\displaystyle \max_{|z-z_0|=R}\mathfrak{Re}\big(f(z)\big) \ge 0$, allora
+  \begin{equation*}
+    \max_{|z-z_0|=r}|f^{(n)}(z)| \le \frac{n!2^{n+2}R}{(R-r)^{n+1}}\Big(\max_{|z-z_0|=R}\mathfrak{Re}\big(f(z)\big)+|f(z_0)|\Big).
+  \end{equation*}
+\end{thm}
+
+\begin{proof}
+  Supponiamo senza perdita di generalità $z_0=0$. Se $f$ è costante la tesi è banale, consideriamo dunque $f$ non costante. Facciamo il caso $f(0)=0$. Sia $\displaystyle A=\max_{|z|=R}\mathfrak{Re}\big(f(z)\big)$. $A>0$, infatti basta osservare che $|e^{f(z)}|=e^{\mathfrak{Re}\big(f(z)\big)}$ e applicare il principio del massimo modulo a $e^{f(z)}$ (se il massimo non fosse maggiore di $1$, sarebbe proprio $1$ perché $f(0)=0$ e per lo stesso motivo sarebbe costante). Sia $\varphi(z)=\frac{f(z)}{2A-f(z)}$.
+  Osserviamo che $\mathfrak{Re}\big(2A-f(z)\big)=2A-\mathfrak{Re}\big(f(z)\big) \ge A>0 \implies 2A-f(z)\not=0$, quindi $\varphi$ è olomorfa in $|z| \le R$.
+  Posto $f(z)=u+iv$, allora $|\varphi(z)|^2=\frac{u^2+v^2}{(2A-u)^2+v^2} \le 1$. Infatti, $u \le A \implies u \le 2A-u$ e ovviamente $-2A+u \le u$, dunque $u^2 \le (2A-u)^2$.
+  Poiché $\varphi(0)=0$, $\varphi(z)/z$ è olomorfa in $|z| \le R$ e
+  \begin{gather*}
+    \left|\frac{\varphi(z)}{z}\right| \le \max_{|z|=R} \left|\frac{\varphi(z)}{z}\right| \le R \implies
+  \end{gather*}
+\end{proof}
