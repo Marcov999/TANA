@@ -5,7 +5,7 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
 \begin{defn}
   Data $F$ intera, si dice che ha \textit{ordine} $\alpha \ge 0$ se
   $$F(z) \ll_{\epsilon} e^{|z|^{\alpha+\epsilon}} \, (z \longrightarrow +\infty)$$
-  per ogni $\epsilon>0$ e $\alpha$ è il minimo valore positivo per cui vale questa cosa. Equivalentemente, $\alpha=\inf\{A \ge 0 \mid F(z) \ll_A e^{|z|^A}\}$.
+  per ogni $\epsilon>0$ e $\alpha$ è il minimo valore positivo per cui vale questa cosa. Equivalentemente, $\alpha=\inf\{A \ge 0 \mid F(z) \ll_A e^{|z|^A}\}$. Scriviamo $ord(F)=\alpha$.
 
   Se non vale $F(z) \ll_A e^{|z|^A}$ per nessun $A$ diciamo che $F$ ha ordine infinito.
 \end{defn}
@@ -38,7 +38,7 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
   \end{gather*}
 \end{proof}
 
-\begin{cor}
+\begin{cor} \label{1.2.5}
   Siano $f, r, R, N$ come nel lemma \ref{1.2.4}. Se $f(z_0)\not=0$ allora
   $$N \le \frac{1}{\log(R/r)}\log\left(\frac{\max_{|z-z_0|=R}|f(z)|}{|f(z_0)|}\right).$$
 \end{cor}
@@ -47,10 +47,56 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
   Basta prendere la disugaglianza data dal lemma \ref{1.2.4}, portarla nella forma $\left(\frac{R}{r}\right)^N \le (\dots)$, prendere il logaritmo e dividere per $\log(R/r)$.
 \end{proof}
 
-\begin{thm}
+\begin{thm} \label{1.2.6}
   Sia $F$ una funzione intera di ordine $\alpha<+\infty$ e consideriamo $N(r)=\sharp\{z \in \mathbb{C} \mid F(z)=0, |z| \le r\}$. Allora $N(r) \ll_{\epsilon} r^{\alpha+\epsilon}$ per ogni $\epsilon>0$.
 \end{thm}
 
 \begin{proof}
-  Da scrivere.
+  Prendiamo $R=2r$, allora $\displaystyle \max_{|z|=R}|F(z)| \ll_{\epsilon} e^{(2r)^{\alpha+\epsilon}}$ per ogni $\epsilon>0$ $\implies$ $\displaystyle \log\left(\max_{|z|=R}|F(z)|\right) \ll_{\epsilon} r^{\alpha+\epsilon}$ per ogni $\epsilon>0$.
+  Se $F(0)\not=0$, per il corollario \ref{1.2.5} abbiamo $N(r) \ll_{\epsilon} r^{\alpha+\epsilon}$ per ogni $\epsilon>0$. Se $F(0)=0$, consideriamo $\tilde{F}(z)=F(z)/z^m$ dove $m$ è la molteplicità di $0$ come zero. Per $|z| \le 1$, $\tilde{F} \ll 1$ per continuità.
+  Per $|z|>1$, $\tilde{F}(z)=F(z)\frac{1}{z^n} \implies ord(\tilde{F}) \le \max\{\alpha,0\}=\alpha$. Allora si ripete la dimostrazione per $\tilde{F}$, poi si osserva che il numero di zeri di $F$ varia solo per la costante additiva $m$.
 \end{proof}
+
+\begin{defn}
+  Sia $z_n\not=0$ una successione senza limiti finiti. Si dice \textit{esponente di convergenza} di $z_n$, se esiste, il numero $$\beta=\inf\{B>0 \mid \sum_{n=1}^{+\infty} \frac{1}{|z_n|^B}<+\infty\},$$
+  ovvero $\displaystyle \sum_{n=1}^{+\infty} \frac{1}{|z_n|^{\beta+\epsilon}}<+\infty$ per ogni $\epsilon>0$ e $\beta$ è il minimo valore per cui è vero.
+\end{defn}
+
+\begin{ex}
+  $z_n=\log{n}$ non ha esponente di convergenza finito.
+\end{ex}
+
+\begin{thm} \label{1.2.9}
+  Sia $F$ una funzione intera di ordine $\alpha>0$, $F(0)\not=0$ t.c. la successione dei suoi zeri $z_n$ ha esponente di convergenza $\beta$. Allora $\beta \le \alpha$.
+\end{thm}
+
+\begin{proof}
+  Se $ord(F)=\alpha<+\infty$, per il teorema \ref{1.2.6} si ha $N(r) \ll_{\epsilon} r^{\alpha+\epsilon}$ per ogni $\epsilon>0$.
+  Prendendo $r_n=|z_n|$, ricordando che $z_n$ sono gli zeri di $F$ otteniamo $n \le N(r_n) \ll_{\epsilon} r_n^{\alpha+\epsilon}=|z_n|^{\alpha+\epsilon}=|z_n|^{\alpha+\epsilon}$ per ogni $\epsilon>0$ (non è $n=N(r_n)$ perché potrebbe esserci più di uno zero sul cerchio $|z|=r_n$). Allora $|z_n| \gg_{\epsilon} n^{\frac{1}{\alpha+\epsilon}}$ e dunque
+  $$\sum_{n=1}^{+\infty} |z_n|^{-(\alpha+2\epsilon)} \ll_{\epsilon} \sum_{n=1}^{+\infty} n^{-\frac{\alpha+2\epsilon}{\alpha+\epsilon}}<+\infty.$$
+  Perciò $\beta \le \inf\{\alpha+2\epsilon \mid \epsilon>0\}=\alpha$.
+\end{proof}
+
+\begin{thm} \label{wfatt}
+  Sia $F$ intera di ordine finito, $F(0)\not=0$. Allora la fattorizzazione di Weierstrass si scrive come
+  \begin{equation} \label{wfattoformula}
+    F(z)=e^{G(z)} \prod_{n=1}^{+\infty} \left(1-\frac{z}{z_n}\right)\exp\Bigg(\sum_{k=1}^p\frac{1}{k}\left(\frac{z}{z_n}\right)^k\Bigg),
+  \end{equation}
+  dove $p \ge 0$ è indipendente da $n$ e t.c. $\displaystyle \sum_n |z_n|^{-(p+1)}<+\infty$. Talvolta si trova scritta con la notazione $\displaystyle E(z,p)=(1-z)\exp\left(\sum_{k=1}^p\frac{1}{k}z^k\right)$ o simili.
+\end{thm}
+
+\begin{proof}
+  Diamo solamente una traccia. Osserviamo che
+  $$\sum_{n=1}^{+\infty} |m_n|\left|\frac{z}{z_n}\right|^{p+1}<+\infty \iff \sum_{n=1}^{+\infty} |z_n|^{-(p+1)}<+\infty\text{ per ogni }z \in \mathbb{C}.$$
+  Scegliendo $p+1=\alpha+\epsilon$, per il teorema \ref{1.2.9} si ha $\displaystyle \sum_{n=1}^{+\infty} |z_n|^{-(p+1)}<+\infty$.
+\end{proof}
+
+\begin{oss}
+  Sia $\beta$ l'esponente di convergenza di $z_n$, zeri di una funzione $F$ di ordine $\alpha$ ($\beta \le \alpha$). Il $p$ migliore è:
+  \begin{enumerate}
+    \item se $\beta$ non è intero, $p=\lfloor\beta\rfloor$;
+    \item se $\beta$ è intero e nella definizione con l'$\inf$ è in realtà un minimo, allora $p=\beta-1$;
+    \item se $\beta$ è intero ma nella definizione con l'$\inf$ questo non viene raggiunto, cioè $\beta$ non è un minimo, allora $p=\beta$.
+  \end{enumerate}
+  Abbiamo dunque $\beta-1 \le p \le \beta \le \alpha$. Scrivendo la fattorizzazione di Weierstrass come in \eqref{wfattoformula} usando il miglior $p$ possibile si ha la forma canonica.
+\end{oss}
