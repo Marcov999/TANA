@@ -1,1 +1,8 @@
+Lez01: ok
+Lez02: ok
+Lez03: ok
+Lez04: ok
+
+Da rivedere con gli appunti suoi a partire dalla Lez01.
+
 Scrivere un README decente

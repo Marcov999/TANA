@@ -118,6 +118,52 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
   Posto $f(z)=u+iv$, allora $|\varphi(z)|^2=\frac{u^2+v^2}{(2A-u)^2+v^2} \le 1$. Infatti, $u \le A \implies u \le 2A-u$ e ovviamente $-2A+u \le u$, dunque $u^2 \le (2A-u)^2$.
   Poiché $\varphi(0)=0$, $\varphi(z)/z$ è olomorfa in $|z| \le R$ e
   \begin{gather*}
-    \left|\frac{\varphi(z)}{z}\right| \le \max_{|z|=R} \left|\frac{\varphi(z)}{z}\right| \le R \implies
+    \left|\frac{\varphi(z)}{z}\right| \le \max_{|z|=R} \left|\frac{\varphi(z)}{z}\right| \le \frac{1}{R} \implies \max_{|z|=r} |\varphi(z)| \le \frac{r}{R} \implies \\
+    \implies |f(z)|=\frac{2A|\varphi(z)|}{|1+\varphi(z)|} \le \frac{2Ar/R}{1-|\varphi(z)|} \le \frac{2Ar}{R-r} \text{ per } |z|=r.
   \end{gather*}
+  Se $f(0)\not=0$, ripetiamo il ragionamento con $f(z)-f(0)$ ottenendo
+  \begin{gather*}
+    -|f(0)|+\max_{|z|=r}|f(z)| \le \max_{|z|=r} |f(z)-f(0)| \le \\
+    \le \frac{2r}{R-r}\max_{|z|=R}\mathfrak{Re}\big(f(z)-f(0)\big) \le \frac{2r}{R-r}\max_{|z|=R}\mathfrak{Re}\big(f(z)\big)+\frac{2r}{R-r}|f(0)|.
+  \end{gather*}
+  Sommando $|f(0)|$ agli estremi di questa catena di disugaglianze otteniamo la prima parte della tesi.
+
+  Osserviamo che se $A \ge 0$ si ha
+  $$\max_{|z|=r} |f(z)| \le \frac{R+r}{R-r}\Big(\max_{|z|=R}\mathfrak{Re}\big(f(z)\big)+|f(z_0)|\Big).$$
+  Prendiamo $|z| \le r$ e scriviamo
+  $$f^{(n)}(z)=\frac{n!}{2\pi i} \oint_{|w-z|=\frac{R-r}{2}} \frac{f(w)}{(w-z)^{n+1}}\diff w.$$
+  Dev'essere $|w|=|w-z+z| \le |w-z|+|z| \le \frac{R-r}{2}+r=\frac{R+r}{2}<R$. Allora
+  \begin{gather*}
+    |f(w)| \le \max_{|w|=\frac{R+r}{2}} |f(w)| \le \frac{R+\frac{R+r}{2}}{R-\frac{R+r}{2}}\Big(\max_{|w|=R}\mathfrak{Re}\big(f(w)\big)+|f(0)|\Big) \le \\
+    \le \frac{4R}{R-r}\Big(\max_{|w|=R}\mathfrak{Re}\big(f(w)\big)+|f(0)|\Big) \implies \\
+    \implies |f^{(n)}(z)| \le \frac{n!}{2\pi}\cdot\frac{4R}{R-r}\cdot\frac{2\pi}{\left(\frac{R-r}{2}\right)^n}\Big(\max_{|w|=R}\mathfrak{Re}\big(f(w)\big)+|f(0)|\Big).
+  \end{gather*}
+\end{proof}
+
+\begin{thm} \label{hadamard}
+  (Hadamard) Se $F$ è intera di ordine $\alpha$ finito e $F(0)\not=0$, allora la funzione intera $G$ del prodotto di Weierstrass \eqref{wprodformula} è un polinomio di grado minore o uguale a $\alpha$.
+\end{thm}
+
+\begin{proof}
+  Da scrivere.
+\end{proof}
+
+\begin{thm} \label{1.2.14}
+  Sia $z_n\not=0$ una successione con esponente di convergenza $\beta$ finito e $p$ il minimo intero t.c. $\displaystyle \sum_{n=1}^{+\infty} |z_n|^{-(p+1)}<+\infty$. Sappiamo già che il prodotto di Weierstrass in forma canonica,
+  $$\prod_{n=1}^{+\infty} \left(1-\frac{z}{z_n}\right)\exp\Bigg(\sum_{k=1}^p\frac{1}{k}\left(\frac{z}{z_n}\right)^k\Bigg),$$
+  è uniformemente convergente, in particolare è una funzione intera. L'ordine di tale funzione, finito, è proprio $\beta$.
+\end{thm}
+
+\begin{proof}
+  Da scrivere.
+\end{proof}
+
+\begin{cor}
+  Se la funzione
+  $$F(z)=e^{G(z)}\prod_{n=1}^{+\infty}\left(1-\frac{z}{z_n}\right)\exp\Bigg(\sum_{k=1}^p\frac{1}{k}\left(\frac{z}{z_n}\right)^k\Bigg)$$
+  ha ordine $\alpha$, la successione $z_n\not=0$ ha esponente di convergenza $\beta$ e $G$ è un polinomio di grado $q$, allora $\alpha=\max\{q,\beta\}$.
+\end{cor}
+
+\begin{proof}
+  $e^{G(z)}$ ha ordine $q$ e il prodotto, per il teorema \ref{1.2.14}, ha ordine $\beta$. Poiché l'ordine del prodotto di due funzioni è minore o uguale del massimo fra i due ordini, allora $\alpha \le \max\{q,\beta\}$. Ma abbiamo già visto che $\alpha \ge \beta$ e per il teorema di Hadamard \ref{hadamard} si ha anche $\alpha \ge q$.
 \end{proof}
