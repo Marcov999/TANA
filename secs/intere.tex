@@ -170,7 +170,28 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
   Si ha allora $|G^{(\nu+1)}(z)| \le C(\nu,\epsilon)R^{-\delta}+o(1)$ per $|z|=R/2$ e dunque anche per $|z| \le R/2$. Basta fissare $z$ e mandare $R \longrightarrow +\infty$.
 \end{proof}
 
-\begin{thm} \label{1.2.14}
+\begin{cor} \label{1.2.14}
+  Sia $G$ come nel teorema di Hadamard. Se $q \le p$ si ha
+  $$G(z)=\log{F(0)}+\sum_{k=1}^q D^{k-1}\left(\frac{F'}{F}(0)\right)_{z=0} \frac{z^k}{k!};$$
+  se invece $p<q$ si ha
+  $$G(z)=\log{F(0)}+\sum_{k=1}^q D^{k-1}\left(\frac{F'}{F}(0)\right)_{z=0}\frac{z^k}{k!}+\sum_{k=p+1}^q\left(\sum_n z_n^{-k}\right)\frac{z^k}{k}.$$
+  Inoltre, per $k>\max\{p,q\}$ si ha
+  $$\sum_n z_n^{-k}=-\frac{1}{(k-1)!}D^{k-1}\left(\frac{F'}{F}(z)\right)_{z=0}.$$
+\end{cor}
+
+\begin{proof}
+  Per il corollario \ref{1.1.8} si ha
+  $$G(z)=\log{F(0)}+\sum_{k=1}^{+\infty}\Bigg(\frac{1}{k!}D^{k-1}\left(\frac{F'}{F}(z)\right)_{z=0}+\frac{1}{k}\sum_{n:p_n<k}m_nz_n^{-k}\Bigg)z^k,$$
+  con $p_n=p$ per ogni $n$. Abbiamo che $G$ è un polinomio di grado $q$. Se $q \le p$, si ha $k \le q \le p$, quindi non c'è il termine $\displaystyle \frac{1}{k}\sum_{n:p_n<k}m_nz_n^{-k}$, come voluto.
+
+  Se $q>p$, abbiamo il termine $\displaystyle \frac{1}{k}\sum_n m_nz_n^{-k}$ per $p<k \le q$, cioè il termine $\displaystyle \sum_{k=p+1}^q\left(\sum_n z_n^{-k}\right)z^k$.
+
+  Se $k>\max\{p,q\}$, non c'è il termine $z^k$ (nel quale la somma, poiché vale $k>p=p_n$, è fatta su tutti gli $n$). Allora si ha
+  $$\frac{1}{k!}D^{k-1}\left(\frac{F'}{F}(z)\right)_{z=0}+\frac{1}{k}\sum_n z_n^{-k}$$
+  che è ovviamente equivalente alla tesi.
+\end{proof}
+
+\begin{thm} \label{1.2.15}
   Sia $z_n\not=0$ una successione con esponente di convergenza $\beta$ finito e $p$ il minimo intero t.c. $\displaystyle \sum_{n=1}^{+\infty} |z_n|^{-(p+1)}<+\infty$. Sappiamo già che il prodotto di Weierstrass in forma canonica,
   $$\prod_{n=1}^{+\infty} \left(1-\frac{z}{z_n}\right)\exp\Bigg(\sum_{k=1}^p\frac{1}{k}\left(\frac{z}{z_n}\right)^k\Bigg),$$
   è uniformemente convergente, in particolare è una funzione intera. L'ordine di tale funzione, finito, è proprio $\beta$.
@@ -221,5 +242,5 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
 \end{cor}
 
 \begin{proof}
-  $e^{G(z)}$ ha ordine $q$ e il prodotto, per il teorema \ref{1.2.14}, ha ordine $\beta$. Poiché l'ordine del prodotto di due funzioni è minore o uguale del massimo fra i due ordini, allora $\alpha \le \max\{q,\beta\}$. Ma abbiamo già visto che $\alpha \ge \beta$ e per il teorema di Hadamard \ref{hadamard} si ha anche $\alpha \ge q$.
+  $e^{G(z)}$ ha ordine $q$ e il prodotto, per il teorema \ref{1.2.15}, ha ordine $\beta$. Poiché l'ordine del prodotto di due funzioni è minore o uguale del massimo fra i due ordini, allora $\alpha \le \max\{q,\beta\}$. Ma abbiamo già visto che $\alpha \ge \beta$ e per il teorema di Hadamard \ref{hadamard} si ha anche $\alpha \ge q$.
 \end{proof}
