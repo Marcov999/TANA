@@ -145,7 +145,29 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
 \end{thm}
 
 \begin{proof}
-  Da scrivere.
+  Sia $\nu=\lfloor\alpha\rfloor$, vogliamo $G^{(\nu+1)}\equiv 0$. Ricordiamo che
+  $$\log{F(z)}=G(z)+\sum_n \log\left(1-\frac{z}{z_n}\right)+\sum_{k=1}^p \frac{1}{k}\left(\frac{z}{z_n}\right)^k.$$
+  Derivando troviamo
+  \begin{gather*}
+    \frac{F'}{F}(z)=G'(z)-\sum_n \frac{1}{z_n-z}+D\Bigg(\sum_{k=1}^p \frac{1}{k}\left(\frac{z}{z_n}\right)^k\Bigg) \\
+    D^{\nu}\left(\frac{F'}{F}(z)\right)=G^{(\nu+1)}(z)-\nu!\sum_n \frac{1}{(z_n-z)^{\nu+1}}+0.
+  \end{gather*}
+  dove lo $0$ in fondo è perché $p \le \alpha$. Fissiamo $R>0$ e definiamo la funzione $\displaystyle \varphi_R(z)=\frac{F(z)}{F(0)}\prod_{|z_n| \le R} \left(1-\frac{z}{z_n}\right)^{-1}$.
+  Per $|z_n| \le R$ e $|z|=2R$ si ha
+  \begin{gather*}
+    \left|1-\frac{z}{z_n}\right| \ge \left|\frac{z}{z_n}\right|-1 \ge 2-1=1 \implies \\
+    \implies |\varphi_R(z)| \le \frac{|F(z)|}{|F(0)|} \ll_{\epsilon} e^{(2R)^{\alpha+\epsilon}} \text{ per ogni } \epsilon>0.
+  \end{gather*}
+  Per il principio del massimo, è vero per ogni $|z| \le 2R$ e di conseguenza abbiamo che $\log{|\varphi_R(z)|} \le C(\epsilon)R^{\alpha+\epsilon}$. Sia $\psi_R(z)=\log{\varphi_R(z)}$; è olomorfa in $|z| \le R$ e $\psi_R(0)=0$. Si ha $\mathfrak{Re}\psi_R(z)=\log{|\varphi_R(z)|}$, dunque per il teorema di Borel-Carathéodory
+  $$\max_{|z|=R/2}|\psi_R^{(\nu+1)}(z)| \ll_{\epsilon,\nu} \frac{R}{R^{\nu+2}}R^{\alpha+\epsilon}=R^{\alpha-\nu-1+\epsilon}.$$
+  Sia $\epsilon>0$ t.c. $\alpha-\nu-1+\epsilon<0$. Allora
+  \begin{gather*}
+    \psi'_R(z)=\frac{\varphi'_R(z)}{\varphi_R(z)}+\sum_{|z_n| \le R} \frac{1}{z_n-z} \\
+    \psi_R^{(\nu+1)}(z)=D^{\nu}\left(\frac{F'}{F}(z)\right)+\sum_{|z_n| \le R} \frac{\nu!}{(z_n-z)^{\nu+1}}=G^{(\nu+1)}(z)-\sum_{|z_n|>R} \frac{\nu!}{(z_n-z)^{\nu+1}}.
+  \end{gather*}
+  Supponiamo $|z|=R/2$, si ha
+  $$\left|\sum_{|z_n|>R} \frac{\nu!}{(z_n-z)^{\nu+1}}\right| \le C_1(\nu) \sum_{|z_n|>R} \frac{1}{|z_n|^{\nu+1}}=o(1) \text{ per } R \longrightarrow +\infty.$$
+  Si ha allora $|G^{(\nu+1)}(z)| \le C(\nu,\epsilon)R^{-\delta}+o(1)$ per $|z|=R/2$ e dunque anche per $|z| \le R/2$. Basta fissare $z$ e mandare $R \longrightarrow +\infty$.
 \end{proof}
 
 \begin{thm} \label{1.2.14}
@@ -155,7 +177,41 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
 \end{thm}
 
 \begin{proof}
-  Da scrivere.
+  Sia $\displaystyle F(z)=\prod_nE\left(\frac{z}{z_n},p\right)$, Vogliamo mostrare che
+  $$\log\left|\prod_nE\left(\frac{z}{z_n},p\right)\right|=\sum_n\log\left|E\left(\frac{z}{z_n},p\right)\right| \le C(\epsilon)|z|^{\beta+\epsilon} \text{ per ogni } \epsilon>0.$$
+  Distinguiamo due casi.
+
+  Caso $|z/z_n| \le 1/2$. Allora
+  \begin{gather*}
+    \log\left|E\left(\frac{z}{z_n},p\right)\right| \le \left|\log{E\left(\frac{z}{z_n},p\right)}\right|= \\
+    =\left|\log\left(1-\frac{z}{z_n}\right)+\sum_{k=1}^p \frac{1}{k}\left(\frac{z}{z_n}\right)^k\right|=\left|\sum_{k=p+1}^{+\infty} \frac{1}{k} \left(\frac{z}{z_n}\right)^k\right| \le \\
+    \le \sum_{k=p+1}^{+\infty} \left|\frac{z}{z_n}\right|^k \le \left|\frac{z}{z_n}\right|^{p+1}(1+1/2+1/4+\dots)=2\left|\frac{z}{z_n}\right|^{p+1} \implies \\
+    \implies \sum_{|z_n| \ge 2|z|} \log\left|E\left(\frac{z}{z_n},p\right)\right| \le 2|z|^{p+1} \sum_{|z_n| \ge 2|z|} \frac{1}{|z_n|^{p+1}}.
+  \end{gather*}
+  Adesso, se $\beta=p+1$ l'ultima quantità è uguale a $\displaystyle 2|z|^{\beta}\sum_{|z_n| \ge 2|z|} \frac{1}{|z_n|^{p+1}} \le C|z|^{\beta}$. Se invece $\beta<p+1$ prendiamo $\epsilon<p+1-\beta$ per ottenere
+  \begin{gather*}
+    2|z|^{\beta+\epsilon}\sum_{|z_n| \ge 2|z|} \frac{1}{|z_n|^{p+1}}|z|^{p+1-\beta-\epsilon} \le \\
+    \le \frac{|z|^{\beta+\epsilon}}{2^{p-\beta-\epsilon}}\sum_{|z_n| \ge 2|z|} \frac{1}{|z_n|^{\beta+\epsilon}} \le C(\epsilon)|z|^{\beta+\epsilon}.
+  \end{gather*}
+
+  Caso $|z/z_n|>1/2$. Allora
+  \begin{gather*}
+    \log\left|E\left(\frac{z}{z_n},p\right)\right|=\log\left|1-\frac{z}{z_n}\right|+\mathfrak{Re}\Bigg(\sum_{k=1}^p \frac{1}{k}\left(\frac{z}{z_n}\right)^k\Bigg) \le \\
+    \le \log\left(1+\left|\frac{z}{z_n}\right|\right)+\sum_{k=1}^p \left|\frac{z}{z_n}\right|^k.
+  \end{gather*}
+  Adesso, se $p=0$ l'ultima quantità è $\le C(\epsilon)\left|\dfrac{z}{z_n}\right|^{\epsilon}$ per ogni $\epsilon>0$, dunque
+  \begin{gather*}
+    \sum_{|z_n|<2|z|}\log\left|E\left(\frac{z}{z_n},p\right)\right| \le C(\epsilon)|z|^{\epsilon}\sum_{|z_n|<2|z|}|z_n|^{-\epsilon}= \\
+    =C(\epsilon)|z|^{\beta+\epsilon}\sum_{|z_n|<2|z|}|z_n|^{-\epsilon}|z|^{-\beta} \le \\
+    C(\epsilon)2^{\beta}|z|^{\beta+\epsilon}\sum_{|z_n|<2|z|}\frac{1}{|z_n|^{\beta+\epsilon}} \le \tilde{C}(\epsilon)|z|^{\beta+\epsilon}.
+  \end{gather*}
+  Se invece $p \ge 1$, la quantità di prima è $\le C\left|\dfrac{z}{z_n}\right|^p$, dunque
+  \begin{gather*}
+    \sum_{|z_n|<2|z|}\log\left|E\left(\frac{z}{z_n},p\right)\right| \le C|z|^p \sum_{|z_n|<2|z|}|z_n|^{-p}= \\
+    =C|z|^{\beta+\epsilon}\sum_{|z_n|<2|z|}|z_n|^{-p}|z|^{p-\beta-\epsilon} \le \\
+    \le C2^{\beta+\epsilon-p}|z|^{\beta+\epsilon}\sum_{|z_n|<2|z|}\frac{1}{|z_n|^{\beta+\epsilon}} \le C(\epsilon)|z|^{\beta+\epsilon}.
+  \end{gather*}
+  È lasciato al lettore il divertentissimo esercizio di verificare che le varie costanti moltiplicative (i cui nomi non sono stati scelti con troppa cura dall'autore) non creano davvero problemi, cioè che sono tutte maggiorate da una costante che dipende solo da $\epsilon$ e non da $|z|$. Abbiamo adesso $\alpha \le \beta$ e l'altra disugaglianza già la sapevamo.
 \end{proof}
 
 \begin{cor}
