@@ -2,6 +2,8 @@ Lez01: ok
 Lez02: ok
 Lez03: ok
 Lez04: ok
+Lez05: controllare appena aggiorna il registro
+Lez06: controllare appena aggiorna il registro
 
 Da rivedere con gli appunti suoi a partire dalla Lez01.
 

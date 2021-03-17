@@ -36,3 +36,96 @@ Passando ai pari, per $k \ge 1$ si ha
   Si dicono \textit{numeri di Bernoulli} quelli definiti nel modo seguente:
   $$B_n=D^n\left(\frac{z}{e^z-1}\right)_{z=0}.$$
 \end{defn}
+
+\begin{oss}
+  Poiché la funzione $\frac{z}{e^z-1}$ ha raggio di convergenza $2\pi$, dev'essere $\displaystyle \limsup \sqrt{\frac{B_n}{n!}}=\frac{1}{2\pi}$.
+\end{oss}
+
+\begin{oss}
+  \begin{gather*}
+    f(z)=\frac{z}{e^z-1}+\frac{z}{2}=\frac{z+ze^z}{2(e^z-1)}=\frac{z(1+e^z)}{2(e^z-1)} \\
+    f(-z)=\frac{-ze^z}{1-e^z}-\frac{z}{2}=\frac{-ze^z-z}{2(1-e^z)}=\frac{z(1+e^z)}{2(e^z-1)}
+  \end{gather*}
+  Quindi $f$ è pari. Allora
+  $$D^{2k-1}\left(\frac{z}{e^z-1}\right)_{z=0}=-D^{2k-1}\left(\frac{z}{2}\right)_{z=0}=\begin{cases}
+    -1/2 & \mbox{se }k=1 \\ 0 & \mbox{se } k>1
+\end{cases}$$,
+dunque $B_1=-1/2$ e $B_{2n-1}=0$ per ogni $n>1$.
+\end{oss}
+
+\begin{oss}
+  \begin{gather*}
+    1=\left(\sum_{n=0}^{+\infty}\frac{B_n}{n!}z^n\right)\frac{e^z-1}{z}=\left(\sum_{n=0}^{+\infty}\frac{B_n}{n!}z^n\right)\left(\sum_{m=1}^{+\infty}\frac{z^{m-1}}{m!}\right)= \\
+    =\sum_{n=1}^{+\infty}\left(\sum_{k=0}^{n-1}\frac{B_k}{k!}\frac{n!}{(n-k)!}\right)\frac{z^{n-1}}{n!}=\sum_{n=1}^{+\infty}\Bigg(\sum_{k=0}^{n-1}\binom{n}{k}B_k\Bigg)\frac{z^{n-1}}{n!}
+  \end{gather*}
+  Perciò $B_0=1$ e $\displaystyle \sum_{k=0}^{n-1}\binom{n}{k}B_k=0$ per ogni $n \ge 2$, che ci dà $\displaystyle \sum_{k=0}^n\binom{n}{k}B_k=B_n$ e
+  $$B_{n-1}=-\frac{1+\binom{n}{1}B_1+\dots+\binom{n}{n-2}B_{n-2}}{\binom{n}{n-1}} \implies B_n \in \mathbb{Q}.$$
+\end{oss}
+
+\begin{oss}
+  \begin{gather*}
+    \cot(z)=i\frac{e^{iz}+e^{-iz}}{e^{iz}-e^{-iz}}=i\frac{e^{2iz}+1}{e^{2iz}-1}=i\left(1+\frac{2z}{z(e^{2iz}-1)}\right)= \\
+    =i+\frac{1}{z}\cdot\frac{2iz}{e^{2iz}-1}=i+\frac{1}{z}\left(1-iz+\sum_{k=1}^{+\infty}\frac{(-1)^kB_{2k}(2z)^{2k}}{(2k)!}\right)= \\
+    =\frac{1}{z}+\sum_{k=1}^{+\infty}\frac{2(-1)^kB_{2k}}{(2k)!}(2z)^{2k-1} \implies \\
+    \implies \sum_{k=1}^{+\infty}\zeta(2k)z^{2k-1}=\frac{1}{2z}-\frac{\pi}{2}\cot(\pi z)=\frac{1}{2}\sum_{k=1}^{+\infty} \frac{(-1)^{k-1}(2\pi)^{2k}B_{2k}z^{2k-1}}{(2k)!} \implies \\
+    \implies 1+O(1/4^k)=\zeta(2k)=\frac{(-1)^{k-1}(2\pi)^{2k}B_{2k}}{2(2k)!} \implies \\
+    \implies (-1)^{k-1}B_{2k}=\frac{2(2k)!}{(2\pi)^{2k}}\zeta(2k).
+  \end{gather*}
+\end{oss}
+
+\begin{oss}
+  $B_{2k}(-1)^{k-1}>0$. Inoltre,
+  $$\frac{2(2k)!}{(2\pi)^{2k}} \le |B_{2k}| \le \frac{2(2k)!\pi^2}{6(2\pi)^{2k}} \text{ per ogni } k \ge 1.$$
+  Vogliamo vedere quando si ha
+  \begin{gather*}
+    |B_{2(k+1)}| \ge \frac{2\big(2(k+1)\big)!}{(2\pi)^{2(k+1)}} \stackrel{?}{\ge} \frac{2(2k)!\pi^2}{6(2\pi)^{2k}} \ge |B_{2k}| \\
+    \frac{2(k+1)(2k+1)}{4\pi^2} \stackrel{?}{\ge} \frac{\pi^2}{6} \\
+    \pi^4 \stackrel{?}{\le} 3(k+1)(2k+1),
+  \end{gather*}
+  che è vero per $k \ge 4$. Da lì in poi, i numeri di Bernoulli di indice pari hanno moduli crescenti.
+\end{oss}
+
+\begin{defn}
+  Si dice \textit{polinomio di Bernoulli} $n$-esimo il seguente:
+  $$B_n(x)=\sum_{k=0}^n \binom{n}{k}B_kx^{n-k}.$$
+\end{defn}
+
+\begin{ftt}
+  \begin{itemize}
+    \item $B_n(0)=B_n$
+    \item $\displaystyle B_n(1)=\sum_{k=0}^n \binom{n}{k}B_k=(-1)^nB_n$
+  \end{itemize}
+\end{ftt}
+
+\begin{oss}
+  \begin{gather*}
+    \frac{ze^{xz}}{e^z-1}=\left(\sum_{n=0}^{+\infty}\frac{B_n}{n!}z^n\right)\left(\sum_{m=0}^{+\infty}\frac{x^mz^m}{m!}\right)=\sum_{n=0}^{+\infty}\left(\sum_{k=0}^n\frac{B_k}{k!}\cdot \frac{x^{n-k}}{(n-k)!}\right)z^n= \\
+    =\sum_{n=0}^{+\infty}\left(\sum_{k=0}^nB_k\binom{n}{k}x^{n-k}\right)\frac{z^n}{n!}=\sum_{n=0}^{+\infty}\frac{B_n(x)}{n!}z^n.
+  \end{gather*}
+\end{oss}
+
+Adesso un po' di fatti che chi vuole può divertirsi a dimostrare per esercizio.
+
+\begin{ftt}
+  \begin{enumerate}
+    \item $\displaystyle B_n(x+y)=\sum_{k=0}^n\binom{n}{k}B_k(x)y^{n-k}$. Per $y=1$ si ha $\displaystyle B_n(x+1)=\sum_{k=0}^n\binom{n}{k}B_k(x)$;
+    \item $B_n(x+1)-B_n(x)=nx^{n-1}$;
+    \item $\displaystyle \sum_{k=m}^{n-1} k^r=\frac{B_{r+1}(n)-B_{r+1}(m)}{r+1}$;
+    \item $B'_n(x)=nB_{n-1}(x)$.
+  \end{enumerate}
+\end{ftt}
+
+Adesso, un caso particolare di un teorema che non dimostreremo, che si utilizza per dimostrare una proposizione che dimostreremo in un altro modo.
+
+\begin{thm}
+  (formula di sommazione di Eulero) Sia $f:[a,b] \longrightarrow \mathbb{C}$ di classe $C^1$. Allora
+  $$\sum_{a<k \le b}f(k)=\int_a^b f(x)\diff x-\bigg[B_1(\{x\})f(x)\bigg]_a^b+\int_a^b B_1(\{x\})f'(x)\diff x.$$
+  Se $a=m, b=n$,
+  $$\sum_{m<k \le n} f(k)=\int_m^nf(x)\diff x-B_1\big(f(n)-f(m)\big)+\int_m^n B_1(\{x\})f'(x)\diff x.$$
+\end{thm}
+
+\begin{prop}
+  Esiste
+  $$\lim_{n \longrightarrow +\infty} \sum_{k=1}^n \frac{1}{k}-\log{n}=\gamma,$$
+  con $0<\gamma<1$.
+\end{prop}
