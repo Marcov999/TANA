@@ -1,0 +1,53 @@
+Adesso, un caso particolare di un teorema che non dimostreremo; lo utilizzeremo per dimostrare una proposizione che potrebbe essere dimostrata anche con il lemma di sommazione di Abel.
+
+\begin{thm}
+  (formula di sommazione di Eulero-Maclaurin) Consideriamo $f:[a,b] \longrightarrow \mathbb{C}$ di classe $C^1$. Allora
+  $$\sum_{a<k \le b}f(k)=\int_a^b f(x)\diff x-\bigg[B_1(\{x\})f(x)\bigg]_a^b+\int_a^b B_1(\{x\})f'(x)\diff x.$$
+  Se $a=m, b=n$,
+  $$\sum_{m<k \le n} f(k)=\int_m^nf(x)\diff x-B_1\cdot\big(f(n)-f(m)\big)+\int_m^n B_1(\{x\})f'(x)\diff x.$$
+\end{thm}
+
+\begin{cor} \label{EuMac-cor}
+  $$\sum_{k=m}^n f(k)=\int_m^n f(x)\diff x+\frac{f(m)+f(n)}{2}+\int_m^n B_1(\{x\})f'(x)\diff x,$$
+  dove ricordiamo che $B_1(\{x\})=\{x\}-1/2$.
+\end{cor}
+
+Per completezza, riportiamo anche il lemma di Abel.
+
+\begin{lm}
+  (formula di sommazione di Abel)
+  $$\sum_{k=m}^n a_kf(k)=\left(\sum_{k=m}^n a_k\right)f(n)-\int_m^n\left(\sum_{m \le k \le \lfloor x \rfloor}a_k\right)f'(x)\diff x.$$
+\end{lm}
+
+\begin{prop}
+  Esiste
+  $$\lim_{n \longrightarrow +\infty} \sum_{k=1}^n \frac{1}{k}-\log{n}=\gamma,$$
+  con $0<\gamma<1$.
+\end{prop}
+
+\begin{proof}
+  Applichiamo il corollario \ref{EuMac-cor} con $m=1$ e $f(x)=1/x$, otteniamo
+  \begin{gather*}
+    \sum_{k=1}^n \frac{1}{k}=\int_1^n \frac{\diff x}{x}+\frac{1}{2}+\frac{1}{2n}-\int_1^n \frac{\{x\}-1/2}{x^2}\diff x= \\
+    =\log{n}+\frac{1}{2}+\frac{1}{2n}-\int_1^{+\infty} \frac{\{x\}-1/2}{x^2}\diff x+\int_n^{+\infty}\frac{\{x\}-1/2}{x^2}\diff x= \\
+    =\log{n}+\frac{1}{2}+\frac{1}{2n}-\int_1^{+\infty} \frac{\{x\}}{x^2}\diff x+\frac{1}{2}+O\left(\int_n^{+\infty}\frac{\diff x}{x^2}\right)= \\
+    =\log{n}+1-\int_1^{+\infty} \frac{\{x\}}{x^2}\diff x+O(1/n)=:\log{n}+\gamma+O(1/n).
+  \end{gather*}
+  Poiché $\displaystyle 0<\int_1^{+\infty} \frac{\{x\}}{x^2}\diff x<1$, si ha $0<\gamma<1$ con $\displaystyle \gamma=\lim_{n \longrightarrow +\infty} \sum_{k=1}^n \frac{1}{k}-\log{n}$.
+\end{proof}
+
+\begin{oss}
+  Se $f:[1,+\infty) \longrightarrow \mathbb{R}$ è di classe $C^1$, infinitesima e non crescente, allora esiste $C>0$ t.c. $\displaystyle \sum_{1 \le k \le x} f(k)=\int_1^x f(y)\diff y+C+O\big(f(x)\big)$. La dimostrazione è lasciata per esercizio.
+\end{oss}
+
+\begin{oss} %controllare veridicità da appunti di Viola
+  Si può dimostrare che
+  $$\sum_{k=1}^n \frac{1}{k}=\log{n}+\gamma+\frac{1}{2n}-\sum_{r=1}^q \frac{B_{2r}}{2r}\cdot\frac{1}{n^{2r}}+O\left(\frac{1}{n^{2q+2}}\right).$$
+\end{oss}
+
+\begin{defn}
+  Sia $\dfrac{1}{z\Gamma(z)}$ la funzione intera $F$ di ordine $1$ con zeri tutti semplici nei punti $-1,-2,-3,dots$ e t.c. $F(0)=1$ e $F'(0)=\gamma$.
+\end{defn}
+
+Deve essere $\deg{G} \le 1$, $\beta=1$ e $\alpha=1$. $G(z)=\log\big(F(0)\big)+\frac{F'}{F}(0)=\gamma z$, quindi $q=1$. Vale anche $p=1$ e $g=1$. Si ha dunque
+$$\frac{1}{z\Gamma(z)}=e^{\gamma z}\prod_{n=1}^{+\infty}\left(1+\frac{z}{n}\right)e^{-z/n}.$$

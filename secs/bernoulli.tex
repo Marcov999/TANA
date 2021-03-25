@@ -49,7 +49,7 @@ Passando ai pari, per $k \ge 1$ si ha
   Quindi $f$ è pari. Allora
   $$D^{2k-1}\left(\frac{z}{e^z-1}\right)_{z=0}=-D^{2k-1}\left(\frac{z}{2}\right)_{z=0}=\begin{cases}
     -1/2 & \mbox{se }k=1 \\ 0 & \mbox{se } k>1
-\end{cases}$$,
+\end{cases},$$
 dunque $B_1=-1/2$ e $B_{2n-1}=0$ per ogni $n>1$.
 \end{oss}
 
@@ -114,18 +114,3 @@ Adesso un po' di fatti che chi vuole può divertirsi a dimostrare per esercizio.
     \item $B'_n(x)=nB_{n-1}(x)$.
   \end{enumerate}
 \end{ftt}
-
-Adesso, un caso particolare di un teorema che non dimostreremo, che si utilizza per dimostrare una proposizione che dimostreremo in un altro modo.
-
-\begin{thm}
-  (formula di sommazione di Eulero) Sia $f:[a,b] \longrightarrow \mathbb{C}$ di classe $C^1$. Allora
-  $$\sum_{a<k \le b}f(k)=\int_a^b f(x)\diff x-\bigg[B_1(\{x\})f(x)\bigg]_a^b+\int_a^b B_1(\{x\})f'(x)\diff x.$$
-  Se $a=m, b=n$,
-  $$\sum_{m<k \le n} f(k)=\int_m^nf(x)\diff x-B_1\big(f(n)-f(m)\big)+\int_m^n B_1(\{x\})f'(x)\diff x.$$
-\end{thm}
-
-\begin{prop}
-  Esiste
-  $$\lim_{n \longrightarrow +\infty} \sum_{k=1}^n \frac{1}{k}-\log{n}=\gamma,$$
-  con $0<\gamma<1$.
-\end{prop}
