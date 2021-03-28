@@ -40,7 +40,7 @@ Per completezza, riportiamo anche il lemma di Abel.
   Se $f:[1,+\infty) \longrightarrow \mathbb{R}$ è di classe $C^1$, infinitesima e non crescente, allora esiste $C>0$ t.c. $\displaystyle \sum_{1 \le k \le x} f(k)=\int_1^x f(y)\diff y+C+O\big(f(x)\big)$. La dimostrazione è lasciata per esercizio.
 \end{oss}
 
-\begin{oss} %controllare veridicità da appunti di Viola
+\begin{oss}
   Si può dimostrare che
   $$\sum_{k=1}^n \frac{1}{k}=\log{n}+\gamma+\frac{1}{2n}-\sum_{r=1}^q \frac{B_{2r}}{2r}\cdot\frac{1}{n^{2r}}+O\left(\frac{1}{n^{2q+2}}\right).$$
 \end{oss}
@@ -49,5 +49,157 @@ Per completezza, riportiamo anche il lemma di Abel.
   Sia $\dfrac{1}{z\Gamma(z)}$ la funzione intera $F$ di ordine $1$ con zeri tutti semplici nei punti $-1,-2,-3,dots$ e t.c. $F(0)=1$ e $F'(0)=\gamma$.
 \end{defn}
 
-Deve essere $\deg{G} \le 1$, $\beta=1$ e $\alpha=1$. $G(z)=\log\big(F(0)\big)+\frac{F'}{F}(0)=\gamma z$, quindi $q=1$. Vale anche $p=1$ e $g=1$. Si ha dunque
+Deve essere $q=\deg{G} \le 1$, $\beta=1$ e $\alpha=1$. $G(z)=\log\big(F(0)\big)+\frac{F'}{F}(0)=\gamma z$, quindi $q=1$. Vale anche $p=1$ e $g=1$. Si ha dunque
 $$\frac{1}{z\Gamma(z)}=e^{\gamma z}\prod_{n=1}^{+\infty}\left(1+\frac{z}{n}\right)e^{-z/n}.$$
+
+\begin{prop}
+  (formula di Gauss) Per $z\not=-m$ con $m \in \mathbb{N}\cup\{0\}$ si ha
+  \begin{equation}
+    \Gamma(z)=\lim_{n \longrightarrow +\infty} \frac{n^zn!}{z(z+1)\cdots(z+n)}.
+  \end{equation}
+\end{prop}
+
+\begin{proof}
+  \begin{gather*}
+    \frac{1}{\Gamma(z)}=ze^{\gamma z}\prod_{n=1}^{+\infty}\left(1+\frac{z}{n}\right)e^{-z/n}=\\
+    =z\lim_{n \longrightarrow +\infty} e^{\left(\sum_{k=1}^n\frac{1}{k}-\log{n}\right)}\prod_{k=1}^n\left(1+\frac{z}{n}\right)e^{-z/k}=z\lim_{n \longrightarrow +\infty} \prod_{k=1}^n\left(1+\frac{z}{k}\right)n^{-z} \implies \\
+    \implies \Gamma(z)=\lim_{n \longrightarrow +\infty} \frac{n^z\prod_{k=1}^n k}{z\prod_{k=1}^n (k+z)}=\lim_{n \longrightarrow +\infty} \frac{n^zn!}{z(z+1)\cdots(z+n)}.
+  \end{gather*}
+\end{proof}
+
+\begin{prop}
+  Per $k \in \mathbb{N}\cup\{0\}$ si ha $\underset{z=-k}{\normalfont{\text{Res}}}\Gamma(z)=\dfrac{(-1)^k}{k!}$.
+\end{prop}
+
+\begin{proof}
+  Fissato $k$, consideriamo il limite a partire da $n \ge k$. Vogliamo calcolare $\big(\Gamma(z)(z+k)\big)_{z=-k}$. Si ha
+  \begin{gather*}
+    \left(\frac{n^zn!(z+k)}{z(z+1)\cdots(z+n)}\right)_{z=-k}=\frac{n^{-k}n!}{-k(-k+1)\cdots(-2)\cdot(-1)\cdot1\cdot2\cdots(n-k)}= \\
+    =\frac{(-1)^k}{k!}\left(\frac{n!}{(n-k)!}n^k\right) \longrightarrow \frac{(-1)^k}{k!} \text{ per } n \longrightarrow +\infty.
+  \end{gather*}
+\end{proof}
+
+\begin{prop} \label{eulgamma}
+  (Eulero) Per $z \not=-m$ con $m \in \mathbb{N}\cup\{0\}$ si ha la seguente formula:
+  \begin{equation}
+    \Gamma(z)=\frac{1}{z}\prod_{n=1}^{+\infty}\left(1+\frac{1}{n}\right)^z\left(1+\frac{z}{n}\right)^{-1}.
+  \end{equation}
+\end{prop}
+
+\begin{proof}
+  Dalla dimostrazione della formula di Gauss abbiamo trovato $\displaystyle \frac{1}{\Gamma(z)}=z\lim_{n \longrightarrow +\infty}\prod_{k=1}^n\left(1+\frac{z}{k}\right)n^{-z}$. Da $\displaystyle n=\prod_{k=1}^{n-1} \frac{k+1}{k}$ otteniamo $\displaystyle n^{-z}=\prod_{k=1}^{n-1}\left(1+\frac{1}{k}\right)^{-z}$. Si ha dunque
+  \begin{gather*}
+    z\lim_{n \longrightarrow +\infty}\prod_{k=1}^n\left(1+\frac{z}{k}\right)n^{-z}=z\lim_{n \longrightarrow +\infty} \prod_{k=1}^{n-1}\left(1+\frac{1}{k}\right)^{-z}\prod_{k=1}^n\left(1+\frac{z}{k}\right)=\\
+    =z\lim_{n \longrightarrow +\infty} \prod_{k=1}^n \left(1+\frac{1}{k}\right)^{-z}\left(1+\frac{z}{k}\right)\left(1+\frac{1}{n}\right)^z=z\prod_{n=1}^{+\infty} \left(1+\frac{1}{n}\right)^{-z}\left(1+\frac{z}{n}\right).
+  \end{gather*}
+  Perciò
+  $$\Gamma(z)=\frac{1}{z}\prod_{n=1}^{+\infty} \left(1+\frac{1}{n}\right)^z\left(1+\frac{z}{n}\right)^{-1}.$$
+\end{proof}
+
+\begin{prop} \label{fatt}
+  Si ha $\Gamma(z+1)=z\Gamma(z)$ per $z \in \mathbb{C}$.
+\end{prop}
+
+\begin{proof}
+  Dalla proposizione \ref{eulgamma} abbiamo
+  \begin{gather*}
+    \Gamma(z+1)=\frac{1}{z+1}\prod_{n=1}^{+\infty} \left(1+\frac{1}{n}\right)^z\left(1+\frac{1}{n}\right)\left(1+\frac{z+1}{n}\right)^{-1}= \\
+    =\frac{1}{z+1}\prod_{n=1}^{+\infty}\left(1+\frac{1}{n}\right)^z\left(\frac{n+1+z}{n}\cdot\frac{n}{n+1}\right)^{-1}=\\
+    =\frac{1}{z+1}\prod_{n=1}^{+\infty}\left(1+\frac{1}{n}\right)^z\left(1+\frac{z}{n+1}\right)^{-1}=\\
+    =\lim_{n \longrightarrow +\infty} \prod_{k=1}^n \left(1+\frac{1}{k}\right)^z\frac{1}{z+1}\prod_{k=1}^n\left(1+\frac{z}{k+1}\right)^{-1}=\\
+    =\lim_{n \longrightarrow +\infty}\prod_{k=1}^n\left(1+\frac{1}{k}\right)^z\frac{1}{z+1}\prod_{k=2}^{n+1}\left(1+\frac{z}{k}\right)^{-1}=\\
+    =\lim_{n \longrightarrow +\infty}\prod_{k=1}^n\left(1+\frac{1}{k}\right)^z\prod_{k=1}^{n+1}\left(1+\frac{z}{k}\right)^{-1}= \\
+    =\lim_{n \longrightarrow +\infty}\prod_{k=1}^n\left(1+\frac{1}{k}\right)^z\prod_{k=1}^n\left(1+\frac{z}{k}\right)^{-1}\frac{n+1}{n+1+z}=\\
+    =\lim_{n \longrightarrow +\infty}\prod_{k=1}^n\left(1+\frac{1}{k}\right)^z\prod_{k=1}^n\left(1+\frac{z}{k}\right)^{-1}=\prod_{n=1}^{+\infty}\left(1+\frac{1}{n}\right)^z\left(1+\frac{z}{n}\right)^{-1}=z\Gamma(z).
+  \end{gather*}
+\end{proof}
+
+\begin{oss}
+  Abbiamo
+  $$\Gamma(n+1)=n\Gamma(n)=n(n-1)\Gamma(n-1)=\dots=n(n-1)\cdots2\cdot\Gamma(1)=n!.$$
+\end{oss}
+
+\begin{prop} \label{gammaze1-z}
+  Per $z \in \mathbb{C}$ si ha la relazione
+  \begin{equation}
+    \Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin(\pi z)}.
+  \end{equation}
+\end{prop}
+
+\begin{proof}
+  Per le proposizioni \ref{fatt} e \ref{eulgamma} si ha
+  \begin{gather*}
+    z\Gamma(z)\Gamma(1-z)=\Gamma(1+z)\Gamma(1-z)=\\
+    =\frac{1}{1-z^2}\prod_{n=1}^{+\infty} \left(1+\frac{1}{n}\right)^{z+1}\left(1+\frac{1}{n}\right)^{1-z}\left(1+\frac{z+1}{n}\right)^{-1}\left(1+\frac{1-z}{n}\right)^{-1}=\\
+    =\frac{1}{1-z^2}\prod_{n=1}^{+\infty}\left(1+\frac{1}{n}\right)^2\Bigg(\left(1+\frac{1}{n}\right)^2-\frac{z^2}{n^2}\Bigg)^{-1}=\frac{1}{1-z^2}\prod_{n=1}^{+\infty} \left(\frac{\left(1+\frac{1}{n}\right)^2-\frac{z^2}{n^2}}{\left(1+\frac{1}{n}\right)^2}\right)^{-1}=\\
+    =\frac{1}{1-z^2}\prod_{n=1}^{+\infty} \left(1-\frac{z^2}{(n+1)^2}\right)^{-1}=\frac{1}{1-z^2}\prod_{n=2}^{+\infty}\left(1-\frac{z^2}{n^2}\right)^{-1}=\\
+    =\prod_{n=1}^{+\infty}\left(1-\frac{z^2}{n^2}\right)^{-1}=\frac{\pi z}{\sin(\pi z)}.
+  \end{gather*}
+\end{proof}
+
+Per $n \ge 1$, vale la seguente formula di moltiplicazione dovuta a Gauss:
+$$\prod_{k=0}^{n-1}\Gamma\left(z+\frac{k}{n}\right)=(2\pi)^{\frac{n-1}{2}}n^{\frac{1}{2}-nz}\Gamma(nz).$$
+Per i nostri scopi ci servirà solo un caso particolare, che è quello che dimostreremo.
+
+\begin{prop}
+  (formula di duplicazione di Legendre)
+  \begin{equation}
+    \Gamma(z)\Gamma(z+1/2)=\sqrt{\pi}2^{1-2z}\Gamma(2z).
+  \end{equation}
+\end{prop}
+
+\begin{proof}
+  Dalla formula di Gauss abbiamo
+  \begin{gather*}
+    \Gamma(z)=\lim_{m \longrightarrow +\infty} \frac{m^zm!}{z(z+1)\cdots(z+m)}= \\
+    =\lim_{m \longrightarrow+\infty}\frac{m^z(m-1)!}{z(z+1)\dots(z+m-1)}\cdot\frac{m}{z+m}=\lim_{m \longrightarrow+\infty}\frac{m^z(m-1)!}{z(z+1)\dots(z+m-1)}.
+  \end{gather*}
+  Dunque
+  \begin{gather*}
+    \frac{2^{2z-1}\Gamma(z)\Gamma\left(z+\frac{1}{2}\right)}{\Gamma(2z)}=\\
+    =\lim_{m \longrightarrow +\infty} \frac{2^{2z-1}}{\frac{(2m)^{2z}(2m-1)!}{2z(2z+1)\cdots(2z+2m-1)}}\cdot\frac{m^z(m-1)!}{z(z+1)\cdots(z+m-1)}\cdot\frac{m^{z+1/2}(m-1)!}{(z+1/2)(z+3/2)\cdots(z+m-1/2)}=\\
+    =\lim_{m \longrightarrow +\infty} \frac{2^{2z-1}m^{2z+1/2}\big((m-1)!\big)^22^m(2z)(2z+1)\cdots(2z+2m-1)}{(2m)^{2z}(2m-1)!z(z+1)\cdots(z+m-1)(2z+1)(2z+3)\cdots(2z+2m-1)}= \\
+    \lim_{m \longrightarrow +\infty} \frac{2^{2m-1}m^{1/2}\big((m-1)!\big)^2}{(2m-1)!}.
+  \end{gather*}
+  Questa quantità non dipende da $z$, perciò è costante. Per la proposizione \ref{gammaze1-z} si ha $\Gamma^2(1/2)=\frac{\pi}{\sin(\pi/2)}=\pi \implies \Gamma(1/2)=\sqrt{\pi}$; allora la costante è proprio $\sqrt{\pi}$, come voluto.
+\end{proof}
+
+\begin{oss}
+  $\Gamma(1/2)\Gamma(1)=\sqrt{\pi}\Gamma(2) \implies \Gamma(1/2)=\sqrt{\pi}$.
+
+  $\Gamma(3/2)=\frac{1}{2}\Gamma(1/2)=\sqrt{\pi}/2<1$.
+\end{oss}
+
+\begin{oss}
+  \begin{gather*}
+    \frac{\Gamma\left(\frac{1}{2}-\frac{z}{2}\right)}{\Gamma\left(\frac{z}{2}\right)}=\frac{\Gamma\left(\frac{1}{2}-\frac{z}{2}\right)\Gamma\left(1-\frac{z}{2}\right)}{\Gamma\left(\frac{z}{2}\right)\Gamma\left(1-\frac{z}{2}\right)}=\\
+    =\frac{\sin(\pi z/2)}{\pi}\sqrt{\pi}2^{1-(1-z)}\Gamma(1-z)=\frac{\sin(\pi z/2)}{\sqrt{\pi}}2^z\Gamma(1-z).
+  \end{gather*}
+\end{oss}
+
+\begin{prop} \label{Gammagamma}
+  Fuori dai poli di $\Gamma$ si ha $\displaystyle \frac{\Gamma'}{\Gamma}(z)=-\gamma-\frac{1}{z}+\sum_{n=1}^{+\infty} \frac{z}{n(n+z)}$.
+\end{prop}
+
+\begin{proof}
+  \begin{gather*}
+    \Gamma(z)=\frac{1}{z}e^{-\gamma z}\prod_{n=1}^{+\infty}\left(1+\frac{z}{n}\right)^{-1}e^{z/n} \\
+    \log\big(\Gamma(z)\big)=-\log{z}-\gamma z+\sum_{n=1}^{+\infty} \Bigg(\frac{z}{n}-\log\left(1+\frac{z}{n}\right)\Bigg) \\
+    \frac{\Gamma'}{\Gamma}(z)=-\gamma-\frac{1}{z}+\sum_{n=1}^{+\infty} \left(\frac{1}{n}-\frac{1}{n+z}\right)=-\gamma-\frac{1}{z}+\sum_{n=1}^{+\infty} \frac{z}{n(n+z)}.
+  \end{gather*}
+\end{proof}
+
+\begin{oss}
+  Dalla proposizione \ref{Gammagamma} si ha
+  $$\Gamma'(1)=-\gamma-1+\sum_{n=1}^{+\infty} \frac{1}{n(n+1)}=-\gamma.$$
+\end{oss}
+
+L'integrale $\displaystyle \int_0^{+\infty} e^{-x}x^{z-1}\diff x$ converge per $\mathfrak{Re}z>0$ e definisce una funzione olomorfa in $z$. Vale il seguente risultato.
+
+\begin{thm}
+  Per $\mathfrak{Re}z>0$ si ha $\displaystyle \Gamma(z)=\int_0^{+\infty} e^{-x}x^{z-1}\diff x$.
+\end{thm}
+
+\begin{proof}
+  Da scrivere.
+\end{proof}
