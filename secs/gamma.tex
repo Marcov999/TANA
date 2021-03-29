@@ -252,5 +252,20 @@ L'integrale $\displaystyle \int_0^{+\infty} e^{-x}x^{z-1}\diff x$ converge per $
 \end{thm}
 
 \begin{proof}
-  Da scrivere.
+  Abbiamo $\displaystyle \log\big(\Gamma(z)\big)=\lim_{n \longrightarrow +\infty} \log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)$. Notiamo che
+  $$\log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)=z\log{n}-\log(z+n)-\sum_{k=1}^n \log\left(1+\frac{z-1}{k}\right).$$
+  Applicando la formula di Eulero-Maclaurin alla funzione $f_z(x)=\log\left(1+\frac{z-1}{x}\right)$ troviamo
+  \begin{gather*}
+    \sum_{k=1}^n \log\left(1+\frac{z-1}{k}\right)= \\
+    =\int_1^n \log\left(1+\frac{z-1}{x}\right)\diff x+\frac{1}{2}\big(\log{z}+\log(z+n-1)-\log{n}\big)+\int_1^n B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x \implies \\
+    \implies \log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)=\dots= \\
+    =\left(z-\frac{1}{2}\right)\log{z}-\left(z+n+\frac{1}{2}\right)\log\left(1+\frac{z-1}{n}\right)+\log\left(1-\frac{1}{z+n}\right)-\int_1^n B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x;
+  \end{gather*}
+  poiché $\displaystyle \left(z+n+\frac{1}{2}\right)\log\left(1+\frac{z-1}{n}\right) \sim \frac{z-1}{n}\left(z+n+\frac{1}{2}\right) \overset{n \rightarrow +\infty}{\longrightarrow} z-1$ con un resto di $\mathcal{O}(1/n)$, si ha
+  \begin{gather*}
+    \log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)=\left(z-\frac{1}{2}\right)\log{z}-z+1+\mathcal{O}\left(\frac{1}{n}\right)+\\
+    -\int_1^{+\infty} B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x+\int_n^{+\infty}B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x=\\
+    =\left(z-\frac{1}{2}\right)\log{z}-z+C+\mathcal{O}\left(\frac{1}{n}\right)+R_z(n).
+  \end{gather*}
+  Ricordiamo che $DB_k(x)=kB_{k-1}(x)$ e che $\{x\}-1/2=x-\lfloor x\rfloor-1/2$.
 \end{proof}
