@@ -197,7 +197,58 @@ Per i nostri scopi ci servirà solo un caso particolare, che è quello che dimos
 L'integrale $\displaystyle \int_0^{+\infty} e^{-x}x^{z-1}\diff x$ converge per $\mathfrak{Re}z>0$ e definisce una funzione olomorfa in $z$. Vale il seguente risultato.
 
 \begin{thm}
-  Per $\mathfrak{Re}z>0$ si ha $\displaystyle \Gamma(z)=\int_0^{+\infty} e^{-x}x^{z-1}\diff x$.
+  Per $\mathfrak{Re}z>0$ si ha
+  \begin{equation}
+    \Gamma(z)=\int_0^{+\infty} e^{-x}x^{z-1}\diff x.
+  \end{equation}
+\end{thm}
+
+\begin{proof}
+  Vogliamo dimostrare due cose:
+  \begin{enumerate}
+    \item $\displaystyle \lim_{n \longrightarrow +\infty} \int_0^n \left(1-\frac{x}{n}\right)^nx^{z-1}\diff x=\int_0^{+\infty} e^{-x}x^{z-1}\diff x$;
+    \item $\displaystyle \int_0^n \left(1-\frac{x}{n}\right)^nx^{z-1}\diff x=\frac{n^zn!}{z(z+1)\cdots(z+n)}$.
+  \end{enumerate}
+  La tesi seguirà dalla formula di Gauss.
+  \begin{enumerate}
+    \item Il primo passo è mostrare la seguente catena di disuguaglianze:
+    $$0 \le e^{-x}-\left(1-\frac{x}{n}\right)^n \le \frac{x^2}{n}e^{-x}. \qquad (\star)$$
+    Notiamo che si ha
+    \begin{gather*}
+      1+\frac{x}{n} \le 1+\frac{x}{n}+\frac{x^2}{2!n^2}+\frac{x^3}{3!n^3}+\dots \le 1+\frac{x}{n}+\frac{x^2}{n^2}+\dots \iff \\
+      \iff 1+\frac{x}{n} \le e^{x/n} \le \frac{1}{1-x/n} \implies \\
+      \implies \left(1+\frac{x}{n}\right)^n \le e^x \text{ e } \left(1-\frac{x}{n}\right)^n \le e^{-x} \implies \\
+      \implies e^{-x}-\left(1-\frac{x}{n}\right)^n=e^{-x}\Bigg(1-e^x\left(1-\frac{x}{n}\right)^n\Bigg) \le e^{-x}\Bigg(1-\left(1-\frac{x^2}{n^2}\right)^n\Bigg).
+    \end{gather*}
+    Ricordiamo la disuguaglianza di Bernoulli: per $\alpha \ge 0$ e $n \in \mathbb{N}\cup\{0\}$ abbiamo che $(1-\alpha)^n \ge 1-n\alpha$. Allora
+    $$e^{-x}\Bigg(1-\left(1-\frac{x^2}{n^2}\right)^n\Bigg) \le e^{-x}\Bigg(1-\left(1-\frac{x^2}{n}\right)\Bigg)=\frac{x^2}{n}e^{-x}.$$
+    Ne deduciamo che
+    \begin{gather*}
+      \int_0^n \left(1-\frac{x}{n}\right)^nx^{z-1}\diff x=\int_0^n e^{-x}x^{z-1}\diff x-\left(\int_0^n e^{-x}x^{z-1}\diff x-\int_0^n\left(1-\frac{x}{n}\right)^nx^{z-1}\diff x\right) \text{ e } \\
+      \left|\int_0^n\Bigg(e^{-x}-\left(1-\frac{x}{n}\right)^n\Bigg)x^{z-1}\diff x\right| \le \int_0^n x^{\mathfrak{Re}z-1}\Bigg(e^{-x}-\left(1-\frac{x}{n}\right)^n\Bigg)\diff x \le \\
+      \le \frac{1}{n} \int_0^n x^{\mathfrak{Re}z-1+2}e^{-x}\diff x \ll \frac{1}{n} \implies \\
+      \implies \lim_{n \longrightarrow +\infty} \int_0^n \left(1-\frac{x}{n}\right)^nx^{z-1}\diff x=\int_0^{+\infty} e^{-x}x^{z-1}\diff x.
+    \end{gather*}
+    \item Effettuando il cambio di variabile $y=x/n$ troviamo
+    $$\int_0^n \left(1-\frac{x}{n}\right)^nx^{z-1}\diff x=n^z\int_0^1(1-y)^ny^{z-1}\diff y;$$
+    integrando per parti più volte si ottiene che
+    \begin{gather*}
+      \int_0^1 (1-y)^ny^{z-1}\diff y=\frac{n}{z}\int_0^1 (1-y)^{n-1}y^z\diff y=\dots= \\
+      =\frac{n(n-1)\cdots 2\cdot 1}{z(z+1)\cdots(z+n-1)}\int_0^1 y^{z+n-1}\diff y=\frac{n!}{z(z+1)\cdots(z+n)}.
+    \end{gather*}
+  \end{enumerate}
+\end{proof}
+
+\begin{thm}
+  (Stirling) Sia $\epsilon>0$. Si ha la seguente formula asintotica:
+  \begin{equation}
+    \log\big(\Gamma(z)\big)=\left(z-\frac{1}{2}\right)\log{z}-z+\log{\sqrt{2\pi}}+\mathcal{O}\left(\frac{1}{|z|}\right)
+  \end{equation}
+  uniformemente per $|z| \ge \epsilon$ e $|\arg{z}| \le \pi-\epsilon$. In particolare,
+  \begin{align*}
+    \log{n!}&=(n+1/2)\Bigg(\log{n}+\frac{1}{n}+\mathcal{O}\left(\frac{1}{n^2}\right)\Bigg)-n-1+\log{\sqrt{2\pi}}+\mathcal{O}\left(\frac{1}{|n+1|}\right)= \\
+    &=(n+1/2)\log{n}-n+\log{\sqrt{2\pi}}+\mathcal{O}\left(\frac{1}{n}\right).
+  \end{align*}
 \end{thm}
 
 \begin{proof}
