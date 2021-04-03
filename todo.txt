@@ -2,9 +2,15 @@ Lez01: ok
 Lez02: ok
 Lez03: ok
 Lez04: ok
-Lez05: controllare appena aggiorna il registro
-Lez06: controllare appena aggiorna il registro
+Lez05: ok
+Lez06: ok
+Lez07: ok
+Lez08: ok
+Lez09: ok
+Lez10: ok
 
-Da rivedere con gli appunti suoi a partire dalla Lez01.
+Da rivedere con gli appunti di Viola a partire dalla Lez01.
+
+Dopo aver prolungato la zeta di Riemann, discorso sugli zeri: guardando anche gli appunti di Viola, probabilmente c'è da permutare l'ordine delle osservazioni.
 
 Scrivere un README decente

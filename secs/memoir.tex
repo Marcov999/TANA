@@ -28,7 +28,7 @@ Vogliamo usare quest'identità della funzione di Jacobi per dimostrare il teorem
   (Riemann, 1860) La funzione $\zeta(s)$ è meromorfa in $\mathbb{C}$ con un polo semplice in $s=1$ con residuo $1$. Inoltre, posta
   $$\xi(s)=\frac{s(s-1)}{2}\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s),$$
   allora $\xi$ è intera e fornisce il prolungamento analitico di $\zeta$. Si ha
-  \begin{equation}
+  \begin{equation} \label{xifunctional}
     \xi(s)=\xi(1-s).
   \end{equation}
 \end{thm}
@@ -63,6 +63,57 @@ Vogliamo usare quest'identità della funzione di Jacobi per dimostrare il teorem
   l'ultimo integrale nella formula per $\xi(s)$ converge uniformemente in ogni striscia $a \le \sigma \le b$; allora $\xi$ definita da quell'integrale è una funzione intera e la relazione con $\Gamma$ e $\zeta$ data nell'enunciato è valida per $\sigma>1$. Che $\xi(1-s)=\xi(s)$ è ovvio. Poiché $\Gamma$ non ha zeri e lo zero semplice di $s/2$ in $0$ è cancellato dal polo di $\Gamma$, questo definisce l'estensione analitica di $\zeta$ a $\mathbb{C}\setminus\{1\}$. Sappiamo già che sui reali $\displaystyle \lim_{s \longrightarrow +\infty} \zeta(s)=1$. Mostriamo che è un polo semplice di residuo $1$. Si ha
   \begin{gather*}
     \zeta(s)=\xi(s)\frac{\pi^{s/2}}{\frac{s}{2}\Gamma\left(\frac{s}{2}\right)}\frac{1}{s-1} \text{ e} \\
-    \underset{s=1}{\text{Res}}\,\zeta=\lim_{s \longrightarrow 1} \big(\zeta(s)(s-1)\big)=\xi(1)\frac{\pi^{1/2}}{\frac{1}{2}\Gamma\left(\frac{1}{2}\right)}=\frac{1}{2}\frac{\sqrt{\pi}}{\frac{1}{2}\sqrt{\pi}}=1.
+    \underset{s=1}{\text{Res}}\,\zeta=\lim_{s \longrightarrow 1} \big(\zeta(s)(s-1)\big)=\xi(1)\frac{\pi^{1/2}}{\frac{1}{2}\Gamma\left(\frac{1}{2}\right)}=\frac{1}{2}\cdot\frac{\sqrt{\pi}}{\frac{1}{2}\sqrt{\pi}}=1.
   \end{gather*}
 \end{proof}
+
+\begin{oss}
+  $\xi$ non ha zeri fuori dalla striscia $0 \le \sigma \le 1$.
+\end{oss}
+
+\begin{cor}
+  $\zeta(-2k)=0$ per ogni $k \ge 1$.
+\end{cor}
+
+\begin{proof}
+  Guardare i poli di $\Gamma$.
+\end{proof}
+
+\begin{oss}
+  All'interno della striscia  $0 \le \sigma \le 1$ abbiamo che $\zeta$ e $\xi$ si annullano insieme.
+\end{oss}
+
+\begin{oss}
+  Se $\rho$ è uno zero, dalla \eqref{xifunctional} anche $1-\rho$ è uno zero. Poiché $\xi$ è reale sui reali, se $\rho$ è uno $0$ anche $\bar{\rho}$ è uno zero.
+\end{oss}
+
+\begin{oss}
+  Definendo $\Xi(s)=\xi(is+1/2)$ si ha
+  $$\Xi(-s)=\xi(1/2-is)=\xi(1/2+is)=\Xi(s).$$
+  Se $s=x \in \mathbb{R}$, allora $\overline{\xi(1/2+ix)}=\xi(1/2-ix)=\xi(1/2+ix)$, quindi $\Xi(x)$ è reale.
+\end{oss}
+
+\begin{oss}
+  $\zeta(s)\not=0$ per $\sigma>1$. Infatti
+  \begin{gather*}
+    \left|\zeta(s)\prod_{p \le N} \left(1-\frac{1}{p^s}\right)\right|=\left|\prod_{p>N} \left(1-\frac{1}{p^s}\right)^{-1}\right|= \\
+    =\left|1+\sum_{p \mid n \implies p>N} \frac{1}{n^s}\right| \ge 1-\sum_{n>N} \frac{1}{n^{\sigma}}=1+O\left(\frac{1}{N^{\sigma-1}}\right).
+  \end{gather*}
+\end{oss}
+
+\begin{oss}
+  Prendiamo $0 \le \sigma \le 1$ e $t=0$. Si ha
+  $$\xi(\sigma)=\frac{1}{2}+\frac{\sigma(\sigma-1)}{4}\int_1^{+\infty}\big(\vartheta(x)-1\big)(x^{\frac{\sigma}{2}}+x^{\frac{1-\sigma}{2}})\frac{\diff x}{x}.$$
+  Ricordiamo che $\dfrac{\vartheta(x)-1}{2} \le \dfrac{1}{e^{\pi x}-1}$ e per $x \ge 1$ vale che $x \ge \sqrt{x}$, dunque $e^{\pi x}-1 \ge \pi x \ge 2\sqrt{x}$, perciò $\vartheta(x)-1 \le \dfrac{1}{\sqrt{x}}$. Inoltre
+  $$\int_1^{+\infty} (x^{\frac{\sigma-1}{2}}+x^{\frac{-\sigma}{2}})\frac{\diff x}{x}=\frac{2}{\sigma(\sigma-1)}.$$
+  Mettendo assieme, troviamo che
+  $$\xi(\sigma) \ge \frac{1}{2}-\frac{\sigma(1-\sigma)}{4}\cdot\frac{2}{\sigma(1-\sigma)}=0.$$
+\end{oss}
+
+\begin{oss}
+  $\xi(0)=1/2$ e $\displaystyle \lim_{s \longrightarrow 1} \frac{s}{2}\Gamma\left(\frac{s}{2}\right)=1$, dunque dalla formula che lega $\zeta$ e $\xi$ si ha $\zeta(0)=-1/2$.
+\end{oss}
+
+\begin{exc}
+  Dimostrare che $\zeta(-1)=-1/12$.
+\end{exc}
