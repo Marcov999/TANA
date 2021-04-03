@@ -1,0 +1,68 @@
+\begin{defn}
+  Sia $z=x+iy$ con $x>0$. Si dice \textit{funzione $\vartheta$ di Jacobi} la seguente serie totalmente convergente:
+  $$\vartheta(z)=\sum_{n \in \mathbb{Z}} e^{-\pi n^2z}.$$
+\end{defn}
+
+\begin{lm}
+  Per $x=\mathfrak{Re}\,z>0$ si ha
+  $$\vartheta(z)=\frac{1}{\sqrt{z}}\vartheta\left(\frac{1}{z}\right).$$
+\end{lm}
+
+\begin{proof}
+  Possiamo dimostrare la formula per $z=x>0$, che valga in tutto il semipiano $\mathfrak{Re}\,z>0$ segue per prolungamento analitico. Sia $f(\xi)=e^{-\pi\xi^2}$ e sia $f_x(\xi)=f(\sqrt{x}\xi)=e^{-\pi x\xi^2}$. Allora
+  \begin{gather*}
+    \hat{f}_x(\xi)=\int_{\mathbb{R}} f(\sqrt{x}t)e^{-2\pi i\xi t}\diff t \overset{s=t\sqrt{x}}{=} \frac{1}{\sqrt{x}}\int_{\mathbb{R}} f(s)e^{-2\pi i\frac{\xi}{\sqrt{x}}s}\diff s= \\
+    =\frac{1}{\sqrt{x}}\hat{f}\left(\frac{\xi}{\sqrt{x}}\right)=\frac{1}{\sqrt{x}}f\left(\frac{\xi}{\sqrt{x}}\right)=\frac{1}{\sqrt{x}}f_{\frac{1}{x}}(\xi).
+  \end{gather*}
+  Applicando la formula di Poisson abbiamo
+  \begin{gather*}
+    \sum_{n \in \mathbb{Z}} f_x(n)=\sum_{n \in \mathbb{Z}} \hat{f}_x(n)=\sum_{n \in \mathbb{Z}} \frac{1}{\sqrt{x}}f_{\frac{1}{x}}(n),
+  \end{gather*}
+  quindi
+  $$\vartheta(x)=\sum_{n \in \mathbb{Z}} e^{-\pi n^2x}=\frac{1}{\sqrt{x}}\sum_{n \in \mathbb{Z}}e^{-\frac{\pi}{x}n^2}=\frac{1}{\sqrt{x}}\vartheta\left(\frac{1}{x}\right).$$
+\end{proof}
+
+Vogliamo usare quest'identità della funzione di Jacobi per dimostrare il teorema di Riemann sulla funzione $\zeta$. D'ora in avanti, per motivi storici la variabile sarà $s=\sigma+it$ con $\sigma, t \in \mathbb{R}$.
+
+\begin{thm}
+  (Riemann, 1860) La funzione $\zeta(s)$ è meromorfa in $\mathbb{C}$ con un polo semplice in $s=1$ con residuo $1$. Inoltre, posta
+  $$\xi(s)=\frac{s(s-1)}{2}\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s),$$
+  allora $\xi$ è intera e fornisce il prolungamento analitico di $\zeta$. Si ha
+  \begin{equation}
+    \xi(s)=\xi(1-s).
+  \end{equation}
+\end{thm}
+
+\begin{proof}
+  Se $\sigma>0$, allora
+  \begin{gather*}
+    \Gamma\left(\frac{s}{2}\right)=\int_0^{+\infty} e^{-x}x^{\frac{s}{2}}\frac{\diff x}{x} \implies \\
+    \implies \frac{\pi^{-s/2}}{n^s}\Gamma\left(\frac{s}{2}\right)=\int_0^{+\infty} e^{-x}\left(\frac{x}{\pi n^2}\right)^{s/2}\frac{\diff x}{x}.
+  \end{gather*}
+  Se $\sigma>1$, allora
+  \begin{gather*}
+    \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)=\sum_{n=1}^{+\infty} \int_0^{+\infty} e^{-x}\left(\frac{x}{\pi n^2}\right)^{s/2}\frac{\diff x}{x} \overset{y=\frac{x}{\pi n^2}}{=} \\
+    =\sum_{n=1}^{+\infty} \int_0^{+\infty} e^{-\pi n^2 y}y^{s/2}\frac{\diff y}{y}=\int_0^{+\infty} \sum_{n=1}^{+\infty} e^{-\pi n^2y}y^{s/2}\frac{\diff y}{y}= \\
+    =\frac{1}{2}\int_0^{+\infty} \big(\vartheta(y)-1\big)y^{s/2}\frac{\diff y}{y}=\frac{1}{2}\left(\int_0^1+\int_1^{+\infty}\right)\big(\vartheta(y)-1\big)y^{s/2}\frac{\diff y}{y}.
+  \end{gather*}
+  Abbiamo che
+  \begin{gather*}
+    \frac{1}{2} \int_0^1 \big(\vartheta(y)-1\big)y^{s/2}\frac{\diff y}{y} \overset{x=\frac{1}{y}}{=} \frac{1}{2}\int_1^{+\infty} \Bigg(\vartheta\left(\frac{1}{x}\right)-1\Bigg)x^{-s/2}\frac{\diff x}{x}= \\
+    =\frac{1}{2}\int_1^{+\infty} \big(\vartheta(x)-1\big)\sqrt{x}\cdot x^{-s/2}\frac{\diff x}{x}+\frac{1}{2}\int_1^{+\infty} x^{\frac{1-s}{2}}\frac{\diff x}{x}-\frac{1}{2}\int_1^{+\infty} x^{-\frac{s}{2}}\frac{\diff x}{x}= \\
+    =\frac{1}{2}\int_1^{+\infty} \big(\vartheta(x)-1\big)\cdot x^{\frac{1-s}{2}}\frac{\diff x}{x}+\frac{1}{s-1}-\frac{1}{s}=\\
+    =\frac{1}{2}\int_1^{+\infty} \big(\vartheta(x)-1\big)\cdot x^{\frac{1-s}{2}}\frac{\diff x}{x}+\frac{1}{s(s-1)}.
+  \end{gather*}
+  Si ha dunque
+  \begin{gather*}
+    \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)=\frac{1}{s(s-1)}+\frac{1}{2}\int_1^{+\infty} \big(\vartheta(x)-1\big)(x^{\frac{s}{2}}+x^{\frac{1-s}{2}})\frac{\diff x}{x} \implies \\
+    \implies \xi(s)=\frac{s(s-1)}{2}\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)=\\
+    =\frac{1}{2}+\frac{s(s-1)}{4}\int_1^{+\infty} \big(\vartheta(x)-1\big)(x^{\frac{s}{2}}+x^{\frac{1-s}{2}})\frac{\diff x}{x}.
+  \end{gather*}
+  Poiché
+  $$\frac{1}{2}\big(\vartheta(x)-1\big)=\sum_{n=1}^{+\infty} e^{-\pi n^2x} \le \sum_{n=1}^{+\infty} e^{-\pi nx}=\frac{1}{e^{\pi x}-1} \ll e^{-\pi x},$$
+  l'ultimo integrale nella formula per $\xi(s)$ converge uniformemente in ogni striscia $a \le \sigma \le b$; allora $\xi$ definita da quell'integrale è una funzione intera e la relazione con $\Gamma$ e $\zeta$ data nell'enunciato è valida per $\sigma>1$. Che $\xi(1-s)=\xi(s)$ è ovvio. Poiché $\Gamma$ non ha zeri e lo zero semplice di $s/2$ in $0$ è cancellato dal polo di $\Gamma$, questo definisce l'estensione analitica di $\zeta$ a $\mathbb{C}\setminus\{1\}$. Sappiamo già che sui reali $\displaystyle \lim_{s \longrightarrow +\infty} \zeta(s)=1$. Mostriamo che è un polo semplice di residuo $1$. Si ha
+  \begin{gather*}
+    \zeta(s)=\xi(s)\frac{\pi^{s/2}}{\frac{s}{2}\Gamma\left(\frac{s}{2}\right)}\frac{1}{s-1} \text{ e} \\
+    \underset{s=1}{\text{Res}}\,\zeta=\lim_{s \longrightarrow 1} \big(\zeta(s)(s-1)\big)=\xi(1)\frac{\pi^{1/2}}{\frac{1}{2}\Gamma\left(\frac{1}{2}\right)}=\frac{1}{2}\frac{\sqrt{\pi}}{\frac{1}{2}\sqrt{\pi}}=1.
+  \end{gather*}
+\end{proof}

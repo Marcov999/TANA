@@ -83,27 +83,3 @@ Si ha che è ben definita.
 \begin{oss}
   La serie $\displaystyle \sum_{n \in \mathbb{Z}} e^{-\pi n^2 z}$ converge totalmente per $\mathfrak{Re}\,z \ge \epsilon>0$.
 \end{oss}
-
-\begin{defn}
-  Sia $z=x+iy$ con $x>0$. Si dice \textit{funzione $\vartheta$ di Jacobi} la seguente serie totalmente convergente:
-  $$\vartheta(z)=\sum_{n \in \mathbb{Z}} e^{-\pi n^2z}.$$
-\end{defn}
-
-\begin{lm}
-  Per $x=\mathfrak{Re}\,z>0$ si ha
-  $$\vartheta(z)=\frac{1}{\sqrt{z}}\vartheta\left(\frac{1}{z}\right).$$
-\end{lm}
-
-\begin{proof}
-  Possiamo dimostrare la formula per $z=x>0$, che valga in tutto il semipiano $\mathfrak{Re}\,z>0$ segue per prolungamento analitico. Sia $f(\xi)=e^{-\pi\xi^2}$ e sia $f_x(\xi)=f(\sqrt{x}\xi)=e^{-\pi x\xi^2}$. Allora
-  \begin{gather*}
-    \hat{f}_x(\xi)=\int_{\mathbb{R}} f(\sqrt{x}t)e^{-2\pi i\xi t}\diff t \overset{s=t\sqrt{x}}{=} \frac{1}{\sqrt{x}}\int_{\mathbb{R}} f(s)e^{-2\pi i\frac{\xi}{\sqrt{x}}s}\diff s= \\
-    =\frac{1}{\sqrt{x}}\hat{f}\left(\frac{\xi}{\sqrt{x}}\right)=\frac{1}{\sqrt{x}}f\left(\frac{\xi}{\sqrt{x}}\right)=\frac{1}{\sqrt{x}}f_{\frac{1}{x}}(\xi).
-  \end{gather*}
-  Applicando la formula di Poisson abbiamo
-  \begin{gather*}
-    \sum_{n \in \mathbb{Z}} f_x(n)=\sum_{n \in \mathbb{Z}} \hat{f}_x(n)=\sum_{n \in \mathbb{Z}} \frac{1}{\sqrt{x}}f_{\frac{1}{x}}(n),
-  \end{gather*}
-  quindi
-  $$\vartheta(x)=\sum_{n \in \mathbb{Z}} e^{-\pi n^2x}=\frac{1}{\sqrt{x}}\sum_{n \in \mathbb{Z}}e^{-\frac{\pi}{x}n^2}=\frac{1}{\sqrt{x}}\vartheta\left(\frac{1}{x}\right).$$
-\end{proof}
