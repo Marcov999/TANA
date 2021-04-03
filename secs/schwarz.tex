@@ -2,7 +2,7 @@
   Sia $f:\mathbb{R} \longrightarrow \mathbb{C}$; si dice che $f$ \textit{tende rapidamente} a $0$ per $|x| \longrightarrow +\infty$ se $\displaystyle \lim_{x \longrightarrow \pm \infty} |x|^nf(x)=0$ per ogni $n \in \mathbb{N}\cup\{0\}$.
 \end{defn}
 
-\begin{oss}
+\begin{oss} \label{rapsse}
   $f$ tende rapidamente a $0$ se e solo se $f(x)|x|^n$ è limitata per ogni $n \in \mathbb{N}\cup\{0\}$.
 \end{oss}
 
@@ -20,7 +20,7 @@ Consideriamo ora la trasformata di Fourier in $\mathcal{S}$ definita come
 $$\hat{f}(\xi)=\int_{\mathbb{R}} f(x)e^{-2\pi\xi x}\diff x.$$
 Si ha che è ben definita.
 
-\begin{oss}
+\begin{oss} \label{limFourier}
   $\displaystyle |\hat{f}(\xi)| \le \int_{\mathbb{R}} |f(x)|\diff x<+\infty$, quindi $\hat{f}$ è limitata se $f \in \mathcal{S}$.
 \end{oss}
 
@@ -29,5 +29,81 @@ Si ha che è ben definita.
 \end{lm}
 
 \begin{proof}
-  Da scrivere.
+  Derivando sotto il segno di integrale abbiamo
+  \begin{gather*}
+    \hat{f}'(\xi)=-2\pi i \int_{-\infty}^{+\infty} xf(x)e^{-2\pi i\xi x}\diff x=-2\pi i \widehat{Mf}(\xi) \implies \\
+    \implies D\hat{f}=(-2\pi i)\widehat{Mf} \implies D^k\hat{f}=(-2\pi i)^k\widehat{M^kf} \implies \hat{f} \in C^{\infty}(\mathbb{R}).
+  \end{gather*}
+  Integrando per parti si ha
+  \begin{gather*}
+    \xi\hat{f}(\xi)=\int_{-\infty}^{+\infty} f(x)\xi e^{-2\pi i\xi x}\diff x= \\
+    =\left[-\frac{1}{2\pi i}e^{-2\pi i\xi x}f(x)\right]_{-\infty}^{+\infty}+\frac{1}{2\pi i}\int_{-\infty}^{+\infty} f'(x)e^{-2\pi i\xi x}\diff x=\frac{1}{2\pi i}\widehat{Df}(\xi) \implies \\
+    \implies M^k\hat{f}=\left(\frac{1}{2\pi i}\right)^k\widehat{D^kf}.
+  \end{gather*}
+  Vogliamo concludere applicando l'osservazione \ref{rapsse} alle funzioni $D^k\hat{f}$. Notiamo che
+  $$M^hD^k\hat{f}=M^h(-2\pi i)^k\widehat{M^kf}=\left(\frac{1}{2\pi i}\right)^h(-2\pi i)^k\widehat{D^hM^kf};$$
+  ci basta dunque mostrare che $\widehat{D^hM^kf}$ è limitata, ma questo segue dall'osservazione \ref{limFourier} e dal fatto che gli operatori $D$ e $M$ mandano $\mathcal{S}$ in sé.
+\end{proof}
+
+\begin{lm}
+  (formula di Poisson) Se $f \in \mathcal{S}$ allora
+  $$\sum_{n \in \mathbb{Z}} f(n)=\sum_{n \in \mathbb{Z}} \hat{f}(n).$$
+\end{lm}
+
+\begin{proof}
+  Sia $\displaystyle g(x)=\sum_{n \in \mathbb{Z}} f(x+n)$. $g$ ha periodo $1$. Poiché $f \in \mathcal{S}$, abbiamo che $\displaystyle \sum_{n \in \mathbb{Z}} D^kf(x+n)$ converge uniformemente per ogni $k \ge 0$, dunque è uguale a $D^kg$, quindi $g \in C^{\infty}(\mathbb{R})$. Scriviamo $g$ in serie di Fourier: $\displaystyle g(x)=\sum_{m \in \mathbb{Z}} c_me^{2\pi imx}$. Si ha
+  \begin{gather*}
+    c_m=\int_0^1 g(x)e^{-2\pi imx}\diff x=\int_0^1 \sum_{n \in \mathbb{Z}} f(x+n)e^{-2\pi imx}\diff x=\\
+    =\sum_{n \in \mathbb{Z}}\int_0^1 f(x+n)e^{-2\pi imx}\diff x \overset{y=x+n}{=} \sum_{n \in \mathbb{Z}} \int_n^{n+1} f(y)e^{-2\pi im(y-n)}\diff y=\\
+    =\int_{\mathbb{R}} f(x)e^{-2\pi imx}\diff x=\hat{f}(m).
+  \end{gather*}
+  Basta allora guardare $g(0)$.
+\end{proof}
+
+\begin{lm}
+  Sia $f(x)=e^{-\pi x^2}$ per $x \in \mathbb{R}$. Allora $f \in \mathcal{S}$ e inoltre $\hat{f}=f$.
+\end{lm}
+
+\begin{proof}
+  Che $f \in \mathcal{S}$ è facile da dimostrare.
+  \begin{gather*}
+    \hat{f}(\xi)=\int_{\mathbb{R}} e^{-\pi x^2-2\pi i\xi x}\diff x \implies \\
+    \implies D\hat{f}(\xi)=-2\pi i\int_{\mathbb{R}} xe^{-\pi x^2-2\pi i\xi x}\diff x \overset{\text{per parti}}{=} \\
+    =\left[ie^{-\pi x^2-2\pi i\xi x}\right]_{-\infty}^{+\infty}+i(2\pi i\xi)\int_{\mathbb{R}} e^{-\pi x^2-2\pi i\xi x}\diff x=-2\pi \xi \hat{f}(\xi).
+  \end{gather*}
+  Abbiamo
+  \begin{gather*}
+    u'(\xi)=-2\pi\xi u(\xi) \implies \frac{u'}{u}(\xi)=-2\pi\xi \implies \\
+    \implies \log\big(u(\xi)\big)=-\pi\xi^2+c \implies u(\xi)=Ce^{-\pi\xi^2} \implies \\
+    \implies \hat{f}(\xi)=Ce^{-\pi\xi^2}.
+  \end{gather*}
+  Si ha anche $\displaystyle \hat{f}(0)=\int_{\mathbb{R}} e^{-\pi x^2}\diff x=1 \implies C=1$.
+\end{proof}
+
+\begin{oss}
+  La serie $\displaystyle \sum_{n \in \mathbb{Z}} e^{-\pi n^2 z}$ converge totalmente per $\mathfrak{Re}\,z \ge \epsilon>0$.
+\end{oss}
+
+\begin{defn}
+  Sia $z=x+iy$ con $x>0$. Si dice \textit{funzione $\vartheta$ di Jacobi} la seguente serie totalmente convergente:
+  $$\vartheta(z)=\sum_{n \in \mathbb{Z}} e^{-\pi n^2z}.$$
+\end{defn}
+
+\begin{lm}
+  Per $x=\mathfrak{Re}\,z>0$ si ha
+  $$\vartheta(z)=\frac{1}{\sqrt{z}}\vartheta\left(\frac{1}{z}\right).$$
+\end{lm}
+
+\begin{proof}
+  Possiamo dimostrare la formula per $z=x>0$, che valga in tutto il semipiano $\mathfrak{Re}\,z>0$ segue per prolungamento analitico. Sia $f(\xi)=e^{-\pi\xi^2}$ e sia $f_x(\xi)=f(\sqrt{x}\xi)=e^{-\pi x\xi^2}$. Allora
+  \begin{gather*}
+    \hat{f}_x(\xi)=\int_{\mathbb{R}} f(\sqrt{x}t)e^{-2\pi i\xi t}\diff t \overset{s=t\sqrt{x}}{=} \frac{1}{\sqrt{x}}\int_{\mathbb{R}} f(s)e^{-2\pi i\frac{\xi}{\sqrt{x}}s}\diff s= \\
+    =\frac{1}{\sqrt{x}}\hat{f}\left(\frac{\xi}{\sqrt{x}}\right)=\frac{1}{\sqrt{x}}f\left(\frac{\xi}{\sqrt{x}}\right)=\frac{1}{\sqrt{x}}f_{\frac{1}{x}}(\xi).
+  \end{gather*}
+  Applicando la formula di Poisson abbiamo
+  \begin{gather*}
+    \sum_{n \in \mathbb{Z}} f_x(n)=\sum_{n \in \mathbb{Z}} \hat{f}_x(n)=\sum_{n \in \mathbb{Z}} \frac{1}{\sqrt{x}}f_{\frac{1}{x}}(n),
+  \end{gather*}
+  quindi
+  $$\vartheta(x)=\sum_{n \in \mathbb{Z}} e^{-\pi n^2x}=\frac{1}{\sqrt{x}}\sum_{n \in \mathbb{Z}}e^{-\frac{\pi}{x}n^2}=\frac{1}{\sqrt{x}}\vartheta\left(\frac{1}{x}\right).$$
 \end{proof}
