@@ -1,0 +1,33 @@
+\begin{defn}
+  Sia $f:\mathbb{R} \longrightarrow \mathbb{C}$; si dice che $f$ \textit{tende rapidamente} a $0$ per $|x| \longrightarrow +\infty$ se $\displaystyle \lim_{x \longrightarrow \pm \infty} |x|^nf(x)=0$ per ogni $n \in \mathbb{N}\cup\{0\}$.
+\end{defn}
+
+\begin{oss}
+  $f$ tende rapidamente a $0$ se e solo se $f(x)|x|^n$ è limitata per ogni $n \in \mathbb{N}\cup\{0\}$.
+\end{oss}
+
+\begin{defn}
+  Si dice \textit{spazio di Schwarz} $\mathcal{S}$ lo spazio su $\mathbb{C}$ delle funzioni $f \in C^{\infty}(\mathbb{R})$ (a valori complessi) tendenti rapidamente a $0$ insieme a tutte le loro derivate.
+\end{defn}
+
+\begin{oss}
+  L'operatore $D^k$ manda $\mathcal{S}$ in sé per ogni $k \ge 0$.
+\end{oss}
+
+Notazione: indichiamo con $M^k$ l'operatore $(M^kf)(x)=x^kf(x)$; abbiamo che anche $M^k$ manda $\mathcal{S}$ in sé.
+
+Consideriamo ora la trasformata di Fourier in $\mathcal{S}$ definita come
+$$\hat{f}(\xi)=\int_{\mathbb{R}} f(x)e^{-2\pi\xi x}\diff x.$$
+Si ha che è ben definita.
+
+\begin{oss}
+  $\displaystyle |\hat{f}(\xi)| \le \int_{\mathbb{R}} |f(x)|\diff x<+\infty$, quindi $\hat{f}$ è limitata se $f \in \mathcal{S}$.
+\end{oss}
+
+\begin{lm}
+  L'operatore $\textasciicircum$ manda $\mathcal{S}$ in sé.
+\end{lm}
+
+\begin{proof}
+  Da scrivere.
+\end{proof}

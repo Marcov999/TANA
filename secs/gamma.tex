@@ -318,11 +318,20 @@ L'integrale $\displaystyle \int_0^{+\infty} e^{-x}x^{z-1}\diff x$ converge per $
   $$\zeta(2k)=\sum_{n=1}^{+\infty} \frac{1}{n^{2k}} \le 1+\int_1^{+\infty} \frac{\diff x}{x^{2k}} 1+\frac{1}{2k-1}=1+O\left(\frac{1}{k}\right).$$
 \end{proof}
 
+\begin{oss}
+  Si ritrova il raggio di convergenza di $\dfrac{z}{e^z-1}$.
+\end{oss}
+
 \begin{cor}
   Sia $z=x+iy$ con $x_1 \le x \le x_2$. Allora
   $$\left|\Gamma(x+iy)\right|=\sqrt{2\pi}|y|^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|}\Bigg(1+O\left(\frac{1}{|y|}\right)\Bigg).$$
 \end{cor}
 
 \begin{proof}
-  aa
+  \begin{gather*}
+    \log\big(\Gamma(x+iy)\big)=\left(x-\frac{1}{2}+iy\right)\log(x+iy)-x-iy+\frac{1}{2}\log(2\pi)+O\left(\frac{1}{|y|}\right) \\
+    \mathfrak{Re}\Big(\log\big(\Gamma(x+iy)\big)\Big)=\mathfrak{Re}\Big((x-1/2+iy)\big(\log(iy)+\log(1-i\cdot x/y)\big)\Big)-x+\frac{1}{2}\log(2\pi)+O\left(\frac{1}{|y|}\right)= \\
+    =(x-1/2)\log|y|+iy\left(\frac{\pi}{2}\cdot i\cdot\text{sgn}(y)\right)+iy\left(-\frac{ix}{y}\right)-x+\frac{1}{2}\log(2\pi)+O\left(\frac{1}{|y|}\right)=\\
+    =(x-1/2)\log|y|-|y|\frac{\pi}{2}+\frac{1}{2}\log(2\pi)+O\left(\frac{1}{|y|}\right)
+  \end{gather*}
 \end{proof}
