@@ -242,12 +242,12 @@ L'integrale $\displaystyle \int_0^{+\infty} e^{-x}x^{z-1}\diff x$ converge per $
 \begin{thm}
   (Stirling) Sia $\epsilon>0$. Si ha la seguente formula asintotica:
   \begin{equation}
-    \log\big(\Gamma(z)\big)=\left(z-\frac{1}{2}\right)\log{z}-z+\log{\sqrt{2\pi}}+\mathcal{O}\left(\frac{1}{|z|}\right)
+    \log\big(\Gamma(z)\big)=\left(z-\frac{1}{2}\right)\log{z}-z+\log{\sqrt{2\pi}}+O_{\epsilon}\left(\frac{1}{|z|}\right)
   \end{equation}
   uniformemente per $|z| \ge \epsilon$ e $|\arg{z}| \le \pi-\epsilon$. In particolare,
   \begin{align*}
-    \log{n!}&=(n+1/2)\Bigg(\log{n}+\frac{1}{n}+\mathcal{O}\left(\frac{1}{n^2}\right)\Bigg)-n-1+\log{\sqrt{2\pi}}+\mathcal{O}\left(\frac{1}{|n+1|}\right)= \\
-    &=(n+1/2)\log{n}-n+\log{\sqrt{2\pi}}+\mathcal{O}\left(\frac{1}{n}\right).
+    \log{n!}&=(n+1/2)\Bigg(\log{n}+\frac{1}{n}+O\left(\frac{1}{n^2}\right)\Bigg)-n-1+\log{\sqrt{2\pi}}+O\left(\frac{1}{|n+1|}\right)= \\
+    &=(n+1/2)\log{n}-n+\log{\sqrt{2\pi}}+O\left(\frac{1}{n}\right).
   \end{align*}
 \end{thm}
 
@@ -256,16 +256,73 @@ L'integrale $\displaystyle \int_0^{+\infty} e^{-x}x^{z-1}\diff x$ converge per $
   $$\log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)=z\log{n}-\log(z+n)-\sum_{k=1}^n \log\left(1+\frac{z-1}{k}\right).$$
   Applicando la formula di Eulero-Maclaurin alla funzione $f_z(x)=\log\left(1+\frac{z-1}{x}\right)$ troviamo
   \begin{gather*}
-    \sum_{k=1}^n \log\left(1+\frac{z-1}{k}\right)= \\
-    =\int_1^n \log\left(1+\frac{z-1}{x}\right)\diff x+\frac{1}{2}\big(\log{z}+\log(z+n-1)-\log{n}\big)+\int_1^n B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x \implies \\
-    \implies \log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)=\dots= \\
-    =\left(z-\frac{1}{2}\right)\log{z}-\left(z+n+\frac{1}{2}\right)\log\left(1+\frac{z-1}{n}\right)+\log\left(1-\frac{1}{z+n}\right)-\int_1^n B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x;
+    \sum_{k=1}^n \log\left(1+\frac{z-1}{k}\right)=\int_1^n \log\left(1+\frac{z-1}{x}\right)\diff x+\\
+    +\frac{1}{2}\big(\log{z}+\log(z+n-1)-\log{n}\big)+\int_1^n B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x \implies \\
+    \implies \log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)=\dots=\left(z-\frac{1}{2}\right)\log{z}-\left(z+n+\frac{1}{2}\right)\log\left(1+\frac{z-1}{n}\right)+\\
+    +\log\left(1-\frac{1}{z+n}\right)-\int_1^n B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x;
   \end{gather*}
-  poiché $\displaystyle \left(z+n+\frac{1}{2}\right)\log\left(1+\frac{z-1}{n}\right) \sim \frac{z-1}{n}\left(z+n+\frac{1}{2}\right) \overset{n \rightarrow +\infty}{\longrightarrow} z-1$ con un resto di $\mathcal{O}(1/n)$, si ha
+  poiché $\displaystyle \left(z+n+\frac{1}{2}\right)\log\left(1+\frac{z-1}{n}\right) \sim \frac{z-1}{n}\left(z+n+\frac{1}{2}\right) \overset{n \rightarrow +\infty}{\longrightarrow} z-1$ con un resto di $O_{\epsilon}(1/n)$, si ha
   \begin{gather*}
-    \log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)=\left(z-\frac{1}{2}\right)\log{z}-z+1+\mathcal{O}\left(\frac{1}{n}\right)+\\
+    \log\left(\frac{n^zn!}{z(z+1)\cdots(z+n)}\right)=\left(z-\frac{1}{2}\right)\log{z}-z+1+O_{\epsilon}\left(\frac{1}{n}\right)+\\
     -\int_1^{+\infty} B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x+\int_n^{+\infty}B_1(\{x\})\left(\frac{1}{z+x-1}-\frac{1}{x}\right)\diff x=\\
-    =\left(z-\frac{1}{2}\right)\log{z}-z+C+\mathcal{O}\left(\frac{1}{n}\right)+R_z(n).
+    =\left(z-\frac{1}{2}\right)\log{z}-z+C+O_{\epsilon}\left(\frac{1}{n}\right)+R_z(n).
   \end{gather*}
-  Ricordiamo che $DB_k(x)=kB_{k-1}(x)$ e che $\{x\}-1/2=x-\lfloor x\rfloor-1/2$.
+  Ricordiamo che $DB_k(x)=kB_{k-1}(x)$ e che $\{x\}-1/2=x-\lfloor x\rfloor-1/2$, dunque una primitiva di $B_1(\{x\})$ è $\frac{(x-\lfloor x\rfloor)^2}{2}-\frac{x-\lfloor x\rfloor}{2}+\frac{1}{12}=\frac{1}{2}B_2(\{x\})$; allora integrando per parti si ha
+  \begin{gather*}
+    \int_1^{+\infty} \frac{B_1(\{x\})}{z+x-1}\diff x=\left[\frac{B_2(\{x\})}{2(z+x-1)}\right]_1^{+\infty}+\int_1^{+\infty} \frac{B_2(\{x\})}{2(z+x-1)^2}\diff x=\\
+    =-\frac{1}{12z}+\int_1^{+\infty} \frac{B_2(\{x\})}{2(z+x-1)^2}\diff x.
+  \end{gather*}
+  Poniamo anche $\displaystyle C=1+\int_1^{+\infty} \frac{B_1(\{x\})}{x}\diff x$. Vogliamo vedere se
+  $$-\frac{1}{2}\int_1^{+\infty}\frac{B_2(\{x\})}{(z+x-1)^2}\diff x=-\frac{1}{2}\int_0^{+\infty}\frac{B_2(\{x\})}{(z+x)^2}\diff x \overset{?}{\ll_{\epsilon}} \frac{1}{|z|}.$$
+  Si ha
+  $$\left|-\frac{1}{2}\int_0^{+\infty}\frac{B_2(\{x\})}{(z+x)^2}\diff x\right| \le \int_0^{+\infty} \frac{\diff x}{|z+x|^2}.$$
+  Da $|\arg{z}| \le \pi-\epsilon$, abbiamo $|z+x|^2=|z|^2+x^2+2\langle z,x \rangle \ge |z|^2+x^2-2|z|x\cos{\epsilon}$; scrivendo $y=x-|z|\cos{\epsilon}$ e cambiando di variabile nei passaggi giusti troviamo
+  \begin{gather*}
+    \int_0^{+\infty} \frac{\diff x}{|z+x|^2} \le \int_{-|z|\cos{\epsilon}}^{+\infty} \frac{\diff y}{|z|^2\sin^2{\epsilon}+y^2} \le \int_{-\infty}^{+\infty} \frac{\diff y}{|z|^2\sin^2{\epsilon}+y^2}= \\
+    =\frac{1}{|z|\sin{\epsilon}}\int_{-\infty}^{+\infty} \frac{\diff y}{y^2+1} \ll_{\epsilon} \frac{1}{|z|}.
+  \end{gather*}
+  Ricordiamo adesso che
+  \begin{gather*}
+    \Gamma(z)\Gamma(z+1/2)=\sqrt{\pi}2^{1-2z}\Gamma(2z) \implies \\
+    \implies \log\big(\Gamma(z)\big)+\log\big(\Gamma(z+1/2)\big)=\frac{1}{2}\log{\pi}+(1-2z)\log{2}+\log\big(\Gamma(2z)\big);
+  \end{gather*}
+  si ha anche $\log\big(\Gamma(z)\big)=(z-1/2)\log{z}-z+C+O_{\epsilon}(1/|z|)$, da cui con un po' di conti si trova che $C-\frac{1}{2}\log(2\pi) \ll_{\epsilon} \frac{1}{|z|} \implies C=\frac{1}{2}\log(2\pi)$.
+\end{proof}
+
+\begin{cor}
+  Se $|z| \ge \epsilon$ e $|\arg{z}| \le \pi-\epsilon$ si ha $$\frac{\Gamma'}{\Gamma}(z)=\log{z}+O_{\epsilon}\left(\frac{1}{|z|}\right).$$
+\end{cor}
+
+\begin{proof}
+  Sia $f(z)=\log\big(\Gamma(z)\big)-(z-1/2)\log{z}+z-\frac{1}{2}\log(2\pi)$. Preso $z_0$ che soddisfi le ipotesi e $z$ t.c. $|z-z_0|=\epsilon/2$, abbiamo $f(z) \ll_{\epsilon} \frac{1}{|z|} \ll \frac{1}{|z_0|}$. Per la formula integrale di Cauchy troviamo
+  $$f'(z_0)=\frac{1}{2\pi i}\oint_{\gamma} \frac{f(z)}{(z-z_0)^2}\diff z \ll_{\epsilon} \frac{1}{|z_0|},$$
+  dove $\gamma$ è il cerchio di centro $z_0$ e raggio $\epsilon/2$. La tesi segue notando che vale $f'(z)=\dfrac{\Gamma'}{\Gamma}(z)-\log{z}+\dfrac{1}{2z}$.
+\end{proof}
+
+\begin{cor}
+  Per $|z| \ge \epsilon$ e $|\arg{z}| \le \pi-\epsilon$ si ha
+  $$\Gamma(z)=\sqrt{\frac{2\pi}{z}}\left(\frac{z}{e}\right)^z\Bigg(1+O_{\epsilon}\left(\frac{1}{|z|}\right)\Bigg).$$
+  In particolare $\displaystyle n!=\sqrt{2\pi n}\left(\frac{n}{e}\right)^n\Bigg(1+O\left(\frac{1}{n}\right)\Bigg)$.
+\end{cor}
+
+\begin{proof}
+  Per esercizio.
+\end{proof}
+
+\begin{cor}
+  Se $k \ge 1$, allora $(-1)^kB_{2k}=4\sqrt{\pi k}\left(\dfrac{k}{e\pi}\right)^{2k}\Bigg(1+O\left(\dfrac{1}{k}\right)\Bigg)$.
+\end{cor}
+
+\begin{proof}
+  Si ha infatti $(-1)^kB_{2k}=\dfrac{2(2k)!}{(2\pi)^{2k}}\zeta(2k)$, ma
+  $$\zeta(2k)=\sum_{n=1}^{+\infty} \frac{1}{n^{2k}} \le 1+\int_1^{+\infty} \frac{\diff x}{x^{2k}} 1+\frac{1}{2k-1}=1+O\left(\frac{1}{k}\right).$$
+\end{proof}
+
+\begin{cor}
+  Sia $z=x+iy$ con $x_1 \le x \le x_2$. Allora
+  $$\left|\Gamma(x+iy)\right|=\sqrt{2\pi}|y|^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|}\Bigg(1+O\left(\frac{1}{|y|}\right)\Bigg).$$
+\end{cor}
+
+\begin{proof}
+  aa
 \end{proof}
