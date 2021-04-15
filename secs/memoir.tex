@@ -117,3 +117,150 @@ Vogliamo usare quest'identità della funzione di Jacobi per dimostrare il teorem
 \begin{exc}
   Dimostrare che $\zeta(-1)=-1/12$.
 \end{exc}
+
+Vogliamo ora capire qual è l'ordine di $\xi$. Abbiamo $\xi(s)=(s-1)\Gamma\left(\frac{s}{2}+1\right)\pi^{-\frac{s}{2}}\zeta(s)$. Analizziamo i vari fattori.
+
+Con $s=2n$ si ha $\Gamma\left(\dfrac{s}{2}+1\right)=\Gamma(n+1)=n!\sim e^{\left(n+\frac{1}{2}\right)\log{n}-n+(\dots)} \ll_{\epsilon} e^{n^{1+\epsilon}}$. Più in particolare, per il corollario \ref{gammaord} abbiamo che questo vale in generale per $\sigma>1$.
+Nella stessa regione, $\zeta(s)$ e $\pi^{-\frac{s}{2}}$ sono limitate a infinito e $s-1$ è ``piccola''. Questo ci dice che dev'essere $ord(\xi) \ge 1$ e, per quanto visto su $\Gamma$, se valesse l'uguale l'ordine sarebbe un $\inf$ e non un $\min$.
+
+Per simmetria, ci resta da verificare solo la regione $1/2 \le \sigma \le 1$. Vediamo che, se l'ordine fosse proprio $1$, per il teorema di Hadamard avremmo che $\xi$ ha un prodotto di Weierstrass della forma $\displaystyle \xi(s)=e^{as+b}\prod_p (\dots)$. Se non ci fossero zeri, il prodotto vuoto sarebbe $1$ e $\xi(s) \ll e^{a|s|}$, assurdo per via del contributo $e^{s\log{s}}$ dovuto a $\Gamma$. Per lo stesso motivo, gli zeri devono essere infiniti.
+
+\begin{lm} \label{lls}
+  Per $\sigma \ge \epsilon$ si ha $\zeta(s) \ll_{\epsilon} |s|$ (o $|t|$) uniformemente.
+\end{lm}
+
+\begin{proof}
+  Sia $\sigma>1$. Per sommazione parziale,
+  \begin{gather*}
+    \sum_{n \le x} \frac{1}{n^s}=\frac{\lfloor x\rfloor}{x^s}+s\int_1^x \frac{\lfloor u\rfloor}{u^{s+1}}\diff u=\frac{\lfloor x\rfloor}x^s+s\int_1^s \frac{\diff u}{u^s}-s\int_1^s \frac{\{u\}}{u^{s+1}}\diff u= \\
+    =\frac{\lfloor x\rfloor}{x^s}+\frac{s}{s-1}-s\int_1^s \frac{\{u\}}{u^{s+1}}\diff u \implies \zeta(s)=\frac{1}{s-1}+1-s\int_1^s \frac{\{u\}}{u^{s+1}}\diff u;
+  \end{gather*}
+  questa è l'estensione di $\zeta$ a $\sigma>0$ (l'integrale converge uniformemente per $\sigma \ge \epsilon$).
+  \begin{oss}
+    Prendendo $s=1$, otteniamo
+    \begin{gather*}
+      \sum_{n \le x} \frac{1}{n}=1-\frac{\{x\}}{x}+\log{x}-\int_1^x \frac{\{u\}}{u^2}\diff u \implies \\
+      \lim_{x \longrightarrow +\infty} \left(\sum_{n \le x} \frac{1}{n}-\log{x}\right)=1-\int_1^{+\infty} \frac{\{u\}}{u^2}\diff u=\gamma.
+    \end{gather*}
+    Ma passiamo oltre.
+  \end{oss}
+
+  Utilizzando i polinomio di Bernoulli, abbiamo
+  \begin{gather*}
+    \zeta(s)=\frac{1}{s-1}+1-\frac{s}{2}\int_1^{+\infty} \frac{\diff u}{u^{s+1}}-s\int_1^{+\infty} \frac{B_1(\{u\})}{u^{s+1}}\diff u= \\
+    =\frac{1}{s-1}+1-\frac{1}{2}-s\int_1^{+\infty} \frac{B_1(\{u\})}{u^{s+1}}\diff u.
+  \end{gather*}
+
+  \begin{oss}
+    Ricordando la relazione tra polinomi di Bernoulli successivi e le loro derivate, si può integrare per parti fino a ottenere il prolungamento di $\zeta$ in un semipiano che inizia arbitrariamente a sinistra. Ma, senza l'equazione funzione, questa costruzione è abbastanza inutile.
+  \end{oss}
+
+  Tornando a noi, per $\sigma \ge \epsilon$ e usando che $B_1(\{u\})$ è limitato, abbiamo
+  $$|\zeta(s)| \ll 1+|s|\int_1^{+\infty} \frac{\diff u}{u^{1+\epsilon}} \ll \frac{|s|}{\epsilon} \ll_{\epsilon} |s|.$$
+\end{proof}
+
+Curiosità: la congettura di Lindelöf ipotizza che $\zeta\left(\dfrac{1}{2}+it\right) \ll_{\epsilon} t^{\epsilon}$ per ogni $\epsilon>0$.
+
+\begin{prop}
+  (formula di Riemann-Von Mangoldt) Contando con moltepicità, sia
+  $$N(T)=\sharp\{\rho=\beta+i\gamma \mid \zeta(\rho)=0, 0 \le \beta \le 1, 0<\gamma<T\},$$
+  allora per $T \longrightarrow +\infty$ si ha
+  \begin{equation} \label{rievonmformula}
+    N(T)=\frac{T}{2\pi}\log\left(\frac{T}{2\pi}\right)-\frac{T}{2\pi}+O(\log{T}).
+  \end{equation}
+\end{prop}
+
+\begin{proof}
+  Consideriamo il bordo rettangolare $R$, in verde nella figura.
+  \begin{center}
+    \definecolor{ttccqq}{rgb}{0.2,0.8,0}
+    \definecolor{uququq}{rgb}{0.25,0.25,0.25}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+        \draw[->,color=black] (-2.09,0) -- (3.18,0);
+        \foreach \x in {-2,-1,1,2,3}
+        \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+        \draw[->,color=black] (0,-0.31) -- (0,6.22);
+        \foreach \y in {,1,2,3,4,5,6}
+        \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+        \clip(-2.09,-0.31) rectangle (3.18,6.22);
+        \draw [line width=1pt,color=ttccqq] (-1,0)-- (2,0);
+        \draw [line width=1pt,color=ttccqq] (2,0)-- (2,5.58);
+        \draw [line width=1pt,color=ttccqq] (-1,5.58)-- (2,5.58);
+        \draw [line width=1pt,color=ttccqq] (-1,5.58)-- (-1,0);
+        \draw (1,5.58)-- (1,0);
+        \draw [dash pattern=on 3pt off 3pt] (0.5,5.58)-- (0.5,0);
+        \begin{scriptsize}
+        \fill [color=black] (2,0) circle (1.5pt);
+        \draw[color=black] (2,-0.2) node {$2$};
+        \fill [color=black] (1,0) circle (1.5pt);
+        \draw[color=black] (1,-0.2) node {$1$};
+        \fill [color=black] (0.5,0) circle (1.5pt);
+        \draw[color=black] (0.5,-0.2) node {$1/2$};
+        \fill [color=black] (-1,0) circle (1.5pt);
+        \draw[color=black] (-1,-0.2) node {$-1$};
+        \fill [color=uququq] (0.5,5.58) circle (1.5pt);
+        \draw[color=uququq] (0.5,5.8) node {$\frac{1}{2}+iT$};
+        \fill [color=uququq] (2,5.58) circle (1.5pt);
+        \draw[color=uququq] (2.1,5.8) node {$2+iT$};
+        \fill [color=black] (0,0) circle (1.5pt);
+        \draw[color=black] (-0.15,-0.2) node {$0$};
+        \draw[color=black] (3, -0.2) node {$\sigma$};
+        \draw[color=black] (-0.2, 6) node {$t$};
+        \draw[color=ttccqq] (2.5, 2.9) node {$R$};
+      \end{scriptsize}
+    \end{tikzpicture}
+  \end{center}
+
+  Poiché $\xi$ è una funzione intera senza zeri fuori dalla striscia critica, all'interno della quale ha invece gli stessi zeri di $\zeta$ con la stessa moltepicità, abbiamo che
+  $$N(T)=\frac{1}{2\pi i} \oint_R \frac{\xi'(s)}{\xi(s)}\diff s=\frac{1}{2\pi}\Delta_R \arg\big(\xi(s)\big).$$
+  Adesso notiamo che, per quello che sappiamo di $\xi$ tra $0$ e $1$ e fuori dalla striscia critica e usando l'equazione funzionale, essa è sempre reale e mai nulla tra $-1$ e $2$, dunque l'argomento non cambia e possiamo trascurare quel segmento. Dato che $\xi$ è reale sui reali, si ha anche $\xi(s)=\xi(1-s)=\overline{\xi(1-\bar{s})}$; perciò la variazione da $\frac{1}{2}+iT$ a $-1$ è la stessa che tra $2$ e $\frac{1}{2}+iT$.
+  Detto allora $L$ il sottotratto di $R$ formato dai due segmenti da $2$ a $2+iT$ e da $2+iT$ e $\frac{1}{2}+iT$, si ha $N(T)=\dfrac{1}{\pi}\Delta_L \arg\big(\xi(s)\big)$. Ricordiamo ora la definizione di $\xi$:
+  $$\xi(s)=\frac{s(s-1)}{2}\pi^{-\frac{s}{2}}\Gamma\left(\frac{s}{2}\right)\zeta(s)=(s-1)\pi^{-\frac{s}{2}}\Gamma\left(\frac{s}{2}+1\right)\zeta(s);$$
+  si ha dunque
+  $$\Delta_L\arg\big(\xi(s)\big)=\Delta_L\arg(s-1)+\Delta_L\arg\left(\pi^{-\frac{s}{2}}\right)+\Delta_L\arg\Bigg(\Gamma\left(\frac{s}{2}+1\right)\Bigg)+\Delta_L\arg\big(\zeta(s)\big).$$
+  Studiamo i singoli pezzi.
+  \begin{gather*}
+    \Delta_L\arg(s-1)=\arg\left(-\frac{1}{2}+iT\right)=\frac{\pi}{2}+O\left(\frac{1}{T}\right) \text{ e}\\
+    \Delta_L\arg\left(\pi^{-\frac{s}{2}}\right)=\Delta_L\arg\left(e^{-\frac{s}{2}\log{\pi}}\right)=-\frac{T}{2}\log{\pi}.
+  \end{gather*}
+  Ricordiamo la formula di Stirling:
+  $$\log\big(\Gamma(z)\big)=\left(z-\frac{1}{2}\right)\log{z}-z+\log{\sqrt{2\pi}}+O\left(\frac{1}{|z|}\right);$$
+  abbiamo quindi che
+  \begin{gather*}
+    \Delta_L\arg\Bigg(\Gamma\left(\frac{s}{2}+1\right)\Bigg)=\mathfrak{Im}\,\log\Bigg(\Gamma\left(\frac{5}{4}+i\frac{T}{2}\right)\Bigg)= \\
+    =\mathfrak{Im}\Bigg(\left(\frac{3}{4}+i\frac{T}{2}\right)\log\left(\frac{5}{4}+i\frac{T}{2}\right)-\frac{5}{4}-i\frac{T}{2}+O\left(\frac{1}{T}\right)\Bigg)= \\
+    =\frac{3}{4}\Bigg(\frac{\pi}{2}+O\left(\frac{1}{T}\right)\Bigg)+\frac{T}{2}\log\sqrt{\frac{T^2}{4}+\frac{25}{16}}-\frac{T}{2}+O\left(\frac{1}{T}\right)=\\
+    \frac{3}{8}\pi+\frac{T}{2}\log{T}+\frac{T}{2}\log\left(1+\frac{25}{4T^2}\right)-\frac{T}{2}+O\left(\frac{1}{T}\right)=\\
+    \frac{3}{8}\pi+\frac{T}{2}\log{T}-\frac{T}{2}+O\left(\frac{1}{T}\right).
+  \end{gather*}
+  Mettendo assieme si ha $N(T)=\dfrac{T}{2\pi}\log\left(\dfrac{T}{2\pi}\right)+\dfrac{7}{8}+S(T)+O\left(\dfrac{1}{T}\right)$, dove poniamo $S(T)=\dfrac{1}{\pi}\arg\Bigg(\zeta\left(\dfrac{1}{2}+iT\right)\Bigg)$. Si conclude con il lemma seguente.
+\end{proof}
+
+\begin{lm}
+  Sia $S(T)=\dfrac{1}{\pi}\arg\Bigg(\zeta\left(\dfrac{1}{2}+iT\right)\Bigg)$; allora
+  $$S(T) \ll \log{T}.$$
+\end{lm}
+
+\begin{proof}
+  Scriviamo $$\arg\Bigg(\zeta\left(\frac{1}{2}+iT\right)\Bigg)=\arg\big(\zeta(2+iT)\big)+\Bigg[\arg\Bigg(\zeta\left(\frac{1}{2}+iT\right)\Bigg)-\arg\big(\zeta(2+iT)\big)\Bigg]$$
+  e stimiamo i due addendi. Si ha
+  \begin{gather*}
+    \mathfrak{Re}\,\zeta(2+iT)=1+\sum_{n=2}^{+\infty} \mathfrak{Re}\frac{1}{n^{2+iT}} \ge 1-\sum_{n=2}^{+\infty} \frac{1}{n^2}=1-\left(\frac{\pi^2}{6}-1\right)>\frac{1}{3} \implies \\
+    \implies |\arg\big(\zeta(2+iT)\big)| \le \pi/2.
+  \end{gather*}
+  Sia $m=\sharp\{\sigma_j \in [1/2,2] \mid \mathfrak{Re}\,\zeta(\sigma_j+iT)=0\}$.
+  Per come sono definiti, tra un $\sigma_j$ e il successivo l'argomento di $\zeta$ cambia al più di $\pi$. Allora
+  $$\left|\arg\Bigg(\zeta\left(\frac{1}{2}+iT\right)\Bigg)-\arg\big(\zeta(2+iT)\big)\right| \le (m+1)\pi.$$
+  Dobbiamo stimare $m$. Definiamo $f(s)=\zeta(s+iT)+\zeta(s-iT)$, che è una funzione olomorfa per $s+iT\not=1$, quindi lo è in particolare per $T$ sufficientemente grande in modulo ($\not=0$), che è quello che ci interessa. Per motivi di coniugio ($\zeta$ è reale sui reali), abbiamo che $f(\sigma)=2\mathfrak{Re}\,\zeta(\sigma+iT)$. Perciò otteniamo che $m=\sharp\{\sigma_j \in [1/2,2] \mid f(\sigma_j)=0\}$; vale dunque che
+  $$m \le M=\sharp\{s \in \mathbb{C} \mid |s-2| \le 3/2, f(s)=0\}.$$
+  Per il corollario \ref{1.2.5} con $r=3/2$ e $R=7/4$, troviamo
+  \begin{gather*}
+    M \le \frac{1}{\log(R/r)}\log\left(\frac{\max_{|s-2| \le 7/4}|f(s)|}{f(2)}\right) \le \\
+    \le \frac{1}{\log(7/6)}\log\left(\frac{\max_{|s-2| \le 7/4} 2|\zeta(s+iT)|}{2/3}\right) \le C_1\log{T}+C_2 \ll \log{T},
+  \end{gather*}
+  dove abbiamo stimato $f(2)$ usando quanto trovato per $\mathfrak{Re}\,\zeta(2+iT)$, mentre il massimo dentro al logaritmo è stimato usando che $|\zeta(\sigma+iT)| \ll T$ per il lemma \ref{lls} con $\sigma \ge 1/4$.
+\end{proof}
+
+\begin{ftt}
+  Il termine che è $O(\log{T})$ in \eqref{rievonmformula} è comunemente chiamato $\mathcal{R}$. L'ipotesi di Lindelöf implica $\mathcal{R}=o(\log{T})$, mentre l'ipotesi di Riemann implica $\mathcal{R}=O\left(\dfrac{\log{T}}{\log{\log{T}}}\right)$.
+\end{ftt}
