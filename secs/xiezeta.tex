@@ -1,0 +1,39 @@
+Dovevamo capire qual è l'ordine di $\xi$ come funzione intera. Avevamo già controllato per $\sigma>1$, quindi ci manca $\sigma \ge 1/2$. Ricordiamo che $\xi(s)=\dfrac{s(s-1)}{2}\pi^{-\frac{s}{2}}\Gamma\left(\dfrac{s}{2}\right)\zeta(s)$. Per il lemma \ref{lls} abbiamo già $\zeta(s) \ll |s|$ per $\sigma \ge 1/2$; inoltre, ricordando il corollario \ref{gammaord}, abbiamo
+\begin{gather*}
+  \Gamma(s) \ll_{\epsilon} e^{|s|^{1+\epsilon}} \text{ per ogni } \epsilon>0, \quad \pi^{-\frac{s}{2}} \ll 1, \quad \frac{s(s-1)}{2} \ll |s^2| \implies \\
+  \implies \xi(s) \ll_{\epsilon} e^{|s|^{1+\epsilon}} \text{ per }\sigma \ge 1/2.
+\end{gather*}
+Da $\xi(s)=\xi(1-s)$, otteniamo che è vero per ogni $\sigma$. Scriviamo $\xi$ con il prodotto di Weierstrass:
+$$\xi(s)=e^{a+As}\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{\frac{s}{\rho}};$$
+dev'essere $\displaystyle a=\log\big(\xi(0)\big)=\log\left(\frac{1}{2}\right) \implies \xi(s)=\frac{1}{2}e^{As}\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{\frac{s}{\rho}}$.
+
+Consideriamo invece $(s-1)\zeta(s)=\xi(s)\dfrac{\pi^{\frac{s}{2}}}{\frac{s}{2}\Gamma\left(\frac{s}{2}\right)}$. Dall'equazione appena scritta otteniamo che ha ordine $1$, dunque si ha (ricordando anche gli zeri banali)
+$$(s-1)\zeta(s)=e^{b+Bs}\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{\frac{s}{\rho}}\prod_{n=1}^{+\infty}\left(1+\frac{s}{2n}\right)e^{-\frac{s}{2n}};$$
+dev'essere $\displaystyle b=\Bigg(\log\left(s-1)\zeta(s)\right)\Bigg)_{s=0}=\log\left(\frac{1}{2}\right) \implies$
+$$\implies (s-1)\zeta(s)=\frac{1}{2}e^{Bs}\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{\frac{s}{\rho}}\prod_{n=1}^{+\infty}\left(1+\frac{s}{2n}\right)e^{-\frac{s}{2n}}.$$
+
+Confrontando i prodotti di Weierstrass per $\zeta$ e $\xi$ usando l'equazione che lega le due funzioni, ricordando anche la definizione di $\Gamma$, si ha $B=A+\frac{1}{2}\log{\pi}+\frac{\gamma}{2}$. Andiamo a calcolarci $A$ e $B$.
+
+$$A=\frac{\xi'}{\xi}(0)=2\xi'(0), \quad B=\left(\frac{1}{s-1}+\frac{\zeta'}{\zeta}(0)\right)_{s=0}=-2\zeta'(0)-1.$$
+Si ha anche
+\begin{gather*}
+  \frac{B}{2}=\frac{A}{2}+\frac{1}{4}\log{\pi}+\frac{\gamma}{4} \implies \\
+  \implies \xi'(0)+\zeta'(0)=-\frac{1}{2}-\frac{1}{4}\log{\pi}-\frac{\gamma}{4}.
+\end{gather*}
+Vogliamo calcolare $\xi'(0)$ usando l'equazione funzionale per $\xi$. Dalla definizione abbiamo
+\begin{gather*}
+  \xi'(s)=\frac{(s-1)\zeta(s)}{2}\pi^{-\frac{s}{2}}\Gamma\left(\frac{s}{2}\right)-\frac{1}{4}\log{\pi}\cdot s(s-1)\zeta(s)\Gamma\left(\frac{s}{2}\right)\pi^{-\frac{s}{2}}+ \\
+  +\frac{s}{4}\pi^{-\frac{s}{2}}\Gamma'\left(\frac{s}{2}\right)(s-1)\zeta(s)+\frac{s}{2}\pi^{-\frac{s}{2}}\Gamma\left(\frac{s}{2}\right)D\big(\zeta(s)(s-1)\big)
+\end{gather*}
+
+Nella dimostrazione del lemma \ref{lls} abbiamo visto che
+$$\zeta(s)=\frac{1}{s-1}+1-s\int_1^{+\infty} \frac{\{u\}}{u^{s+1}}\diff u \implies \lim_{s \longrightarrow 1} \left(\zeta(s)-\frac{1}{s-1}\right)=\gamma,$$
+dunque dev'essere $\zeta(s)=\dfrac{1}{s-1}+\gamma+(s-1)g(s)$, con $g$ una qualche funzione intera. Allora otteniamo
+$$\xi'(1)=\frac{\Gamma\left(\frac{1}{2}\right)}{2\sqrt{\pi}}-\frac{1}{4}\log{\pi}\frac{\Gamma\left(\frac{1}{2}\right)}{\sqrt{\pi}}+\frac{\Gamma'\left(\frac{1}{2}\right)}{4\sqrt{\pi}}+\frac{\Gamma\left(\frac{1}{2}\right)}{2\sqrt{\pi}}\gamma;$$
+dobbiamo calcolare $\Gamma'\left(\frac{1}{2}\right)$. Dalla proposizione \ref{Gammagamma} abbiamo
+\begin{gather*}
+  \frac{\Gamma'}{\Gamma}(z)=-\gamma-\frac{1}{z}+\sum_{n=1}^{+\infty} \frac{z}{n(n+z)} \implies \\
+  \implies \frac{\Gamma'}{\Gamma}\left(\frac{1}{2}\right)=-\gamma-2+\sum_{n=1}^{+\infty} \frac{2}{2n(2n+1)}=-\gamma-2+2\sum_{n=1}^{+\infty} \left(\frac{1}{2n}-\frac{1}{2n+1}\right)= \\
+  =-\gamma-2+2\left(\frac{1}{2}-\frac{1}{3}+\frac{1}{4}-\frac{1}{5}+\dots\right)=-\gamma-2+2-2\log{2}=-\gamma-2\log{2} \implies \\
+  \implies \Gamma'\left(\frac{1}{2}\right)=-\sqrt{\pi}(\gamma+2\log{2}).
+\end{gather*}

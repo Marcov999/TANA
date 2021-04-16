@@ -132,8 +132,8 @@ Per simmetria, ci resta da verificare solo la regione $1/2 \le \sigma \le 1$. Ve
 \begin{proof}
   Sia $\sigma>1$. Per sommazione parziale,
   \begin{gather*}
-    \sum_{n \le x} \frac{1}{n^s}=\frac{\lfloor x\rfloor}{x^s}+s\int_1^x \frac{\lfloor u\rfloor}{u^{s+1}}\diff u=\frac{\lfloor x\rfloor}x^s+s\int_1^s \frac{\diff u}{u^s}-s\int_1^s \frac{\{u\}}{u^{s+1}}\diff u= \\
-    =\frac{\lfloor x\rfloor}{x^s}+\frac{s}{s-1}-s\int_1^s \frac{\{u\}}{u^{s+1}}\diff u \implies \zeta(s)=\frac{1}{s-1}+1-s\int_1^s \frac{\{u\}}{u^{s+1}}\diff u;
+    \sum_{n \le x} \frac{1}{n^s}=\frac{\lfloor x\rfloor}{x^s}+s\int_1^x \frac{\lfloor u\rfloor}{u^{s+1}}\diff u=\frac{\lfloor x\rfloor}x^s+s\int_1^x \frac{\diff u}{u^s}-s\int_1^x \frac{\{u\}}{u^{s+1}}\diff u= \\
+    =\frac{\lfloor x\rfloor}{x^s}+\frac{s}{s-1}-s\int_1^x \frac{\{u\}}{u^{s+1}}\diff u \implies \zeta(s)=\frac{1}{s-1}+1-s\int_1^{+\infty} \frac{\{u\}}{u^{s+1}}\diff u;
   \end{gather*}
   questa è l'estensione di $\zeta$ a $\sigma>0$ (l'integrale converge uniformemente per $\sigma \ge \epsilon$).
   \begin{oss}
