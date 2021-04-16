@@ -230,13 +230,13 @@ Curiosità: la congettura di Lindelöf ipotizza che $\zeta\left(\dfrac{1}{2}+it\
     \Delta_L\arg\Bigg(\Gamma\left(\frac{s}{2}+1\right)\Bigg)=\mathfrak{Im}\,\log\Bigg(\Gamma\left(\frac{5}{4}+i\frac{T}{2}\right)\Bigg)= \\
     =\mathfrak{Im}\Bigg(\left(\frac{3}{4}+i\frac{T}{2}\right)\log\left(\frac{5}{4}+i\frac{T}{2}\right)-\frac{5}{4}-i\frac{T}{2}+O\left(\frac{1}{T}\right)\Bigg)= \\
     =\frac{3}{4}\Bigg(\frac{\pi}{2}+O\left(\frac{1}{T}\right)\Bigg)+\frac{T}{2}\log\sqrt{\frac{T^2}{4}+\frac{25}{16}}-\frac{T}{2}+O\left(\frac{1}{T}\right)=\\
-    \frac{3}{8}\pi+\frac{T}{2}\log{T}+\frac{T}{2}\log\left(1+\frac{25}{4T^2}\right)-\frac{T}{2}+O\left(\frac{1}{T}\right)=\\
-    \frac{3}{8}\pi+\frac{T}{2}\log{T}-\frac{T}{2}+O\left(\frac{1}{T}\right).
+    \frac{3}{8}\pi+\frac{T}{2}\log\left(\frac{T}{2}\right)+\frac{T}{2}\log\left(1+\frac{25}{4T^2}\right)-\frac{T}{2}+O\left(\frac{1}{T}\right)=\\
+    \frac{3}{8}\pi+\frac{T}{2}\log\left(\frac{T}{2}\right)-\frac{T}{2}+O\left(\frac{1}{T}\right).
   \end{gather*}
-  Mettendo assieme si ha $N(T)=\dfrac{T}{2\pi}\log\left(\dfrac{T}{2\pi}\right)+\dfrac{7}{8}+S(T)+O\left(\dfrac{1}{T}\right)$, dove poniamo $S(T)=\dfrac{1}{\pi}\arg\Bigg(\zeta\left(\dfrac{1}{2}+iT\right)\Bigg)$. Si conclude con il lemma seguente.
+  Mettendo assieme si ha $N(T)=\dfrac{T}{2\pi}\log\left(\dfrac{T}{2\pi}\right)+\dfrac{7}{8}-\dfrac{T}{2\pi}+S(T)+O\left(\dfrac{1}{T}\right)$, dove poniamo $S(T)=\dfrac{1}{\pi}\arg\Bigg(\zeta\left(\dfrac{1}{2}+iT\right)\Bigg)$. Si conclude con il lemma seguente.
 \end{proof}
 
-\begin{lm}
+\begin{lm} \label{Slllog}
   Sia $S(T)=\dfrac{1}{\pi}\arg\Bigg(\zeta\left(\dfrac{1}{2}+iT\right)\Bigg)$; allora
   $$S(T) \ll \log{T}.$$
 \end{lm}
@@ -264,3 +264,59 @@ Curiosità: la congettura di Lindelöf ipotizza che $\zeta\left(\dfrac{1}{2}+it\
 \begin{ftt}
   Il termine che è $O(\log{T})$ in \eqref{rievonmformula} è comunemente chiamato $\mathcal{R}$. L'ipotesi di Lindelöf implica $\mathcal{R}=o(\log{T})$, mentre l'ipotesi di Riemann implica $\mathcal{R}=O\left(\dfrac{\log{T}}{\log{\log{T}}}\right)$.
 \end{ftt}
+
+Dalla dimostrazione della formula di Riemann-Von Mangoldt abbiamo che $N(T)-\dfrac{T}{2\pi}\log\left(\dfrac{T}{2\pi}\right)+\dfrac{T}{2\pi}=\dfrac{7}{8}+S(T)+O\left(\dfrac{1}{T}\right)$;
+Littlewood ha dimostrato che $\displaystyle S_1(T)=\int_0^T S(t)\diff t \ll \log{T}$ (se il risultato del lemma \ref{Slllog} fosse ottimale, questo significherebbe che $S$ cambia spesso di segno, quindi ha molti zeri). Si ha dunque
+$$\lim_{T \longrightarrow +\infty} \frac{1}{T} \int_0^T \left[N(t)-\frac{t}{2\pi}\left(\frac{t}{2\pi}\right)-\frac{t}{2\pi}\right)]\diff t=\frac{7}{8},$$
+che ci dice che la quantità $\frac{7}{8}$ nella formula è relativamente importante, quindi non possiamo trascurarla con troppa leggerezza.
+
+\begin{cor}
+  uniformemente in $T$ e $H$ si ha che
+  $$N(T+H)-N(T) \ll (H+1)\log(T+H).$$
+  Inoltre, esiste $H_0$ t.c. per $H \ge H_0$ si ha
+  $$N(T+H)-N(T) \gg H\log{T}.$$
+\end{cor}
+
+\begin{proof}
+  \begin{gather*}
+    N(T+H)-N(T)= \\
+    =\frac{T+H}{2\pi}\log\left(\frac{T+H}{2\pi}\right)-\frac{T+H}{2\pi}-\Bigg(\frac{T}{2\pi}\log\left(\frac{T}{2\pi}\right)-\frac{T}{2\pi}\Bigg)+O\big(\log(T+H)\big)= \\
+    =\int_{\frac{T}{2\pi}}^{\frac{T+H}{2\pi}} \log{t}\diff t+O\big(\log(T+H)\big).
+  \end{gather*}
+  Per il teorema del valor medio, esiste $0 \le \delta \le 1$ t.c.
+  $$N(T+H)-N(T)=\frac{H}{2\pi}\log\left(\frac{T+\delta H}{2\pi}\right)+O\big(\log(T+H)\big);$$
+  la prima parte della tesi segue immediatamente. Per la seconda, notiamo che
+  $$\frac{H}{2\pi}\log\left(\frac{T+\delta H}{2\pi}\right)+O\big(\log(T+H)\big)>\frac{H}{2\pi}\log\left(\frac{T}{2\pi}\right)+O\big(\log(T+H)\big) \gg H\log{T},$$
+  dove serve $H \ge H_0$ per evitare che domini il termine $O$-grande. %secondo me non serve, chiedi a Puglisi ma spiegati bene
+\end{proof}
+
+\begin{cor}
+  Siano $\rho_n=\beta_n+i\gamma_n$ gli zeri non banali di $\zeta$, ordinati per parte immaginaria crescente (consideriamo solo $\gamma_n>0$) e contati con moltepicità; allora si ha $\gamma_n \sim \dfrac{2\pi n}{\log n}$.
+
+  (Littlewood: $\gamma_{n+1}-\gamma_n \ll \dfrac{1}{\log{\log{\log{\gamma_n}}}}$)
+\end{cor}
+
+\begin{proof}
+  Si ha
+  \begin{gather*}
+    \frac{\gamma_n}{2\pi}\log{\gamma_n} \sim \frac{\gamma_n+1}{2\pi}\log\left(\frac{\gamma_n+1}{2\pi}\right) \sim N(\gamma_n+1) \ge n \ge \\
+    \ge N(\gamma_n-1) \sim \frac{\gamma_n-1}{2\pi}\log\left(\frac{\gamma_n-1}{2\pi}\right) \sim \frac{\gamma_n}{2\pi}\log{\gamma_n} \implies \\
+    \implies n \sim \frac{\gamma_n}{2\pi}\log{\gamma_n} \implies \log{n} \sim \log{\gamma_n}+\log\log{\gamma_n}-\log{2\pi} \sim \log{\gamma_n} \implies \\
+    \implies \gamma_n \sim \frac{2\pi n}{\log{\gamma_n}} \sim \frac{2\pi n}{\log{n}}.
+  \end{gather*}
+\end{proof}
+
+\begin{cor}
+  La successione $\rho_n=\beta_n+i\gamma_n$ ha esponente di convergenza $1$.
+\end{cor}
+
+\begin{proof}
+  Si ha
+  \begin{gather*}
+    \sum_{n=1}^{+\infty} \frac{1}{|\rho_n|^{1+\epsilon}} \le \sum_{n=1}^{+\infty} \frac{1}{|\gamma_n|^{1+\epsilon}} \le c_1 \sum_{n=1}^{+\infty} \frac{(\log{n})^{1+\epsilon}}{n^{1+\epsilon}} \le c_2 \sum_{n=1}^{+\infty} \frac{1}{n^{1+\epsilon/2}}<+\infty,
+  \end{gather*}
+  ma, poiché $|\beta_n| \le 1$, abbiamo che
+  \begin{gather*}
+    \sum_{n=1}^{+\infty}>\sum_{n=1}^{+\infty} \frac{1}{1+|\gamma_n|} \ge \sum_{n=1}^{+\infty} \frac{1}{1+\frac{c_3n}{\log{n}}}=\sum_{n=1}^{+\infty} \frac{\log{n}}{\log{n}+c_3n}=+\infty.
+  \end{gather*}
+\end{proof}
