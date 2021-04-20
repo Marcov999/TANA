@@ -71,3 +71,82 @@ $$\zeta(\sigma+it)=(\sigma+it-1-it)h(\sigma+it)=(\sigma-1)h(\sigma+it),$$
 con $h$ una qualche funzione olomorfa in un intorno di $1+it$. Ma allora, poiché $4>3$, si ha
 $$\lim_{\sigma \longrightarrow 1} \zeta^3(\sigma)\zeta(\sigma+it)^4\zeta(\sigma+i2t)=0,$$
 in contraddizione con la disuguaglianza trovata.
+
+Diamo un'altra dimostrazione di questo fatto, dovuta a Ingham (si veda \cite{T}, capitolo III paragrafo 3.4). Dati $a,b \in \mathbb{C}$, usiamo che
+$$\frac{\zeta(s)\zeta(s-a)\zeta(s-a-b)}{\zeta(2s-a-b)}=\sum_{n=1}^{+\infty} \frac{\sigma_a(n)\sigma_b(n)}{n^s},$$
+dove $\displaystyle \sigma_{\alpha}(n)=\sum_{d \mid n} d^{\alpha}$. Prendendo $a=-b=i\gamma$ troviamo
+$$\frac{\zeta^2(s)\zeta(s-i\gamma)\zeta(s+i\gamma)}{\zeta(2s)}=\sum_{n=1}^{+\infty} \frac{\sigma_{i\gamma}(n)\sigma_{-i\gamma}(n)}{n^s}=\sum_{n=1}^{+\infty} \frac{|\sigma_{i\gamma}(n)|^2}{n^s}.$$
+%da verificare: affermazione sul polo in \sigma_0
+Sia $\sigma_0$ l'ascissa di convergenza dell'ultima serie che abbiamo scritto. Poiché i coefficienti della stessa sono maggiori o uguali a zero, abbiamo che la funzione $\frac{\zeta^2(s)\zeta(s-i\gamma)\zeta(s+i\gamma)}{\zeta(2s)}$ ha un polo in $\sigma_0$. Supponiamo per assurdo che abbia uno zero in $1+i\gamma$, dunque anche in $1-i\gamma$; allora per $s=1$ c'è un doppio zero che annulla il polo doppio di $\zeta^2(s)$ al numeratore. Dunque il primo polo che si incontra dev'essere in uno zero del denominatore, cioè (ci stiamo restringendo alla retta reale perché i coefficienti della serie sono non negativi) in $s=-1$. Allora dev'essere $\sigma_0 \le -1$, ma prendendo $s=1/2$ troviamo facilmente un assurdo (la funzione si annulla grazie al polo al denominatore, la serie no).
+
+Andiamo ora a cercare una regione in cui sono contenuti gli zeri non banali di $\zeta$. Abbiamo già visto che
+$$\frac{\zeta'}{\zeta}(s)=-\frac{1}{s-1}+A+\frac{1}{2}\log{\pi}-\frac{1}{2}\cdot\frac{\Gamma'}{\Gamma}\left(\frac{s}{2}+1\right)+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).$$
+
+\begin{prop}
+  (de la Vallée-Poussin, 1899) Esiste una costante $C_0>0$ t.c., se $\rho=\beta+i\gamma$ con $\gamma>0$ è uno zero non banale, allora
+  \begin{equation}
+    \beta<1-\frac{C_0}{\log{\gamma}}.
+  \end{equation}
+\end{prop}
+
+\begin{proof}
+  Si ha
+  $$-\mathfrak{Re}\left(\frac{\zeta'}{\zeta}(s)\right)=\frac{\sigma-1}{(\sigma-1)^2+t^2}-A_1+\frac{1}{2}\mathfrak{Re}\Bigg(\frac{\Gamma'}{\Gamma}\left(\frac{s}{2}+1\right)\Bigg)-\sum_{\rho}\mathfrak{Re}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).$$
+  Per $t \ge 2, 1<\sigma \le 2$, usando il corollario \ref{gammaprimosu} otteniamo
+  \begin{gather*}
+    -\mathfrak{Re}\left(\frac{\zeta'}{\zeta}(\sigma+it)\right)<C\log{t}-\sum_{\rho} \left(\frac{\sigma-\beta}{(\sigma-\beta)^2+(t-\gamma)^2}+\frac{\beta}{\beta^2+\gamma^2}\right)< \\
+    <C\log{t}-\sum_{\rho} \frac{\sigma-\beta}{(\sigma-\beta)^2+(t-\gamma)^2}.
+  \end{gather*}
+  Adesso, tenendo eventualmente solo lo zero dell'ipotesi, abbiamo
+  $$t=\begin{cases}
+    \gamma & \implies -\mathfrak{Re}\left(\dfrac{\zeta'}{\zeta}(\sigma+i\gamma)\right)<C\log{\gamma}-\dfrac{1}{\sigma-\beta} \\
+    2\gamma & \implies -\mathfrak{Re}\left(\dfrac{\zeta'}{\zeta}(\sigma+i2\gamma)\right)<C\log(2\gamma) \le C_1\log{\gamma} \\
+    =0 & \implies -\mathfrak{Re}\left(\dfrac{\zeta'}{\zeta}(\sigma)\right)=\dfrac{1}{\sigma-1}+O(1).
+\end{cases}$$
+Poiché siamo nel giusto semipiano di convergenza, scriviamo
+\begin{gather*}
+  -\frac{\zeta'}{\zeta}(s)=\sum_{n=1}^{+\infty} \frac{\Lambda(n)}{n^s} \implies \\
+  \implies -\mathfrak{Re}\left(\frac{\zeta'}{\zeta}(\sigma+it)\right)=\sum_{n=1}^{+\infty} \frac{\Lambda(n)}{n^{\sigma}}\cos(t\log{n}) \implies \\
+  \implies -3\cdot\mathfrak{Re}\left(\frac{\zeta'}{\zeta}(\sigma)\right)-4\cdot\mathfrak{Re}\left(\frac{\zeta'}{\zeta}(\sigma+i\gamma)\right)-\mathfrak{Re}\left(\frac{\zeta'}{\zeta}(\sigma+i2\gamma)\right) \ge 0 \implies \\
+  \implies 0 \le \frac{3}{\sigma-1}-\frac{4}{\sigma-\beta}+C_2\log{\gamma} \implies \frac{4}{\sigma-\beta} \le \frac{3}{\sigma-1}+C_2\log{\gamma}.
+\end{gather*}
+Prendendo $\sigma=1+\dfrac{\delta}{\log{\gamma}}$ con $\delta>0$, si ha la tesi.
+\end{proof}
+
+\begin{oss}
+  Si può dire che il primo zero ha $\gamma \ge 6$. Prendendo anche $6 \le \gamma \le t$, dato che $1-\frac{C_0}{\log{\gamma}} \le 1-\frac{C_0}{\log{t}}$, quello che troviamo è che la regione $\sigma>1-\dfrac{C_0}{\log(|t|+2)}$ è libera da zeri di $\zeta$. Questo risultato è stato migliorato:
+  $$\text{Littlewood, 1922: } \sigma>1-\frac{C_0\log\log(|t|+2)}{\log(|t|+2)};$$
+  $$\text{Vinogradov, 1958: } \sigma>1-\frac{C_0(\epsilon)}{\big(\log(|t|+2)\big)^{2/3+\epsilon}} \text{ per ogni }\epsilon>0.$$
+\end{oss}
+
+Per $t \ge 2$, abbiamo visto che
+$$-\mathfrak{Re}\left(\frac{\zeta'}{\zeta}(s)\right)<C\log{t}-\sum_{\rho} \mathfrak{Re}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).$$
+Prendendo $s=2+it$, la quantità $\frac{\zeta'}{\zeta}(s)$ è limitata, dunque a meno di cambiare costante troviamo
+\begin{gather*}
+  \mathfrak{Re}\sum_{\rho}\left(\frac{1}{(2-\beta)+i(t-\gamma)}+\frac{1}{\rho}\right)<C\log{t} \implies \\
+  \implies \sum_{\rho} \frac{1}{4+(t-\gamma)^2} \le \sum_{\rho} \left(\frac{2-\beta}{(2-\beta)^2+(t-\gamma)^2}+\frac{\beta}{\beta^2+\gamma^2}\right)<C\log{t} \implies \\
+  \implies \sum_{|\gamma-t| \ge 1} \frac{1}{4+(t-\gamma)^2} \le C\log{t}.
+\end{gather*}
+Otteniamo il seguente lemma.
+
+\begin{lm}
+  Se $-1 \le \sigma \le 2$ si ha
+  $$\frac{\zeta'}{\zeta}(s)=\sum_{|\gamma-t| \le 1} \frac{1}{s-\rho}+O\big(\log(|t|+2)\big).$$
+\end{lm}
+
+\begin{proof}
+  Per $|t| \ge 2$ abbiamo che
+  \begin{gather*}
+    \frac{\zeta'}{\zeta}(s)=\sum_{\rho} \left(\frac{1}{s-\rho}+\frac{1}{\rho}\right)+O(\log{t}) \\
+    \frac{\zeta'}{\zeta}(2+it)=\sum_{\rho}\left(\frac{1}{2+it-\rho}+\frac{1}{\rho}\right)+O(\log{t});
+  \end{gather*}
+  poiché $\frac{\zeta'}{\zeta}(2+it)$ è limitata, facendo la differenza otteniamo
+  $$\frac{\zeta'}{\zeta}(s)=\sum_{\rho} \left(\frac{1}{s-\rho}-\frac{1}{2+it-\rho}\right)+O(\log{t})=\sum_{\rho} \frac{2-\sigma}{(s-\rho)(2+it-\rho)}+O(\log{t}).$$
+  Ora osserviamo che
+  \begin{gather*}
+    \left| \sum_{|\gamma-t|>1} \frac{2-\sigma}{(s-\rho)(2+it-\rho)}\right| \le \sum_{|\gamma-t|>1} \frac{3}{(\gamma-t)^2} \ll \log{t} \implies \\
+    \implies \frac{\zeta'}{\zeta}(s)=\sum_{|\gamma-t| \le 1} \left(\frac{1}{s-\rho}-\frac{1}{2+it-\rho}\right)+O(\log{t}) \text{ e} \\
+    \sum_{|\gamma-t| \le 1} \frac{1}{|2+it-\rho|} \le \sum_{|\gamma-t| \le 1} \frac{1}{2-\beta} \le N(t+1)-N(t-1) \ll \log{t},
+  \end{gather*}
+  da cui la tesi.
+\end{proof}
