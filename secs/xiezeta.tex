@@ -129,7 +129,7 @@ Prendendo $s=2+it$, la quantità $\frac{\zeta'}{\zeta}(s)$ è limitata, dunque a
 \end{gather*}
 Otteniamo il seguente lemma.
 
-\begin{lm}
+\begin{lm} \label{zprimoz}
   Se $-1 \le \sigma \le 2$ si ha
   $$\frac{\zeta'}{\zeta}(s)=\sum_{|\gamma-t| \le 1} \frac{1}{s-\rho}+O\big(\log(|t|+2)\big).$$
 \end{lm}
@@ -150,3 +150,19 @@ Otteniamo il seguente lemma.
   \end{gather*}
   da cui la tesi.
 \end{proof}
+
+Torniamo su
+\begin{gather*}
+  S(T)=\frac{1}{\pi}\arg\Bigg(\zeta\left(\frac{1}{2}+iT\right)\Bigg)-\frac{1}{\pi}\arg\big(\zeta(2+iT)\big)= \\
+  =\frac{1}{\pi}\mathfrak{Im}\left[\log\Bigg(\zeta\left(\frac{1}{2}+iT\right)\Bigg)-\log\big(\zeta(2+iT)\big)\right]= \\
+  =-\frac{1}{\pi}\int_{1/2}^2 \mathfrak{Im}\left(\frac{\zeta'}{\zeta}(\sigma+iT)\right)\diff\sigma= \\
+  =-\frac{1}{\pi}\int_{1/2}^2 \sum_{|\gamma-T| \le 1} \mathfrak{Im}\left(\frac{1}{\sigma+iT-\rho}\right)\diff\sigma+O(\log{T})= \\
+  =-\frac{1}{\pi}\sum_{|\gamma-T| \le 1} \Delta_l\arg(s-\rho) +O(\log{T}) \ll \sum_{|\gamma-T| \le 1} 1 +O(\log{T}) \ll \log{T},
+\end{gather*}
+dove dalla terza alla quarta riga abbiamo usato il lemma \ref{zprimoz} ($l$ è il segmento da $\frac{1}{2}+iT$ a $2+iT$). Che valga $\Delta_l\arg(s-\rho) \ll 1$ per $|\gamma-T| \le 1$ segue da un po' di geometria.
+
+Riemann congetturò che
+$$\psi(x)=\sum_{n \le x} \Lambda(n)=x-\sum_{\rho} \frac{x^{\rho}}{\rho}-\frac{\zeta'}{\zeta}(0)-\frac{1}{2}\log\left(1-\frac{1}{x^2}\right).$$
+Beh, non proprio: l'espressione a destra è continua, a differenza di $\psi$. Utilizzeremo $\psi_0(x)=\displaystyle \sum_{n<x} \Lambda(n)+\frac{1}{2}\Lambda(x)$, dove poniamo $\Lambda=0$ fuori dagli interi. L'idea di Riemann è di scrivere
+$$\psi_0(x) \sim \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} -\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff x$$
+con $c>1$ e applicare il teorema dei residui. Ma come ha fatto a derivare un'espressione tanto precisa? Ha guardato i poli dell'integranda.
