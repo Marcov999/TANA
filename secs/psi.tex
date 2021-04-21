@@ -1,0 +1,126 @@
+Riemann congetturò che
+$$\psi(x)=\sum_{n \le x} \Lambda(n)=x-\sum_{\rho} \frac{x^{\rho}}{\rho}-\frac{\zeta'}{\zeta}(0)-\frac{1}{2}\log\left(1-\frac{1}{x^2}\right).$$
+Beh, non proprio: l'espressione a destra è continua, a differenza di $\psi$. Utilizzeremo $\psi_0(x)=\displaystyle \sum_{n<x} \Lambda(n)+\frac{1}{2}\Lambda(x)$, dove poniamo $\Lambda=0$ fuori dagli interi. L'idea di Riemann è di scrivere
+$$\psi_0(x) \sim \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} -\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff x$$
+con $c>1$ e applicare il teorema dei residui. Ma come ha fatto a derivare un'espressione tanto precisa? Ha guardato i poli dell'integranda.
+
+\begin{lm}
+  Dato $c>0$, sia $I(y,T)=\displaystyle \frac{1}{2\pi i}\int_{c-iT}^{c+iT} y^s\frac{\diff s}{s}$; allora
+  $$|I(y,T)-\delta(y)| \le \begin{cases}
+    y^c\min\left\{1,\frac{1}{T|\log{y}|}\right\} & \mbox{se } y\not=1 \\
+    \frac{c}{T} & \mbox{se } y=1,
+\end{cases}$$
+dove $\delta(y)=\begin{cases}
+  1 & \mbox{se } y>1 \\
+  \frac{1}{2} & \mbox{se } y=1 \\
+  0 & \mbox{se } 0<y<1
+\end{cases}$. Di conseguenza, $\displaystyle \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty} y^s\frac{\diff s}{s}=\delta(y)$.
+\end{lm}
+
+\begin{proof}
+  Preso $0<y<1$, consideriamo l'integrale sul cammino in figura, percorso in senso orario.
+  \begin{center}
+    \definecolor{uququq}{rgb}{0.25,0.25,0.25}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+      \draw[->,color=black] (-2,0) -- (6.86,0);
+      \foreach \x in {-1,1,2,3,4,5,6}
+      \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+      \draw[->,color=black] (0,-3.94) -- (0,3.98);
+      \foreach \y in {-3,-2,-1,1,2,3}
+      \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+      \clip(-2,-3.94) rectangle (6.86,3.98);
+      \draw (0.54,-2.47)-- (0.54,2.47);
+      \draw [domain=0.54:6.859999999999997] plot(\x,{(--10.36-0*\x)/4.2});
+      \draw [domain=0.54:6.859999999999997] plot(\x,{(-10.7-0*\x)/4.34});
+      \begin{scriptsize}
+        \fill [color=black] (0.54,0) circle (1.5pt);
+        \draw[color=black] (0.8,0.28) node {$c$};
+        \fill [color=uququq] (0.54,2.47) circle (1.5pt);
+        \draw[color=uququq] (0.56,2.78) node {$c+iT$};
+        \fill [color=uququq] (0.54,-2.47) circle (1.5pt);
+        \draw[color=uququq] (0.56,-2.78) node {$c-iT$};
+      \end{scriptsize}
+    \end{tikzpicture}
+  \end{center}
+  In teoria dovremmo fare un integrale chiuso e poi mandare un lato a infinito, ma visto che non ci sono poli per $y^s/s$ nella regione considerata e sul lato che si manda a infinito la funzione va a $0$ uniformemente, saltiamo il passaggio. Per il teorema dei residui
+  $$\frac{1}{2\pi i}\int_{c-iT}^{c+iT} \frac{y^s}{s}\diff s=\frac{1}{2\pi i}\left(\int_{c-iT}^{+\infty-iT}-\int_{c+iT}^{+\infty+iT}\right)y^s\frac{\diff s}{s}=\mathcal{I}_1-\mathcal{I}_2.$$
+  Si ha $\displaystyle |\mathcal{I}_1| \le \frac{1}{T} \int_c^{+\infty} y^{\sigma}\diff\sigma=\frac{1}{T}\cdot\frac{y^c}{|\log{y}|}$ e $\mathcal{I}_2$ si stima allo stesso modo.
+
+  Per l'altro argomento del minimo, consideriamo la circonferenza di centro l'origine e raggio $R=\sqrt{c^2+T^2}$ e prendiamo il cammino da $c-iT$ a $c+iT$ e ritorno che gira in senso orario (quindi il segmento passante per $c$ all'andata e l'arco destro al ritorno). Sia $\gamma$ l'arco percorso al ritorno.
+  \begin{center}
+    \definecolor{uququq}{rgb}{0.25,0.25,0.25}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw[->,color=black] (-3.14,0) -- (3.52,0);
+\foreach \x in {-3,-2,-1,1,2,3}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[->,color=black] (0,-3.24) -- (0,3.34);
+\foreach \y in {-3,-2,-1,1,2,3}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\clip(-3.14,-3.24) rectangle (3.52,3.34);
+\draw(0,0) circle (2.49cm);
+\draw (0,0)-- (0.8,2.36);
+\draw (0.8,-2.36)-- (0.8,2.36);
+\begin{scriptsize}
+\fill [color=black] (0.8,0) circle (1.5pt);
+\draw[color=black] (1.02,0.2) node {$c$};
+\fill [color=black] (0,2.36) circle (1.5pt);
+\draw[color=black] (-0.22,2.3) node {$T$};
+\fill [color=uququq] (0.8,2.36) circle (1.5pt);
+\draw[color=uququq] (0.96,2.62) node {$c+iT$};
+\fill [color=uququq] (0.8,-2.36) circle (1.5pt);
+\draw[color=uququq] (0.96,-2.56) node {$c-iT$};
+\end{scriptsize}
+\end{tikzpicture}
+  \end{center}
+  Allora per il teorema dei residui
+  \begin{gather*}
+    \left|\frac{1}{2\pi i}\int_{c-iT}^{c+iT} \frac{y^s}{s}\diff s\right|=\left|\frac{1}{2\pi i}\int_\gamma \frac{y^s}{s}\diff s \right| \le \\
+    \frac{y^c}{2\pi} \int_{\gamma} \frac{\diff|s|}{|s|} \le y^c\frac{\pi R}{2\pi R} \le \frac{y^c}{2}.
+  \end{gather*}
+  Per $y>1$, basta ripetere le stesse stime ma con i cammini ``di sinistra'' percorsi in senso antiorario, facendo attenzione al polo in $0$: $\displaystyle \underset{s=0}{\text{Res}}\,\frac{y^s}{s}=1$.
+
+  Adesso facciamo $y=1$ (non saremo rigorosi, ma si può sistemare facilmente):
+  \begin{gather*}
+    \frac{1}{2\pi i}\int_{c-iT}^{c+iT}\frac{\diff s}{s}=\frac{1}{2\pi i}\int_{-T}^T \frac{i\diff t}{c+it}=\frac{1}{2\pi}\int_{-T}^T \frac{c-it}{c^2+t^2}\diff t=\\
+    =\frac{1}{2\pi}\int_{-T}^T \frac{c}{c^2+t^2}\diff t=\frac{1}{\pi}\int_0^T \frac{c}{c^2+t^2}\diff t\overset{x=t/c}{=}\frac{1}{\pi}\int_0^{T/c} \frac{\diff x}{x^2+1}= \\
+    =\frac{1}{\pi}\left(\int_0^{+\infty}\frac{\diff x}{x^2+1}-\int_{T/c}^{+\infty}\frac{\diff x}{x^2+1}\right) \le \frac{1}{2}+\frac{c}{T}.
+  \end{gather*}
+\end{proof}
+
+Prendiamo ora $y=\frac{x}{n}$ con $n \in \mathbb{N}$. Si ha
+$$\frac{1}{2\pi i}\int_{c-iT}^{c+iT} \frac{\Lambda(n)}{n^s}x^s\frac{\diff s}{s}=\Lambda(n)\cdot \begin{cases}
+  1+O\Bigg(\left(\dfrac{x}{n}\right)^c\min\left\{1,\dfrac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right\}\Bigg) & \mbox{se }n < x \\
+  \dfrac{1}{2}+O\left(\dfrac{c}{T}\right) & \mbox{se }n=x \text{ (e }n=p^a\text{)} \\
+  O\Bigg(\left(\dfrac{x}{n}\right)^c\min\left\{1,\dfrac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right\}\Bigg) & \mbox{se }n>x.
+\end{cases}$$
+Di conseguenza, per $c>1$ abbiamo
+\begin{gather*}
+  \sum_{n \le x} \Lambda(n)+\frac{\Lambda(x)}{2}=\frac{1}{2\pi i}\int_{c-iT}^{c+iT} \left(\sum_{n=1}^{+\infty}\frac{\Lambda(n)}{n^s}\right)\frac{x^s}{s}\diff s+\\
+  +O\left(\sum_{n=1,n\not=x}^{+\infty} \frac{\Lambda(n)}{n^c}x^c\min\left\{1,\frac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right\}+\frac{c\Lambda(x)}{T}\right).
+\end{gather*}
+Vogliamo dare una stima del resto, facendo un po' di casi. Prendiamo anche $c=1+\dfrac{1}{\log{x}}$, per avere $x^c=ex \ll x$. Resterà così.
+\begin{enumerate}
+  \item Partiamo dal più semplice: $\dfrac{c\Lambda(x)}{T} \ll \dfrac{\log{x}}{T}$.
+  \item Ora facciamo la somma per $n \le \frac{3}{4}x$ o $n \ge \frac{5}{4}x$, per cui $\left|\log\left(\frac{x}{n}\right)\right| \gg 1$. Dobbiamo dunque stimare
+  $$\left(\sum_{n \le \frac{3}{4}x}+\sum_{n \ge \frac{5}{4}x}\right)\frac{\Lambda(n)}{n^c}\cdot\frac{x^c}{T} \ll \frac{x}{T}\sum_{n=1}^{+\infty} \frac{\Lambda(n)}{n^c} \ll \frac{x\log{x}}{T},$$
+  dove l'ultimo passaggio segue scrivendo la somma come $-\frac{\zeta'}{\zeta}(c)$ e usando che $\frac{\zeta'}{\zeta}(\sigma) \ll \frac{1}{\sigma-1}$.
+  \item Per $\frac{3}{4}x<n<x$, sia $\frac{3}{4}x<x_1<x$ la massima tra le potenze di un primo in quell'intervallo. Allora
+  \begin{gather*}
+    \log\left(\frac{x}{x_1}\right)=-\log\left(\frac{x_1}{x}\right)=-\log\left(1-\frac{x-x_1}{x}\right)=\\
+    =\frac{x-x_1}{x}+\frac{1}{2}\left(\frac{x-x_1}{x}\right)^2+\dots>\frac{x-x_1}{x},
+  \end{gather*}
+  dunque la stima del termine $n=x_1$ diventa
+  $$\implies \Lambda(x_1)\left(\frac{x}{x_1}\right)^c\frac{x}{T(x-x_1)} \ll \frac{x\log{x}}{T(x-x_1)}.$$
+  E $\frac{3}{4}x<n<x_1$? Abbiamo
+  \begin{gather*}
+    \log\left(\frac{x}{n}\right) \ge \log\left(\frac{x_1}{n}\right)=-\log\left(\frac{n}{x_1}\right)=\\
+    =-\log\left(1-\frac{x_1-n}{x_1}\right)
+    \ge \frac{x_1-n}{x_1}=\frac{\nu}{x_1}
+  \end{gather*}
+  e troviamo
+  $$\sum_{1 \le \nu <x_1} \frac{\Lambda(x_1-\nu)x^cx_1}{(x_1-\nu)^cT\nu} \ll \frac{x(\log{x})^2}{T}.$$
+  Il caso $x<n<\frac{5}{4}x$ è analogo, prendendo $x_2$ la minima potenza di primo.
+\end{enumerate}
+
+Ora, definendo $\langle x\rangle$ come la distanza di $x$ dalla potenza di primo più vicina, mettendo assieme abbiamo trovato che
+$$\psi_0(x)=\frac{1}{2\pi i}\int_{c-iT}^{c+iT} -\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff s+O\left(\frac{x\log^2{x}}{T}+\frac{x\log{x}}{T\langle x\rangle}\right).$$
