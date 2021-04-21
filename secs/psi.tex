@@ -20,7 +20,6 @@ dove $\delta(y)=\begin{cases}
 \begin{proof}
   Preso $0<y<1$, consideriamo l'integrale sul cammino in figura, percorso in senso orario.
   \begin{center}
-    \definecolor{uququq}{rgb}{0.25,0.25,0.25}
     \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
       \draw[->,color=black] (-2,0) -- (6.86,0);
       \foreach \x in {-1,1,2,3,4,5,6}
@@ -35,10 +34,10 @@ dove $\delta(y)=\begin{cases}
       \begin{scriptsize}
         \fill [color=black] (0.54,0) circle (1.5pt);
         \draw[color=black] (0.8,0.28) node {$c$};
-        \fill [color=uququq] (0.54,2.47) circle (1.5pt);
-        \draw[color=uququq] (0.56,2.78) node {$c+iT$};
-        \fill [color=uququq] (0.54,-2.47) circle (1.5pt);
-        \draw[color=uququq] (0.56,-2.78) node {$c-iT$};
+        \fill [color=black] (0.54,2.47) circle (1.5pt);
+        \draw[color=black] (0.56,2.78) node {$c+iT$};
+        \fill [color=black] (0.54,-2.47) circle (1.5pt);
+        \draw[color=black] (0.56,-2.78) node {$c-iT$};
       \end{scriptsize}
     \end{tikzpicture}
   \end{center}
@@ -48,7 +47,6 @@ dove $\delta(y)=\begin{cases}
 
   Per l'altro argomento del minimo, consideriamo la circonferenza di centro l'origine e raggio $R=\sqrt{c^2+T^2}$ e prendiamo il cammino da $c-iT$ a $c+iT$ e ritorno che gira in senso orario (quindi il segmento passante per $c$ all'andata e l'arco destro al ritorno). Sia $\gamma$ l'arco percorso al ritorno.
   \begin{center}
-    \definecolor{uququq}{rgb}{0.25,0.25,0.25}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
 \draw[->,color=black] (-3.14,0) -- (3.52,0);
 \foreach \x in {-3,-2,-1,1,2,3}
@@ -65,10 +63,10 @@ dove $\delta(y)=\begin{cases}
 \draw[color=black] (1.02,0.2) node {$c$};
 \fill [color=black] (0,2.36) circle (1.5pt);
 \draw[color=black] (-0.22,2.3) node {$T$};
-\fill [color=uququq] (0.8,2.36) circle (1.5pt);
-\draw[color=uququq] (0.96,2.62) node {$c+iT$};
-\fill [color=uququq] (0.8,-2.36) circle (1.5pt);
-\draw[color=uququq] (0.96,-2.56) node {$c-iT$};
+\fill [color=black] (0.8,2.36) circle (1.5pt);
+\draw[color=black] (0.96,2.62) node {$c+iT$};
+\fill [color=black] (0.8,-2.36) circle (1.5pt);
+\draw[color=black] (0.96,-2.56) node {$c-iT$};
 \end{scriptsize}
 \end{tikzpicture}
   \end{center}
@@ -123,4 +121,70 @@ Vogliamo dare una stima del resto, facendo un po' di casi. Prendiamo anche $c=1+
 \end{enumerate}
 
 Ora, definendo $\langle x\rangle$ come la distanza di $x$ dalla potenza di primo più vicina, mettendo assieme abbiamo trovato che
-$$\psi_0(x)=\frac{1}{2\pi i}\int_{c-iT}^{c+iT} -\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff s+O\left(\frac{x\log^2{x}}{T}+\frac{x\log{x}}{T\langle x\rangle}\right).$$
+$$\psi_0(x)=\frac{1}{2\pi i}\int_{c-iT}^{c+iT} -\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff s+O\left(\frac{x\log^2{x}}{T}+\frac{x\log{x}}{T\langle x\rangle}\right);$$
+dunque
+$$\psi_0(x)=\frac{1}{2\pi i}\int_{c-iT}^{c+iT} -\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff s+R(x,T),$$
+dove $R(x,T) \ll \dfrac{x\log^2{x}}{T}$ per $x \in \mathbb{N}$. Consideriamo ora il cammino in figura.
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw[->,color=black] (-3.36,0) -- (2.27,0);
+\foreach \x in {-3,-2,-1,1,2}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
+\draw[->,color=black] (0,-2.01) -- (0,2.23);
+\foreach \y in {-2,-1,1,2}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\clip(-3.36,-2.01) rectangle (2.27,2.23);
+\draw (-2.13,-1.25)-- (1.2,-1.25);
+\draw (1.2,-1.25)-- (1.2,1.25);
+\draw (1.2,1.25)-- (-2.13,1.25);
+\draw (-2.13,1.25)-- (-2.13,-1.25);
+\draw [dash pattern=on 2pt off 2pt] (0.5,-1.25)-- (0.5,1.25);
+\begin{scriptsize}
+\fill [color=black] (1,0) circle (1.5pt);
+\draw[color=black] (1,0.18) node {$1$};
+\fill [color=black] (1.2,0) circle (1.5pt);
+\draw[color=black] (1.3,0.12) node {$c$};
+\fill [color=black] (0,1.25) circle (1.5pt);
+\draw[color=black] (0.2,1.4) node {$T$};
+\fill [color=black] (0,-1.25) circle (1.5pt);
+\draw[color=black] (0.26,-1.4) node {$-T$};
+\fill [color=black] (-2.13,0) circle (1.5pt);
+\draw[color=black] (-2.4,0.12) node {$-U$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+Prendiamo $T\not=\gamma$ per non passare dagli zeri non banali, allora usando ancora una volta il teorema dei residui si ha
+\begin{gather*}
+  \psi_0(x)=x-\sum_{|\gamma|<T} \frac{x^{\rho}}{\rho}-\frac{\zeta'}{\zeta}(0)-\sum_{1 \le n \le \frac{U}{2}} \frac{x^{-2n}}{-2n}+\\
+  +\frac{1}{2\pi i}\left(\int_{-U+iT}^{c+iT}-\int_{-U-iT}^{c-iT}+\int_{-U-iT}^{-U+iT}\right)\left(-\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff s\right)+R(x,T).
+\end{gather*}
+Per il corollario della formula di Riemann-Von Mangoldt abbiamo
+$$N(T+1)-N(T-1) \le C_0\log{T}.$$
+Suddividiamo l'intervallo $[T-1,T+1]$ in $2C_0\log{T}$ intervalli, di modo che ce ne sia sempre uno senza zeri. Allora possiamo scegliere $T$, variandolo al più di una quantità minore o uguale a $1$, t.c. $|\gamma-T| \gg \dfrac{1}{\log{T}}$. Usando allora il lemma \ref{zprimoz} otteniamo
+\begin{gather*}
+  \frac{\zeta'}{\zeta}(\sigma+iT) \ll \sum_{|\gamma-T| \le 1} \frac{1}{|s-\rho|}+O(\log{T}) \ll \log{T}\sum_{|\gamma-T| \le 1} 1 \ll \log^2{T} \implies \\
+  \implies \int_{-1 \pm +iT}^{c \pm iT} -\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff s \ll \frac{x^c\log^2{T}}{T} \ll \frac{x\log^2{T}}{T}.
+\end{gather*}
+
+\begin{oss}
+  Se $\sigma \le -1$ e $|s+2n| \ge 1/2$ per ogni $n \in \mathbb{N}$, come vedremo in seguito si ha
+  \begin{gather*}
+    \frac{\zeta'}{\zeta}(s) \ll \log(2|s|) \implies \\
+    \implies \log(2|U\pm iT|)x^{-U}\int_0^T \frac{\diff t}{U+t} \ll \frac{\log(2|U\pm iT|)}{x^U}\log{T} \underset{U \longrightarrow +\infty}{\longrightarrow} 0;
+  \end{gather*}
+  questa era la parte ``verticale'' dell'integrale di $\psi_0$, con stime fatte alla buona. Mandando $U$ a infinito, rimangono da stimare i pezzi ``orizzontali'' da $-1$ a $-\infty$. Viene la seguente stima trascurabile:
+  $$\frac{1}{T}\int_{-\infty}^{-1} \log(2|\sigma+iT|)x^{\sigma}\diff \sigma \ll \frac{x^{-1}\log{T}}{T\log{x}}.$$
+  Anche questa stima è fatta alla buona. Si veda \cite{D} per una dimostrazione più precisa.
+\end{oss}
+
+Mettendo assieme quanto visto finora, otteniamo la seguente proposizione.
+
+\begin{prop}
+  \begin{equation*}
+    \psi_0(x)=x-\sum_{|\gamma| < T} \frac{x^{\rho}}{\rho}-\frac{\zeta'}{\zeta}(0)-\frac{1}{2}\log\left(1-\frac{1}{x^2}\right)+R(x,T),
+  \end{equation*}
+  dove $R(x,T) \ll \dfrac{x\log^2(xT)}{T}$ per $x \in \mathbb{N}$ e $T \ge 2$.
+\end{prop}
+
+Bisogna stare attenti agli zeri mancanti (perché abbiamo cambiato un po' $T$, quindi dobbiamo sistemare), che però sono in un intervallo limitato, perciò sempre per il corollario di Riemann-Von Mangoldt un $O(\log{T})$. Allora il loro contributo è $O$-grande di:
+$$\frac{x^{\rho}}{\rho}\log{T} \ll \frac{x^{\beta}\log{T}}{T} \ll \frac{x\log{T}}{T}.$$
