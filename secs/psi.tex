@@ -166,7 +166,7 @@ Suddividiamo l'intervallo $[T-1,T+1]$ in $2C_0\log{T}$ intervalli, di modo che c
   \implies \int_{-1 \pm +iT}^{c \pm iT} -\frac{\zeta'}{\zeta}(s)\frac{x^s}{s}\diff s \ll \frac{x^c\log^2{T}}{T} \ll \frac{x\log^2{T}}{T}.
 \end{gather*}
 
-\begin{oss}
+\begin{oss} \label{zeeeta}
   Se $\sigma \le -1$ e $|s+2n| \ge 1/2$ per ogni $n \in \mathbb{N}$, come vedremo in seguito si ha
   \begin{gather*}
     \frac{\zeta'}{\zeta}(s) \ll \log(2|s|) \implies \\
@@ -188,3 +188,21 @@ Mettendo assieme quanto visto finora, otteniamo la seguente proposizione.
 
 Bisogna stare attenti agli zeri mancanti (perché abbiamo cambiato un po' $T$, quindi dobbiamo sistemare), che però sono in un intervallo limitato, perciò sempre per il corollario di Riemann-Von Mangoldt un $O(\log{T})$. Allora il loro contributo è $O$-grande di:
 $$\frac{x^{\rho}}{\rho}\log{T} \ll \frac{x^{\beta}\log{T}}{T} \ll \frac{x\log{T}}{T}.$$
+
+Dimostriamo adesso l'asserzione usata all'inizio dell'osservazione \ref{zeeeta}, e per farlo passeremo dall'equazione funzionale per la $\zeta$. Si ha
+\begin{gather*}
+  \frac{s(s-1)}{2}\pi^{-\frac{s}{2}}\Gamma\left(\frac{s}{2}\right)\zeta(s)=\xi(s)= \\
+  =\xi(1-s)=\frac{s(s-1)}{2}\pi^{\frac{s-1}{2}}\Gamma\left(\frac{1-s}{2}\right)\zeta(1-s) \implies \\
+  \implies \zeta(1-s)=\pi^{\frac{1}{2}-s}\frac{\Gamma\left(\frac{s}{2}\right)}{\Gamma\left(\frac{1-s}{2}\right)}\zeta(s).
+\end{gather*}
+Usando la proposizione \ref{gammaze1-z} e la formula di duplicazione di Legendre, otteniamo
+\begin{gather*}
+  \frac{\Gamma\left(\frac{s}{2}\right)}{\Gamma\left(\frac{1-s}{2}\right)}=\frac{\Gamma\left(\frac{s}{2}\right)\Gamma\left(\frac{s}{2}+\frac{1}{2}\right)}{\Gamma\left(\frac{1-s}{2}\right)\Gamma\left(\frac{1+s}{2}\right)}= \\
+  =\frac{\sqrt{\pi}2^{1-s}\Gamma(s)}{\pi/\sin\left(\frac{\pi}{2}-\frac{\pi s}{2}\right)}=2^{1-s}\pi^{-1/2}\cos\left(\frac{\pi s}{2}\right)\Gamma(s);
+\end{gather*}
+si ottiene dunque l'equazione funzionale per $\zeta$:
+\begin{equation} \label{eqfunzeta}
+  \zeta(1-s)=2^{1-s}\pi^{-s}\cos\left(\frac{\pi}{2}s\right)\Gamma(s)\zeta(s).
+\end{equation}
+Prendendo la derivata logaritmica si ha
+$$\frac{\zeta'}{\zeta}(1-s)=\log{2}+\log{\pi}+\frac{\pi}{2}\tan\left(\frac{\pi}{2}s\right)-\frac{\Gamma'}{\Gamma}(s)-\frac{\zeta'}{\zeta}(s).$$
