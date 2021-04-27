@@ -206,3 +206,73 @@ si ottiene dunque l'equazione funzionale per $\zeta$:
 \end{equation}
 Prendendo la derivata logaritmica si ha
 $$\frac{\zeta'}{\zeta}(1-s)=\log{2}+\log{\pi}+\frac{\pi}{2}\tan\left(\frac{\pi}{2}s\right)-\frac{\Gamma'}{\Gamma}(s)-\frac{\zeta'}{\zeta}(s).$$
+Per $\sigma \ge 2$, cioè $1-\sigma \le -1$, si ha
+$$\frac{\zeta'}{\zeta}(s)=-\sum_{n=1}^{+\infty} \frac{\Lambda(n)}{n^s} \ll 1;$$
+inoltre
+\begin{gather*}
+  \left|\tan\left(\frac{\pi}{2}s\right)\right|=\left|\frac{e^{i\frac{\pi}{2}s}-e^{-i\frac{\pi}{2}s}}{i(e^{i\frac{\pi}{2}s}+e^{-i\frac{\pi}{2}s})}\right|=\left|\frac{e^{\pi is}-1}{e^{\pi is}+1}\right| \le \\
+  \le \frac{e^{\pi t}+1}{e^{\pi t}-1}=1+\frac{2}{e^{\pi t}-1} \le 3,
+\end{gather*}
+dove l'ultima disuguaglianza vale per $t \ge 1/2$, preso fuori da un intorno dei punti $-2n$. Infine, per il corollario \ref{gammaprimosu} abbiamo
+$$\frac{\Gamma'}{\Gamma}(s) \ll \log{|s|}+O\left(\frac{1}{s}\right).$$
+Allora, per $\sigma \le -1 \implies |s| \ge 1$, possiamo riarrangiare quanto trovato per ottenere
+$$\frac{\zeta'}{\zeta}(s) \ll \log(2|1-s|) \le \log(2|s|),$$
+in quanto $|1-s| \le 1+|s| \le 2|s|$.
+
+Torniamo a $\psi_0$.
+\begin{gather*}
+  \psi_0(x)=\sum_{n<x} \Lambda(n)+\frac{1}{2}\Lambda(x) \implies \\
+  \implies \psi_0(x)=x-\sum_{|\gamma|<T} \frac{x^{\rho}}{\rho}+O\left(\frac{x\log^2(xT)}{T}+\log{x}\cdot\min\left\{1,\frac{x}{T\langle x\rangle}\right\}\right).
+\end{gather*}
+Per de la Vallée-Poussin si ha che esiste $c_0>0$ t.c.
+\begin{gather*}
+  \beta<1-\frac{c_0}{\log{T}} \text{ per ogni } \rho=\beta+i\gamma \text{ con } |\gamma|<T \implies \\
+  \implies \left|\sum_{|\gamma|<T} \frac{x^{\rho}}{\rho}\right| \le \max_{|\gamma|<T} x^{\beta} \sum_{|\gamma|<T} \frac{1}{|\rho|} \le x\exp\left(-\frac{c_0\log{x}}{\log{T}}\right)\sum_{|\gamma|<T} \frac{1}{|\rho|}.
+\end{gather*}
+Adesso, sommando per parti e usando Riemann-Von Mangoldt si ha
+\begin{gather*}
+  \sum_{|\gamma|<T} \frac{1}{|\rho|} \ll \sum_{2 \le \gamma \le T} \frac{1}{\gamma}=\left(\sum_{2 \le \gamma \le T}1\right)\frac{1}{T}-\int_2^T \left(\sum_{2 \le \gamma \le u}1\right)\frac{\diff u}{u^2}= \\
+  =\frac{N(T)}{T}+\int_2^T \frac{N(u)}{u^2}\diff u \ll \frac{T\log{T}}{T}+\int_2^T \frac{\log{u}}{u}\diff u \ll \\
+  \ll \log{T}+\log^2{T} \ll \log^2{T}.
+\end{gather*}
+Otteniamo dunque
+\begin{gather*}
+  \sum_{|\gamma|<T} \frac{x^{\rho}}{\rho} \ll x\log^2{T}\exp\left(-\frac{c_0\log{x}}{\log{T}}\right) \implies \\
+  \implies \psi_0(x)-x \ll x\Bigg(\log^2{T}\exp\left(-\frac{c_0\log{x}}{\log{T}}\right)+\frac{\log^2(xT)}{T}\Bigg).
+\end{gather*}
+Prendendo $T=\exp(\sqrt{\log{x}}) \implies \log{x}=\log^2{T}$, troviamo che esiste $0<c_1<1$ t.c.
+$$\psi_0(x)-x \ll x\exp(-c_1\sqrt{\log{x}}).$$
+Questo è un risultato importante.
+
+\begin{thm} \label{PNT}
+  (Prime Number Theorem) esiste $0<c_1<1$ t.c.
+  \begin{equation} \label{pnt}
+    \psi(x)=x+O\big(x\exp(-c_1\sqrt{\log{x}})\big).
+  \end{equation}
+\end{thm}
+
+\begin{oss}
+  Littlewood, 1922: $\psi(x)=x+O\big(x\exp(-c_1\sqrt{\log{x}\log\log{x}})\big)$;
+  Vinogradov-Korobov, 1958: $\psi(x)=x+O_{\epsilon}\Big(x\exp\big(-c_1(\log{x})^{3/5-\epsilon}\big)\Big)$. Questi seguono dai miglioramenti a de la Vallée-Poussin con dimostrazione analoga a quella del PNT.
+
+  Allo stesso modo, l'Ipotesi di Riemann ci dà $\psi(x)=x+O(x^{1/2}\log^2{x})$. Infatti
+  $$\left|\sum_{|\gamma|<T} \frac{x^{\rho}}{\rho}\right| \ll \sqrt{x}\sum_{|\gamma|<T} \frac{1}{|\gamma|} \ll \sqrt{x}\log^2{T},$$
+  poi prendendo $T=\sqrt{x}$ si procede come nella dimostrazione del PNT.
+\end{oss}
+
+C'è anche la Quasi Ipotesi di Riemann (QRH): detto $\displaystyle \theta=\sup_{\rho} \beta$, allora si congettura che $1/2<\theta<1$.
+
+\begin{exc}
+  QRH $\implies \psi(x)=x+O(x^{\theta}\log^2{x})$.
+\end{exc}
+
+Congettura di Montgomery: il resto è $x^{1/2}(\log\log{x})^2$. Non possiamo portarlo a $\sqrt{x}$, o per meglio dire sarebbe utopistico: si sa che $\psi(x)-x=\Omega_{\pm}(\sqrt{x})$.
+
+\begin{oss}
+  Se $\psi(x)=x+O_{\epsilon}(x^{\theta+\epsilon})$ per ogni $\epsilon>0$, allora $\beta \le \theta$ per ogni $\rho$. Infatti, per $\sigma>1$ si ha per sommazione parziale
+  \begin{gather*}
+    \sum_{n \le N} \frac{\Lambda(n)}{n^s}=\frac{\psi(N)}{N^s}+s\int_2^N \frac{\psi(u)}{u^{s+1}}\diff u \implies \text{[}R(u)=O_{\epsilon}(u^{\theta+\epsilon})\text{]}\\
+    \implies -\frac{\zeta'}{\zeta}(s)=s\int_2^{+\infty} \frac{\psi(u)}{u^{s+1}}\diff u=s\int_2^{+\infty} u^{-s}\diff u+s\int_2^{+\infty} \frac{R(u)}{u^{s+1}}\diff u= \\
+    =
+  \end{gather*}
+\end{oss}
