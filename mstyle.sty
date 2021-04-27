@@ -24,6 +24,10 @@
 {\refstepcounter{basicblock}\par\medskip\noindent\textbf{#1~\thebasicblock}.}
 {\medskip}
 \newenvironment{block*}[1][] {\par\medskip\noindent\textbf{#1}} {\medskip}
+\def\downparenthfill{$\m@th\braceld\leaders\vrule\hfill\bracerd$}
+\def\wideparen#1{\mathop{\vbox{\ialign{##\crcr\noalign{\kern3\p@}
+         \downparenthfill\crcr\noalign{\kern3\p@\nointerlineskip}
+         $\hfil\displaystyle{#1}\hfil$\crcr}}}\limits}
 
 \newcommand{\vect}{\overrightarrow}
 \renewcommand{\implies}{\Rightarrow}

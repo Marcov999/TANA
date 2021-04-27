@@ -271,8 +271,16 @@ Congettura di Montgomery: il resto è $x^{1/2}(\log\log{x})^2$. Non possiamo por
 \begin{oss}
   Se $\psi(x)=x+O_{\epsilon}(x^{\theta+\epsilon})$ per ogni $\epsilon>0$, allora $\beta \le \theta$ per ogni $\rho$. Infatti, per $\sigma>1$ si ha per sommazione parziale
   \begin{gather*}
-    \sum_{n \le N} \frac{\Lambda(n)}{n^s}=\frac{\psi(N)}{N^s}+s\int_2^N \frac{\psi(u)}{u^{s+1}}\diff u \implies \text{[}R(u)=O_{\epsilon}(u^{\theta+\epsilon})\text{]}\\
+    \sum_{n \le N} \frac{\Lambda(n)}{n^s}=\frac{\psi(N)}{N^s}+s\int_2^N \frac{\psi(u)}{u^{s+1}}\diff u \implies \\
     \implies -\frac{\zeta'}{\zeta}(s)=s\int_2^{+\infty} \frac{\psi(u)}{u^{s+1}}\diff u=s\int_2^{+\infty} u^{-s}\diff u+s\int_2^{+\infty} \frac{R(u)}{u^{s+1}}\diff u= \\
-    =
+    =\frac{s}{s-1}+s\int_2^{+\infty} \frac{R(u)}{u^{s+1}}\diff u.
   \end{gather*}
+  Poiché $R(u)=O_{\epsilon}(u^{\theta+\epsilon})$, per $\sigma > \theta+2\epsilon$ l'integrale è finito e quindi troveremmo una funzione olomorfa con polo solo in $1$, cioè $\zeta$ non avrebbe zeri in quella regione $\implies \beta \le \theta$.
 \end{oss}
+
+Sia $\displaystyle \vartheta(x)=\sum_{p \le x} \log{p}$ (\textsc{non} è la funzione di Jacobi). Si ha
+$$\psi(x)=\vartheta(x)+\vartheta(x^{1/2})+\dots+\vartheta(x^{1/N})\text{ con }x^{1/N} \ge 2 \implies N \ll \log{x}.$$
+Poiché $\vartheta(y) \ll y$ per il teorema di Chebyshev, allora
+$$\psi(x)=\vartheta(x)+O(\sqrt{x})+O(\sqrt[3]{x}\log{x})=\vartheta(x)+O(\sqrt{x}).$$
+Abbiamo che RH $\implies \vartheta(x)=x+O(\sqrt{x}\log^2{x})$ e analogamente otteniamo che QRH $\implies \vartheta(x)=x+O(x^{\theta}\log^2{x})$. Dalla prima troviamo $\pi(x)=\li{x}+O(\sqrt{x}\log{x})$ e analogamente partendo da QRH.
+Per farlo, si usa $\displaystyle \pi(x)=\frac{\vartheta(x)}{\log{x}}+\int_2^x\frac{\vartheta(u)}{u\log^2{u}}\diff u$, che è vera per sommazione parziale.

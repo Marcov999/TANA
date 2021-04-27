@@ -1,0 +1,25 @@
+\begin{defn}
+  Sia $f:\mathbb{R}^+ \longrightarrow \mathbb{R}$ t.c. $\displaystyle \int_0^{+\infty} |f(x)|x^{\sigma}\frac{\diff x}{x}<+\infty$ per $\sigma \in \mathbb{R}$ fissato. Si dice \textit{trasformata di Mellin} di $f$ la seguente:
+  $$\wideparen{f}(s)=\int_0^{+\infty} f(x)x^s\frac{\diff x}{x}\text{ con }s=\sigma+it.$$
+\end{defn}
+
+\begin{ex}
+  Se $f(x)=e^{-x}$ e $\sigma>0$, allora $\wideparen{f}(s)=\Gamma(s)$.
+\end{ex}
+
+\begin{oss}
+  Sia $x=e^{-2\pi u} \implies \frac{\diff x}{x}=-2\pi\diff u$. Allora
+  \begin{gather*}
+    \wideparen{f}(\sigma+it)=2\pi\int_{-\infty}^{+\infty} f(e^{-2\pi u})e^{-2\pi u\sigma-2\pi itu}\diff u= \\
+    =2\pi \int_{-\infty}^{+\infty} \phi_{\sigma}(u)e^{-2\pi itu}\diff u=2\pi\hat{\phi}_{\sigma}(t).
+  \end{gather*}
+\end{oss}
+
+\begin{prop}
+  Se $f$ è di classe $C^1$ e $\displaystyle \int_0^{+\infty} |f(x)|x^{\sigma}\frac{\diff x}{x}<+\infty$, si ha
+  $$f(x)=\frac{1}{2\pi i} \int_{\sigma-i\infty}^{\sigma+i\infty} \wideparen{f}(s)x^{-s}\diff s.$$
+\end{prop}
+
+\begin{proof}
+  Da scrivere.
+\end{proof}
