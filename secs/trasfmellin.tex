@@ -33,6 +33,10 @@
   Se $f$ è $C^1$ a tratti con limite destro e sinistro finiti nei punti di discontinuità, la proposizione \ref{mellinv} continua a valere purché si applichi a $\tilde{f}$, che coincide con $f$ a parte nei punti di discontinuità dove è uguale alla media dei due limiti, e interpretando l'integrale come limite. In tutti i casi si prende $\sigma>0$.
 \end{oss}
 
+\begin{oss}
+  Data $g(s)$ olomorfa in $\sigma_1 < \sigma < \sigma_2$ che sia anche continua in $\sigma_1 \le \sigma \le \sigma_2$ e t.c. $g(\sigma+it) \overset{|t| \longrightarrow +\infty}{\longrightarrow} 0$ per ogni $\sigma_1 \le \sigma \le \sigma_2$, si può dimostrare che $\displaystyle f(x)=\frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\infty} g(s)x^{-s}\diff s$ non dipende da $\sigma$ e si ha $g(s)=\wideparen{f}(s)$.
+\end{oss}
+
 \begin{ex}
   Vediamo la trasformata di Mellin di alcune funzioni, poi applichiamo la formula di inversione scrivendo però $y=1/x$. Nel secondo e terzo esempio, l'integrale della trasformata si fa iterando per parti.
   \begin{enumerate}
@@ -108,3 +112,29 @@ $$\sum_{n \le x} \Lambda(n)\log\left(\frac{x}{n}\right)=\frac{1}{2\pi i}\int_{\s
 \end{proof}
 
 Se valesse RH si otterrebbe $x+O(\sqrt{x})$, invece con QRH $x+O(x^{\theta})$.
+
+Mostriamo adesso che $\psi_1(x)=x+o(x)$. Dalla formula esplicita si ha
+$$\left|\sum_{\rho} \frac{x^{\rho}}{\rho^2}\right| \le \sum_{\rho} \frac{x^{\beta}}{|\rho|^2} \implies \frac{\psi_1(x)-x}{x} \ll \sum_{\rho} \frac{x^{\beta-1}}{|\rho|^2}.$$
+Poiché $\beta<1$, si ha
+$$\lim_{x \longrightarrow +\infty} \sum_{\rho} \frac{x^{\beta-1}}{|\rho|^2}=\sum_{\rho} \frac{1}{|\rho|^2} \lim_{x \longrightarrow +\infty} x^{\beta-1}=0.$$
+
+\begin{oss} \label{xpiuox}
+  Per $x \ge 2$ e $h \le x$ abbiamo
+  \begin{gather*}
+    \int_x^{x+h} \frac{\psi(u)}{u}\diff u \ge \frac{h}{x+h}\psi(x), \quad \int_{x-h}^x \frac{\psi(u)}{u}\diff u \le \frac{h}{x-h}\psi(x) \implies \\
+    \implies (x-h)\frac{\psi_1(x)-\psi_1(x-h)}{h} \le \psi(x) \le (x+h)\frac{\psi_1(x+h)-\psi_1(x)}{h}.
+  \end{gather*}
+\end{oss}
+
+\begin{prop}
+  Si ha $\psi(x)=x+o(x)$.
+\end{prop}
+
+\begin{proof}
+  \begin{gather*}
+    \psi_1(y) \sim y \implies (x-h)\frac{\psi_1(x)-\psi_1(x-h)}{h} \sim (x-h)\frac{x-x+h}{h}\sim x-h, \\
+    (x+h)\frac{\psi_1(x+h)-\psi_1(x)}{h} \sim x+h.
+  \end{gather*}
+  Basta prendere $h=o(x)$ (con $h=1$ costante si va sul sicuro) e dall'osservazione \ref{xpiuox} si ha
+  $$x \sim f(x) \le \psi(x) \le g(x) \sim x \implies \psi(x) \sim x.$$
+\end{proof}
