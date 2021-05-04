@@ -138,3 +138,26 @@ $$\lim_{x \longrightarrow +\infty} \sum_{\rho} \frac{x^{\beta-1}}{|\rho|^2}=\sum
   Basta prendere $h=o(x)$ (con $h=1$ costante si va sul sicuro) e dall'osservazione \ref{xpiuox} si ha
   $$x \sim f(x) \le \psi(x) \le g(x) \sim x \implies \psi(x) \sim x.$$
 \end{proof}
+
+Non dimostreremo il seguente risultato, che si trova nel capitolo 3 di \cite{T}.
+
+\begin{thm}
+  (Landau) Se si hanno $\phi(t), \theta(t)$ t.c. $\phi$ è monotona non decrescente e tende a $+\infty$, $\theta$ è monotona non crescente e $0 < \theta(t) \le 1$, inoltre $\dfrac{\phi(t)}{\theta(t)}=o(e^{\phi(t)})$ e per $1-\theta(t) \le \sigma \le 2$ si ha $\zeta(s) \ll e^{\phi(t)}$, allora esiste $c_0$ t.c.
+  $$\beta<1-\frac{\theta(2t+1)}{c_0\phi(2t+1)}.$$
+  In particolare, prendendo $\phi(t)=\log{t}$ e $\theta(t)=1/2$, si ottiene $\beta<1-\dfrac{1}{2c_0\log(2t+1)}$.
+\end{thm}
+
+Littlewood: $\theta(t)=\frac{(\log\log{t})^2}{\log{t}}, \phi(t)=A\log\log{t} \implies \beta<1-\frac{C\log\log{T}}{\log{T}}$.
+
+Vinogradov: $\theta(t)=\frac{A}{(\log{t})^{2/3-2\epsilon}}, \phi(t)=(\log{t})^{\epsilon}, \zeta(s) \ll \exp\big((\log{t})^{\epsilon}\big) \implies$ \\
+$\implies \beta<1-\frac{C}{(\log{t})^{2/3-\epsilon}}$.
+
+Adesso altre cose che non vedremo nel dettaglio.
+
+\begin{enumerate}
+  \item $\displaystyle \sum_{N<n \le 2N} e^{2\pi i\alpha n} \ll \frac{1}{\|\alpha\|}$ con $0<\alpha<1$ e $\|\alpha\|=\min\big\{|\alpha-n|, n \in \mathbb{N}\cup\{0\}\big\}$;
+  \item $\displaystyle \sum_{N<n \le 2N} \Lambda(n)e^{2\pi i\alpha n} \ll \left(\frac{N}{\sqrt{q}}+\sqrt{Nq}+N^{3/4}\right)\log^4{N}$ dove $\left|\alpha-\frac{a}{q}\right| \le \frac{1}{q^2}$.
+  Con questo risultato si riesce a dimostrare il teorema di Vinogradov (1930): $2N+1=p_1+p_2+p_3$ (è la versione per i dispari della congettura di Goldbach);
+  \item $\displaystyle \sum_{N<n \le 2N} n^{-it}$ (Vinogradov, 1958). Questo porta a delle stime per $\zeta(\sigma+it)$ quando $1-\sigma \ll \frac{1}{(\log{t})^{2/3-\epsilon}}$;
+  \item c'è una stima per $\displaystyle \sum_{N<n \le 2N} \frac{\Lambda(n)}{n^{it}}$? Non davvero, però vale il seguente risultato dovuto a Turán: se $\displaystyle \sum_{N<n \le 2N} \frac{\Lambda(n)}{n^{it}} \ll \frac{N}{t^b}$ per $N \ge t^a$, allora $\beta<1-\frac{b^2}{a^3}$ (correggere i coefficienti di $a$ e $b$ se e quando lo ridice).
+\end{enumerate}

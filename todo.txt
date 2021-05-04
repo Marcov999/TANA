@@ -10,8 +10,11 @@ Lez09: ok
 Lez10: ok
 Lez11: ok
 Lez12: ok
-Lez13: vedere quando aggiorna il registro
-Lez14: vedere quando aggiorna il registro
+Lez13: ok
+Lez14: ok
+Lez15: ok
+Lez16: ok
+Lez17: da scrivere quando aggiorna il registro
 
 Da rivedere con gli appunti di Viola e i libri (Davenport e Titchmarsh) a partire dalla Lez01.
 
@@ -20,5 +23,3 @@ Dopo aver prolungato la zeta di Riemann, discorso sugli zeri: guardando anche gl
 Calcolo del resto di \psi_0: ricontrollare, c'è la versione corretta (ma che salta alcuni passaggi) sul Davenport a pag 108-109
 
 Scrivere un README decente
-
-Per me: la cosa sulle serie di Dirichlet
