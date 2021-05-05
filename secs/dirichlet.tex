@@ -96,9 +96,9 @@ Andiamo adesso a definire una classe di funzioni molto importanti, non solo perc
   \begin{gather*}
     \log\big(L(s,\chi)\big)=\sum_p \frac{\chi(p)}{p^s}+O\left(\sum_p \sum_{n \ge 2} \frac{1}{p^{\sigma n}}\right)=\\
     =\sum_p \frac{\chi(p)}{p^s}+O\left(\sum_p \frac{1}{p^{\sigma}(p^{\sigma}-1)}\right)=\sum_p \frac{\chi(p)}{p^s}+O(1) \implies \\
-    \implies \sum_{\chi\text{ mod }q}\log\big(L(s,\chi)\big)=\sum_{\chi\text{ mod }q}\sum_p \frac{\chi(p)}{p^s}+O(\big(\phi(q)\big).
+    \implies \sum_{\chi\text{ mod }q}\log\big(L(s,\chi)\big)=\sum_{\chi\text{ mod }q}\sum_p \frac{\chi(p)}{p^s}+O\big(\phi(q)\big).
   \end{gather*}
-  Prendendo la parte reale,
-  $$\log\left(\prod_{\chi\text{ mod }q}|L(s,\chi)|\right)=\sum_p\left(\frac{1}{p^{\sigma}}+\sum_{\chi\not=\chi_0}\frac{\chi(p)}{p^{\sigma}}\right)+O\big(\phi(q)\big).$$
-  Osserviamo che $\displaystyle \sum_p\frac{1}{p^{\sigma}} \longrightarrow +\infty$ per $\sigma \longrightarrow 1$.
+  Prendendo $s$ reale (e $\chi$ un carattere reale? Chiedere),
+  $$\log\left(\prod_{\chi\text{ mod }q}|L(s,\chi)|\right)=\sum_p\left(\frac{1}{p^s}+\sum_{\chi\not=\chi_0}\frac{\chi(p)}{p^s}\right)+O\big(\phi(q)\big).$$
+  Osserviamo che $\displaystyle \sum_p\frac{1}{p^s} \longrightarrow +\infty$ per $s \longrightarrow 1$.
 \end{oss}
