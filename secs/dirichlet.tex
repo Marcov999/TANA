@@ -1,1 +1,104 @@
-Da scrivere.
+\begin{defn}
+  Sia $q>1$ un intero. I \textit{caratteri} modulo $q$ sono i caratteri del gruppo abeliano $(\mathbb{Z}/q \mathbb{Z})^*$, definiti come stiamo per vedere.
+\end{defn}
+
+I caratteri modulo $q$ sono un gruppo isomorfo a $(\mathbb{Z}/q \mathbb{Z})^*$, quindi sono in numero $\phi(q)$, e sono funzioni $\chi:\mathbb{Z} \longrightarrow \mathbb{C}$ (se si restringe il dominio a $(\mathbb{Z}/q \mathbb{Z})^*$, si può osservare, in base alla definizione esplicita, che i caratteri sono omomorfismi a valori nelle radici $\phi(q)$-esime dell'unità). C'è un carattere principale $\chi_0$, che assume solo i valori $0$ e $1$ in base a una regola che andiamo a vedere. I caratteri devono soddisfare:
+\begin{itemize}
+  \item $(\chi_1\cdot\chi_2)(n)=\chi_1(n)\cdot\chi_2(n)$;
+  \item $\chi^{-1}(n)=\bar{\chi}(n)$;
+  \item $\chi(nm)=\chi(n)\chi(m)$ per ogni $n,m \in \mathbb{Z}$ (sono completamente moltiplicativi);
+  \item $\chi$ ha periodo $q$;
+  \item $|\chi(n)|=1$ se $(n,q)=1$, altrimenti è $0$.
+\end{itemize}
+
+Vediamo ora la definizione esplicita, procedendo per casi.
+
+Caso $p^a$ con $p>2$ primo. $(\mathbb{Z}/p^a \mathbb{Z})^*$ è ciclico, sia $g$ un generatore. Prendiamo $\omega$ t.c. $\omega^{\phi(p^a)}=1$ (radice $\phi(p^a)$-esima dell'unità). Dato $n$ intero, sia $\nu(n)$ t.c. $g^{\nu(n)}=[n]_{\mathbb{Z}/p^a \mathbb{Z}}$.
+Il carattere corrispondente a $\omega$ è $\chi_{p^a}(n)=\omega^{\nu(n)}=e^{\frac{2\pi im\nu(n)}{\phi(p^a)}}$.
+
+Il caso $(\mathbb{Z}/2 \mathbb{Z})^*$ è banale.
+
+Caso $2^2$: $\phi(4)=2$; il carattere principale è banale, per l'altro:
+$$\chi_4(n)=\begin{cases}
+  1 &\mbox{se } n \equiv 1 \pmod{4} \\
+  -1 &\mbox{se } n \equiv 3 \pmod{4} \\
+  0 &\mbox{se } n \equiv 0 \pmod{2}
+\end{cases}$$
+
+Caso $2^a$ con $a \ge 3$: $(\mathbb{Z}/2^a \mathbb{Z})^* \cong \mathbb{Z}/2 \mathbb{Z} \times \mathbb{Z}/2^{a-2} \mathbb{Z}$.
+Sia $g$ un generatore della parte $\mathbb{Z}/2^{a-2} \mathbb{Z}$ e $\nu_0'$ t.c. $g^{\nu_0'} \equiv [n]$. Allora $n \equiv (-1)^{\nu_0}5^{\nu_0'} \pmod{2^a}$ e poniamo $\chi(n)=e^{\pi im_0\nu_0+\frac{2\pi im_0'\nu_0'}{2^{a-2}}}$.
+
+Caso generale $q=2^a\cdot p_1^{a_1}\cdots p_r^{a_r}$:
+$$\chi_q(n)=e^{\pi im_0\nu_0+\frac{2\pi im_0'\nu_0'}{2^{a-2}}+\frac{2\pi im_1\nu_1}{\phi(p_1^{a_1})}+\dots+\frac{2\pi im_r\nu_r}{\phi(p_r^{a_r})}}.$$
+Alla scelta degli $m_j$ corrisponde il carattere, mentre la dipendenza da $n$ è data dai $\nu_j$.
+
+Per esercizio, il lettore può dimostrare le seguenti formule di ortogonalità:
+\begin{itemize}
+  \item $\displaystyle \sum_{n=1}^q \chi(n)=\begin{cases}
+    0 &\mbox{se }\chi\not=\chi_0 \\
+    \phi(q) &\mbox{se }\chi=\chi_0
+  \end{cases}$;
+  \item $\displaystyle \sum_{\chi\text{ mod }q} \chi(n)=\begin{cases}
+    0 &\mbox{se }n\not\equiv 1\pmod{q} \\
+    \phi(q) &\mbox{se }n\equiv 1\pmod{q}
+  \end{cases}$.
+\end{itemize}
+Osserviamo che $\bar{\chi}(a)=\chi^{-1}(a)=\chi(a^{-1})$. Dalla seguente formula di ortogonalità segue il seguente risultato: se $(a,q)=1$, allora
+$$\frac{1}{\phi(q)}\sum_{\chi\text{ mod }q}\bar{\chi}(a)\chi(n)=\begin{cases}
+  1 &\mbox{se }n\equiv a \pmod{q} \\
+  0 &\mbox{altrimenti}
+\end{cases};$$
+questo permette in un qualche senso di isolare i numeri congrui ad $a$ modulo $q$, per poter così dimostrare il teorema di Dirichlet.
+
+Andiamo adesso a definire una classe di funzioni molto importanti, non solo perché ci serviranno nella dimostrazione del suddetto teorema, ma anche perché sono una specie di generalizzazione della $\zeta$ di Riemann (se vogliamo, la $\zeta$ corrisponde alla funzione definita a partire dai ``caratteri modulo $1$'', anche se ovviamente quest'affermazione a poco o nessun senso).
+
+\begin{defn}
+  Sia $\chi$ un carattere non principale modulo $q$. Si dice funzione $L$ relativa al carattere $\chi$ la somma della seguente serie, definita per $\sigma>1$:
+  $$L(s,\chi)=\sum_{n=1}^{+\infty} \frac{\chi(n)}{n^s}.$$
+\end{defn}
+
+\begin{prop}
+  Se $\chi$ non è principale, la serie appena definita converge uniformemente per $\sigma \ge \epsilon>0$.
+\end{prop}
+
+\begin{proof}
+  Usando la solita sommazione per parti,
+  $$\sum_{n \le N} \frac{\chi(n)}{n^s}=\left(\sum_{n \le N} \chi(n)\right)N^{-s}+s\int_1^N\left(\sum_{n \le u} \chi(u)\right)\frac{\diff u}{u^{s+1}}.$$
+  Dalla prima formula di ortogonalità segue che $\displaystyle \left|\sum_{n \le N} \chi(n)\right| \le q$, dunque per $\sigma>1$ si ha
+  $$L(s,\chi)=s\int_1^{+\infty} \left(\sum_{n \le u}\chi(u)\right)\frac{\diff u}{u^{s+1}},$$
+  e questo integrale converge uniformemente in $\sigma \ge \epsilon>0$.
+\end{proof}
+
+\begin{oss}
+  Se prendiamo $\chi=\chi_0$ e consideriamo la serie associata, abbiamo $\displaystyle \sum_{n \le N} \chi_0(n) \le  \left(\left\lfloor \frac{N}{q}\right\rfloor+1\right)\phi(q)$, dunque non si ottiene convergenza uniforme per $\sigma \ge \epsilon>0$.
+\end{oss}
+
+\begin{oss}
+  Per l'identità di Eulero si ha, per $\sigma>1$ e per ogni carattere modulo $q$:
+  $$L(s,\chi)=\prod_p\left(1-\frac{\chi(p)}{p^s}\right)^{-1}.$$
+  In particolare,
+  \begin{gather*}
+    L(s,\chi_0)=\prod_p\left(1-\frac{\chi_0(p)}{p^s}\right)^{-1}=\prod_{p \nmid q}\left(1-\frac{1}{p^s}\right)^{-1}= \\
+    =\prod_p \left(1-\frac{1}{p^s}\right)^{-1}\prod_{p\mid q}\left(1-\frac{1}{p^s}\right)=\prod_{p\mid q}\left(1-\frac{1}{p^s}\right)\zeta(s),
+  \end{gather*}
+  da cui si ottiene che $L(s,\chi_0)$ è meromorfa con un polo semplice in $s=1$ con residuo $\displaystyle \prod_{p \mid q} \left(1-\frac{1}{p}\right)=\frac{\phi(q)}{q}$. Ha altri zeri oltre quelli di $\zeta$, che si ottengono quando $p^{-s}=1$, cioè $\sigma=0$ e $t=\frac{2k\pi}{\log{p}}$.
+\end{oss}
+
+\begin{oss}
+  Per $\sigma>1$ abbiamo
+  \begin{gather*}
+    \log\big(L(s,\chi)\big)=-\sum_p \log\left(1-\frac{\chi(p)}{p^s}\right)=\sum_p\sum_{n=1}^{+\infty} \frac{\chi(p^n)}{np^{ns}} \implies \\
+    \implies \frac{L'}{L}(s,\chi)=-\sum_{n=1}^{+\infty} \frac{\chi(n)\Lambda(n)}{n^s}.
+  \end{gather*}
+  In particolare,
+  $$\frac{L'}{L}(s,\chi_0)=-\sum_{n=1}^{+\infty} \frac{\chi_0(n)\Lambda(n)}{n^s}=-\sum_{\substack{n=1, \\ (n,q)=1}}^{+\infty} \frac{\Lambda(n)}{n^s}=-\sum_{n=1}^{+\infty} \frac{\Lambda(n)}{n^s}+\sum_{\substack{p \mid q, \\a \ge 1}} \frac{\log{p}}{p^{as}}.$$
+  Scriviamo adesso
+  \begin{gather*}
+    \log\big(L(s,\chi)\big)=\sum_p \frac{\chi(p)}{p^s}+O\left(\sum_p \sum_{n \ge 2} \frac{1}{p^{\sigma n}}\right)=\\
+    =\sum_p \frac{\chi(p)}{p^s}+O\left(\sum_p \frac{1}{p^{\sigma}(p^{\sigma}-1)}\right)=\sum_p \frac{\chi(p)}{p^s}+O(1) \implies \\
+    \implies \sum_{\chi\text{ mod }q}\log\big(L(s,\chi)\big)=\sum_{\chi\text{ mod }q}\sum_p \frac{\chi(p)}{p^s}+O(\big(\phi(q)\big).
+  \end{gather*}
+  Prendendo la parte reale,
+  $$\log\left(\prod_{\chi\text{ mod }q}|L(s,\chi)|\right)=\sum_p\left(\frac{1}{p^{\sigma}}+\sum_{\chi\not=\chi_0}\frac{\chi(p)}{p^{\sigma}}\right)+O\big(\phi(q)\big).$$
+  Osserviamo che $\displaystyle \sum_p\frac{1}{p^{\sigma}} \longrightarrow +\infty$ per $\sigma \longrightarrow 1$.
+\end{oss}
