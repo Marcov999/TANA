@@ -76,7 +76,7 @@ Con i due lemmi appena mostrati si può costruire una funzione meromorfa su $\ma
 \begin{proof}
   Costruiamo $\displaystyle f(z)=\sum_{n=1}^{+\infty} \left(\frac{z}{z_n}\right)^{p_n}\frac{m_n}{z-z_n}$ come nel lemma \ref{mittagleffler} e $\displaystyle \varphi=\exp\left(\int_0^z f(w)\diff w\right)=\exp\Bigg(\int_0^z \sum_{n=1}^{+\infty}\left(\frac{w}{z_n}\right)^{p_n}\frac{m_n}{w-z_n}\diff w\Bigg)$ come nel lemma \ref{1.1.4}.
   Osserviamo che
-  $$\left(\frac{w}{z_n}\right)^{p_n}\frac{1}{w-z_n}=\frac{1}{w-z_n}+\frac{1}{z_n}\sum_{k=0}^{p_n-1}\left(\frac{w}{z_n}\right)^n,$$
+  $$\left(\frac{w}{z_n}\right)^{p_n}\frac{1}{w-z_n}=\frac{1}{w-z_n}+\frac{1}{z_n}\sum_{k=0}^{p_n-1}\left(\frac{w}{z_n}\right)^k,$$
   quindi
   \begin{gather*}
     \varphi(z)=\prod_{n=1}^{+\infty} \exp\Bigg[\int_0^z\Bigg(\frac{m_n}{w-z_n}+\frac{m_n}{z_n}\sum_{k=0}^{p_n-1}\left(\frac{w}{z_n}\right)^k\Bigg)\diff w\Bigg]= \\
