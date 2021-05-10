@@ -72,7 +72,7 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
 
 \begin{proof}
   Se $ord(F)=\alpha<+\infty$, per il teorema \ref{1.2.6} si ha $N(r) \ll_{\epsilon} r^{\alpha+\epsilon}$ per ogni $\epsilon>0$.
-  Prendendo $r_n=|z_n|$, ricordando che $z_n$ sono gli zeri di $F$ otteniamo $n \le N(r_n) \ll_{\epsilon} r_n^{\alpha+\epsilon}=|z_n|^{\alpha+\epsilon}=|z_n|^{\alpha+\epsilon}$ per ogni $\epsilon>0$ (non è $n=N(r_n)$ perché potrebbe esserci più di uno zero sul cerchio $|z|=r_n$). Allora $|z_n| \gg_{\epsilon} n^{\frac{1}{\alpha+\epsilon}}$ e dunque
+  Prendendo $r_n=|z_n|$, ricordando che $z_n$ sono gli zeri di $F$ otteniamo $n \le N(r_n) \ll_{\epsilon} r_n^{\alpha+\epsilon}=|z_n|^{\alpha+\epsilon}$ per ogni $\epsilon>0$ (non è $n=N(r_n)$ perché potrebbe esserci più di uno zero sul cerchio $|z|=r_n$). Allora $|z_n| \gg_{\epsilon} n^{\frac{1}{\alpha+\epsilon}}$ e dunque
   $$\sum_{n=1}^{+\infty} |z_n|^{-(\alpha+2\epsilon)} \ll_{\epsilon} \sum_{n=1}^{+\infty} n^{-\frac{\alpha+2\epsilon}{\alpha+\epsilon}}<+\infty.$$
   Perciò $\beta \le \inf\{\alpha+2\epsilon \mid \epsilon>0\}=\alpha$.
 \end{proof}
@@ -87,7 +87,7 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
 
 \begin{proof}
   Diamo solamente una traccia. Osserviamo che
-  $$\sum_{n=1}^{+\infty} |m_n|\left|\frac{z}{z_n}\right|^{p+1}<+\infty \iff \sum_{n=1}^{+\infty} |z_n|^{-(p+1)}<+\infty\text{ per ogni }z \in \mathbb{C}.$$
+  $$\sum_{n=1}^{+\infty} |m_n|\left|\frac{z}{z_n}\right|^{p_n+1}<+\infty \iff \sum_{n=1}^{+\infty} |z_n|^{-(p+1)}<+\infty\text{ per ogni }z \in \mathbb{C}.$$
   Scegliendo $p+1=\alpha+\epsilon$, per il teorema \ref{1.2.9} si ha $\displaystyle \sum_{n=1}^{+\infty} |z_n|^{-(p+1)}<+\infty$.
 \end{proof}
 
