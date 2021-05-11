@@ -162,7 +162,7 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
   $$\max_{|z|=R/2}|\psi_R^{(\nu+1)}(z)| \ll_{\epsilon,\nu} \frac{R}{R^{\nu+2}}R^{\alpha+\epsilon}=R^{\alpha-\nu-1+\epsilon}.$$
   Sia $\epsilon>0$ t.c. $\alpha-\nu-1+\epsilon<0$. Allora
   \begin{gather*}
-    \psi'_R(z)=\frac{\varphi'_R(z)}{\varphi_R(z)}+\sum_{|z_n| \le R} \frac{1}{z_n-z} \\
+    \psi'_R(z)=\frac{\varphi'_R(z)}{\varphi_R(z)}=\frac{F'(z)}{F(z)}+\sum_{|z_n| \le R} \frac{1}{z_n-z} \\
     \psi_R^{(\nu+1)}(z)=D^{\nu}\left(\frac{F'}{F}(z)\right)+\sum_{|z_n| \le R} \frac{\nu!}{(z_n-z)^{\nu+1}}=G^{(\nu+1)}(z)-\sum_{|z_n|>R} \frac{\nu!}{(z_n-z)^{\nu+1}}.
   \end{gather*}
   Supponiamo $|z|=R/2$, si ha
@@ -171,7 +171,7 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
 \end{proof}
 
 \begin{cor} \label{1.2.14}
-  Sia $G$ come nel teorema di Hadamard. Se $q \le p$ si ha
+  Sia $G$ come nel teorema di Hadamard di grado $q$. Se $q \le p$ si ha
   $$G(z)=\log{F(0)}+\sum_{k=1}^q D^{k-1}\left(\frac{F'}{F}(0)\right)_{z=0} \frac{z^k}{k!};$$
   se invece $p<q$ si ha
   $$G(z)=\log{F(0)}+\sum_{k=1}^q D^{k-1}\left(\frac{F'}{F}(0)\right)_{z=0}\frac{z^k}{k!}+\sum_{k=p+1}^q\left(\sum_n z_n^{-k}\right)\frac{z^k}{k}.$$
@@ -187,7 +187,7 @@ Notazione: scriviamo che $f(z) \ll g(z)$ $(z \longrightarrow +\infty)$ $\iff$ $f
   Se $q>p$, abbiamo il termine $\displaystyle \frac{1}{k}\sum_n m_nz_n^{-k}$ per $p<k \le q$, cioè il termine $\displaystyle \sum_{k=p+1}^q\left(\sum_n z_n^{-k}\right)z^k$.
 
   Se $k>\max\{p,q\}$, non c'è il termine $z^k$ (nel quale la somma, poiché vale $k>p=p_n$, è fatta su tutti gli $n$). Allora si ha
-  $$\frac{1}{k!}D^{k-1}\left(\frac{F'}{F}(z)\right)_{z=0}+\frac{1}{k}\sum_n z_n^{-k}$$
+  $$0=\frac{1}{k!}D^{k-1}\left(\frac{F'}{F}(z)\right)_{z=0}+\frac{1}{k}\sum_n z_n^{-k}$$
   che è ovviamente equivalente alla tesi.
 \end{proof}
 
