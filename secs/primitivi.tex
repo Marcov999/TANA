@@ -56,3 +56,25 @@ Si ottiene dunque $\displaystyle \chi(n)=\frac{1}{\tau(\bar{\chi})}\sum_{m=1}^q 
 \begin{oss}
   Si può dimostrare che se $\chi_1$ modulo $q_1$ induce $\chi$ modulo $q$, allora $\tau(\chi)=\tau(\chi_1)\mu\left(\frac{q}{q_1}\right)\chi_1\left(\frac{q}{q_1}\right)$.
 \end{oss}
+
+Andiamo adesso a dimostrare una generalizzazione dell'equazione funzionale per la $\vartheta$ di Jacobi.
+
+\begin{prop}
+  Sia $\alpha \in \mathbb{R}$ fissato, allora per $\mathfrak{Re}\,z>0$ si ha
+  $$\sum_{n \in \mathbb{Z}} e^{-\pi n^2z-2\pi i\alpha n}=\frac{1}{\sqrt{z}}\sum_{n \in \mathbb{Z}} e^{-\frac{\pi(n+\alpha)^2}{z}}.$$
+\end{prop}
+
+\begin{proof}
+  Come per la funzione di Jacobi, basta mostrarlo nel caso reale. Sia $f(\xi)=e^{-\pi\xi^2-2\pi i\alpha\xi/\sqrt{x}}$. Allora
+  \begin{gather*}
+    \hat{f}(\xi)=\int_{\mathbb{R}} e^{-\pi t^2-2\pi i\alpha t/\sqrt{x}-2\pi i\xi t}\diff t \implies \\
+    \implies \hat{f}'(\xi)=-2\pi i\int_{\mathbb{R}} te^{-\pi t^2-2\pi i\alpha t/\sqrt{x}-2\pi i\xi t}\diff t=\text{(per parti)}\\
+    =-2\pi\left(\xi+\frac{\alpha}{\sqrt{x}}\right)\int_{\mathbb{R}} e^{-\pi t^2-2\pi i\alpha t/\sqrt{x}-2\pi i\xi t}\diff t=-2\pi\left(\xi+\frac{\alpha}{\sqrt{x}}\right)\hat{f}(\xi).
+  \end{gather*}
+  Risolvendo l'equazione differenziale, dev'essere $\hat{f}(\xi)=Ce^{-\pi\left(\xi+\frac{\alpha}{\sqrt{x}}\right)^2}$. Prendendo $\xi=-\frac{\alpha}{\sqrt{x}}$ nel calcolo di $\hat{f}$ come trasformata, otteniamo $C=1$. Poniamo $f_x(\xi)=f(\sqrt{x}\xi)=e^{-\pi\xi^2x-2\pi i\alpha\xi}$. Cambiando di variabile $y=\sqrt{x}t$, si ha
+  \begin{gather*}
+    \hat{f}_x(\xi)=\int_{\mathbb{R}} f(\sqrt{x}t)e^{-2\pi it\xi}\diff t=\frac{1}{\sqrt{x}} \int_{\mathbb{R}} f(y) e^{-2\pi i\frac{y}{\sqrt{x}}\xi}\diff y=\\
+    =\frac{1}{\sqrt{x}}\hat{f}\left(\frac{\xi}{\sqrt{x}}\right) \implies \hat{f}_x(\xi)=\frac{1}{\sqrt{x}}e^{-\pi(\xi+\alpha)^2/x}.
+  \end{gather*}
+  Per la formula di Poisson si ha la tesi.
+\end{proof}
