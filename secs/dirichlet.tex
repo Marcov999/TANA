@@ -84,7 +84,7 @@ Andiamo adesso a definire una classe di funzioni molto importanti, non solo perc
   da cui si ottiene che $L(s,\chi_0)$ è meromorfa con un polo semplice in $s=1$ con residuo $\displaystyle \prod_{p \mid q} \left(1-\frac{1}{p}\right)=\frac{\phi(q)}{q}$. Ha altri zeri oltre quelli di $\zeta$, che si ottengono quando $p^{-s}=1$, cioè $\sigma=0$ e $t=\frac{2k\pi}{\log{p}}$.
 \end{oss}
 
-\begin{oss}
+\begin{oss} \label{logL}
   Per $\sigma>1$ abbiamo
   \begin{gather*}
     \log\big(L(s,\chi)\big)=-\sum_p \log\left(1-\frac{\chi(p)}{p^s}\right)=\sum_p\sum_{n=1}^{+\infty} \frac{\chi(p^n)}{np^{ns}} \implies \\
@@ -95,10 +95,40 @@ Andiamo adesso a definire una classe di funzioni molto importanti, non solo perc
   Scriviamo adesso
   \begin{gather*}
     \log\big(L(s,\chi)\big)=\sum_p \frac{\chi(p)}{p^s}+O\left(\sum_p \sum_{n \ge 2} \frac{1}{p^{\sigma n}}\right)=\\
-    =\sum_p \frac{\chi(p)}{p^s}+O\left(\sum_p \frac{1}{p^{\sigma}(p^{\sigma}-1)}\right)=\sum_p \frac{\chi(p)}{p^s}+O(1) \implies \\
+    =\sum_p \frac{\chi(p)}{p^s}+O\left(\sum_p \frac{1}{p^{\sigma}(p^{\sigma}-1)}\right)\overset{\sigma>1/2}{=}\sum_p \frac{\chi(p)}{p^s}+O(1) \implies \\
     \implies \sum_{\chi\text{ mod }q}\log\big(L(s,\chi)\big)=\sum_{\chi\text{ mod }q}\sum_p \frac{\chi(p)}{p^s}+O\big(\phi(q)\big).
   \end{gather*}
-  Prendendo $s$ reale (e $\chi$ un carattere reale? Chiedere),
+  Prendendo $s$ reale, e ricordando che i caratteri complessi sono accoppiati ciascuno con il proprio coniugato, si ha
   $$\log\left(\prod_{\chi\text{ mod }q}|L(s,\chi)|\right)=\sum_p\left(\frac{1}{p^s}+\sum_{\chi\not=\chi_0}\frac{\chi(p)}{p^s}\right)+O\big(\phi(q)\big).$$
-  Osserviamo che $\displaystyle \sum_p\frac{1}{p^s} \longrightarrow +\infty$ per $s \longrightarrow 1$.
 \end{oss}
+
+Ripetendo i passaggi appena visti, nell'ipotesi $(a,q)=1$ usando la formula di ortogonalità si dimostra anche che
+$$\frac{1}{\phi(q)}\sum_{\chi\text{ mod }q} \bar{\chi}(a)\log\big(L(s,\chi)\big)\overset{(\star)}{=}\sum_{p \equiv a \pmod{q}} \frac{1}{p^s}+O(1).$$
+Ricordiamo $\displaystyle L(s,\chi_0)=\zeta(s)\prod_{p\nmid q} \left(1-\frac{1}{p^s}\right)$; perciò si ha $\log\big(L(s,\chi_0)\big) \overset{s \longrightarrow 1^+}{\longrightarrow} +\infty$ (prendendo $s \in \mathbb{R}$), e per la precisione c'è un polo semplice in $1$.
+Se per $\chi\not=\chi_0$ si avesse $L(1,\chi)\not=0$, allora otterremmo $\log\big(L(s,\chi)\big)\overset{s \longrightarrow 1^+}{=}O(1)$; combinandolo con quello che sappiamo sul carattere principale, si avrebbe che il membro sinistro (e dunque anche il destro) di $(\star)$ tenderebbe a $+\infty$ per $s \longrightarrow 1^+$. Avremmo dunque il seguente risultato.
+
+\begin{thm}
+  (teorema di Dirichlet sui primi nelle progressioni aritmetiche) Siano $a,q$ interi con $(a,q)=1$. Esistono infiniti primi $p \equiv a \pmod{q}$.
+\end{thm}
+
+\begin{proof}
+  Per quanto appena detto, dobbiamo verificare che le serie associate ai caratteri non principali non si annullano in $1$. Procediamo per assurdo.
+
+  Caso $\chi$ complesso. Se $L(1,\chi)=0$, anche $L(1,\bar{\chi})=0$. Prendendo $a=1$ in $(\star)$, per $s \in \mathbb{R}, s>1$ e sfruttando l'espressione vista nella prima riga dell'osservazione \ref{logL}, avremmo
+  $$\sum_{\chi\text{ mod }q} \log\big(L(s,\chi)\big)=\phi(q)\sum_{p^n \equiv 1 \pmod{q}} \frac{1}{np^{ns}} \in \mathbb{R}^+ \implies \prod_{\chi\text{ mod }q} |L(s,\chi)| \ge 1,$$
+  assurdo perché in $1$ si avrebbero un polo semplice e due zeri.
+
+  Se $\chi\not=\chi_0$ è reale e per assurdo $L(s,\chi)=0$, sia
+  $$F(s)=\frac{L(s,\chi)L(s,\chi_0)}{L(2s,\chi_0)}.$$
+  $F$ sarebbe regolare per $\sigma \ge 1/2$, in quanto il polo semplice di $L(s,\chi_0)$ in $1$ sarebbe compensato dall'eventuale $0$. Inoltre $\displaystyle \lim_{s \longrightarrow 1/2^+} F(s)=0$. Si ha
+  $$F(s)=\prod_p \frac{\left(1-\frac{\chi(p)}{p^s}\right)^{-1}\left(1-\frac{\chi_0(p)}{p^s}\right)^{-1}}{\left(1-\frac{\chi_0(p)}{p^{2s}}\right)^{-1}}=\prod_{p\nmid q} \frac{\left(1-\frac{\chi(p)}{p^s}\right)^{-1}\left(1-\frac{1}{p^s}\right)^{-1}}{\left(1-\frac{1}{p^{2s}}\right)^{-1}}.$$
+  Per i caratteri t.c. $\chi(p)=-1$ il fattore si semplifice e diventa $1$. Resta
+  $$\prod_{\chi(p)=1} \frac{\left(1-\frac{1}{p^s}\right)^{-1}\left(1-\frac{1}{p^s}\right)^{-1}}{\left(1-\frac{1}{p^{2s}}\right)^{-1}}=\prod_{\chi(p)=1} \frac{p^s+1}{p^s-1}\overset{\sigma>1}{=} \sum_{n=1}^{+\infty} \frac{a_n}{n^s},$$
+  dove $a_1=1$ e $a_n \ge 0$. La serie di Taylor di $F$ centrata in $s=2$ ha raggio almeno $3/2$. È $\displaystyle F(s)=\sum_{m=0}^{+\infty} \frac{b_m}{m!}(s-2)^m$ dove $\displaystyle b_m=(-1)^m\sum_{n=1}^{+\infty} \frac{a_n(\log{n})^m}{n^2}$, dunque
+  $$F(s)=\sum_{m=0}^{+\infty} \frac{1}{m!} \sum_{n=1}^{+\infty} \frac{a_n(\log{n})^m}{n^2}(2-s)^m.$$
+  Per $s$ reale minore di $2$ è tutto positivo, dunque $F(s) \ge a_1=1$ per $\sigma \ge 1/2$, assurdo.
+\end{proof}
+
+Sappiamo di più:
+$$\sum_{\substack{p\equiv a\pmod{q}, \\ p \le x}} \frac{1}{p}=\frac{1}{\phi(q)}\log\log{x}+O_q(1).$$
+Per mostrarlo, bisogna dire che $\displaystyle \sum_p \frac{\chi(p)}{p}$ converge per $\chi\not=\chi_0$. Mertens dimostrò questa cosa passando per la convergenza di $\displaystyle \sum_n \frac{\chi(n)\log{n}}{n}$ e usando che $\Lambda \star 1=L$, dove $L$ è la funzione aritmetica associata al logaritmo. Maggiori dettagli nel capitolo 7 di \cite{D}.

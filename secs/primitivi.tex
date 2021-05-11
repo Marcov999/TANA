@@ -1,0 +1,58 @@
+\begin{ex}
+  Prendiamo $q=6$, per cui $(\mathbb{Z}/6 \mathbb{Z})^*=\{1,5\}$. C'è un solo carattere non principale, e sugli interi $1,2,3,4,5,6$ assume i valori $1,0,0,0,-1,0$. Consideriamo adesso $q_1=3$. $(\mathbb{Z}/3 \mathbb{Z})^*=\{1,2\}$.
+  Valutandolo sugli stessi interi, assume i valori $1,-1,0,1-1,0$. In qualche senso, il carattere modulo $6$ si può ottenere annullando alcuni dei valori del carattere modulo $3$.
+\end{ex}
+
+\begin{defn}
+  $\chi$ modulo $q$ si dice \textit{non primitivo} se esiste $q_1 \mid q$ e $\chi_1$ modulo $q_1$ t.c.
+  $$\chi(n)=\begin{cases}
+    \chi_1(n) &\mbox{se }(n,q)=1 \\
+    0 &\mbox{se }(n,q)>1.
+\end{cases}$$
+Si dice \textit{primitivo} altrimenti.
+\end{defn}
+
+Nel caso di un carattere non primitivo, se $q_1$ è il minimo divisore di $q$ t.c. esiste un carattere $\chi_1$ modulo $q$ che soddisfa la condizione della definizione, $q_1$ si dice conduttore di $\chi$ modulo $q$ e diciamo che $\chi_1$ induce $\chi$. Per trovare $\chi_1$ partendo da $\chi$, se $(n,q)>1$ ma $(n,q_1)=1$, prendiamo $r$ t.c. $(n+rq_1,q)=1$ e poniamo $\chi_1(n)=\chi(n+rq_1)$. Si veda anche l'esempio. Maggiori dettagli aritmetici sul perché funziona nel capitolo 5 di \cite{D}.
+
+\begin{oss}
+  Se $\chi$ modulo $q$ è indotto da $\chi_1$ modulo $q_1$ con $q_1 \mid q$, per $\sigma>1$ si ha
+  \begin{gather*}
+    L(s,\chi)=\prod_{p\nmid q} \left(1-\frac{\chi(p)}{p^s}\right)^{-1}=\prod_{p\nmid q}\left(1-\frac{\chi_1(p)}{p^s}\right)^{-1}=\\
+    =\prod_p \left(1-\frac{\chi_1(p)}{p^s}\right)^{-1}\prod_{p\mid q} \left(1-\frac{\chi_1(p)}{p^s}\right)=L(s,\chi_1)\prod_{p\mid q} \left(1-\frac{\chi_1(p)}{p^s}\right).
+  \end{gather*}
+  L'ultimo prodotto ci dà, per ogni primo $p \mid q$, infiniti zeri disposti periodicamente lungo $\sigma=0$, che non danno problemi. Possiamo notare che il legame tra un carattere non primitivo e il carattere primitivo che lo induce è analogo al legame tra la funzione $L$ associata a un carattere principale e la $\zeta$.
+\end{oss}
+
+\begin{defn}
+  Sia $\chi$ modulo $q$ un carattere. Si definisce \textit{somma di Gauss} relativa a $\chi$ la quantità
+  $$\tau(\chi)=\sum_{n=1}^q\chi(n)e^{\frac{2\pi in}{q}}.$$
+\end{defn}
+
+\begin{oss}
+  Scriviamo $\displaystyle \chi(n)\tau(\bar{\chi})=\sum_{m=1}^q \chi(n)\bar{\chi}(m)e^{\frac{2\pi im}{q}}$.
+  Supponendo $(n,q)=1$, sia $mn^{-1}=h$ in $\mathbb{Z}/q \mathbb{Z}$, ovvero $m \equiv nh \pmod{q}$ da cui abbiamo $\chi(n)\bar{\chi}(m)=\chi(n)\bar{\chi}(nh)=\chi(n)\bar{\chi}(n)\bar{\chi}(h)=\bar{\chi}(h)$. Allora troviamo
+  $$\chi(n)\tau(\bar{\chi})\overset{(\star\star)}{=}\sum_{h=1}^q \bar{\chi}(h)e^{\frac{2\pi inh}{q}}.$$
+\end{oss}
+
+\begin{prop}
+  Se $\chi$ modulo $q$ è primitivo, si ha che vale $(\star\star)$ anche se $(n,q)>1$; inoltre, $\tau(\bar{\chi})\not=0$.
+\end{prop}
+
+\begin{proof}
+  Dimostriamo solo la seconda asserzione, dando per buona la prima.
+
+  Prendiamo il coniugio in $(\star\star)$ e facciamo il prodotto con $(\star\star)$ stessa per ottenere
+  $$|\chi(n)|^2|\tau(\bar{\chi})|^2=\sum_{h_1,h_2=1}^q \bar{\chi}(h_1)\chi(h_2)e^{\frac{2\pi in(h_1-h_2)}{q}}.$$
+  Sommando su $n$ troviamo
+  \begin{gather*}
+    |\tau(\bar{\chi})|^2\phi(q)=\sum_{n=1}^q |\chi(n)|^2|\tau(\bar{\chi})|^2=\sum_{n=1}^q \sum_{h_1,h_2=1}^q \bar{\chi}(h_1)\chi(h_2)e^{\frac{2\pi in(h_1-h_2)}{q}}= \\
+    \sum_{h_1,h_2=1}^q \sum_{n=1}^q \bar{\chi}(h_1)\chi(h_2)e^{\frac{2\pi in(h_1-h_2)}{q}}=\sum_{h=1}^q \sum_{n=1}^q |\chi(h)|^2=q\phi(q),
+  \end{gather*}
+  perciò $|\tau(\bar{\chi})|=\sqrt{q}$.
+\end{proof}
+
+Si ottiene dunque $\displaystyle \chi(n)=\frac{1}{\tau(\bar{\chi})}\sum_{m=1}^q \bar{\chi}(m)e^{\frac{2\pi imn}{q}}$.
+
+\begin{oss}
+  Si può dimostrare che se $\chi_1$ modulo $q_1$ induce $\chi$ modulo $q$, allora $\tau(\chi)=\tau(\chi_1)\mu\left(\frac{q}{q_1}\right)\chi_1\left(\frac{q}{q_1}\right)$.
+\end{oss}
