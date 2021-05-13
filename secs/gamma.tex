@@ -62,7 +62,7 @@ $$\frac{1}{z\Gamma(z)}=e^{\gamma z}\prod_{n=1}^{+\infty}\left(1+\frac{z}{n}\righ
 \begin{proof}
   \begin{gather*}
     \frac{1}{\Gamma(z)}=ze^{\gamma z}\prod_{n=1}^{+\infty}\left(1+\frac{z}{n}\right)e^{-z/n}=\\
-    =z\lim_{n \longrightarrow +\infty} e^{\left(\sum_{k=1}^n\frac{1}{k}-\log{n}\right)}\prod_{k=1}^n\left(1+\frac{z}{n}\right)e^{-z/k}=z\lim_{n \longrightarrow +\infty} \prod_{k=1}^n\left(1+\frac{z}{k}\right)n^{-z} \implies \\
+    =z\lim_{n \longrightarrow +\infty} e^{\left(\sum_{k=1}^n\frac{1}{k}-\log{n}\right)z}\prod_{k=1}^n\left(1+\frac{z}{n}\right)e^{-z/k}=z\lim_{n \longrightarrow +\infty} \prod_{k=1}^n\left(1+\frac{z}{k}\right)n^{-z} \implies \\
     \implies \Gamma(z)=\lim_{n \longrightarrow +\infty} \frac{n^z\prod_{k=1}^n k}{z\prod_{k=1}^n (k+z)}=\lim_{n \longrightarrow +\infty} \frac{n^zn!}{z(z+1)\cdots(z+n)}.
   \end{gather*}
 \end{proof}
@@ -75,7 +75,7 @@ $$\frac{1}{z\Gamma(z)}=e^{\gamma z}\prod_{n=1}^{+\infty}\left(1+\frac{z}{n}\righ
   Fissato $k$, consideriamo il limite a partire da $n \ge k$. Vogliamo calcolare $\big(\Gamma(z)(z+k)\big)_{z=-k}$. Si ha
   \begin{gather*}
     \left(\frac{n^zn!(z+k)}{z(z+1)\cdots(z+n)}\right)_{z=-k}=\frac{n^{-k}n!}{-k(-k+1)\cdots(-2)\cdot(-1)\cdot1\cdot2\cdots(n-k)}= \\
-    =\frac{(-1)^k}{k!}\left(\frac{n!}{(n-k)!}n^k\right) \longrightarrow \frac{(-1)^k}{k!} \text{ per } n \longrightarrow +\infty.
+    =\frac{(-1)^k}{k!}\left(\frac{n!}{(n-k)!n^k}\right) \longrightarrow \frac{(-1)^k}{k!} \text{ per } n \longrightarrow +\infty.
   \end{gather*}
 \end{proof}
 
