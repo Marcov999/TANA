@@ -17,6 +17,7 @@ Lez16: ok
 Lez17: ok
 Lez18: ok
 Lez19: ok
+Lez20: ok
 
 Da rivedere con gli appunti di Viola e i libri (Davenport e Titchmarsh) a partire dalla Lez01.
 

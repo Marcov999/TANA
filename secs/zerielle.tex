@@ -1,0 +1,59 @@
+Vediamo prima il caso $\chi$ complesso.
+
+\begin{prop}
+  Se $\chi$ modulo $q$ è complesso, allora esiste una costante $c_0>0$ t.c.
+  $$\beta_\chi < 1-\frac{c_0}{\log\big(q(|\gamma_\chi|+2)\big)}=:1-\frac{c_0}{\mathcal{L}}.$$
+\end{prop}
+
+\begin{proof}
+  Per $\sigma>1$ abbiamo
+  \begin{gather*}
+    -\sum_{n=1}^{+\infty} \frac{\Lambda(n)\chi(n)}{n^{\sigma+it}}=\frac{L'}{L}(\sigma+it,\chi), \\
+    -\sum_{n=1}^{+\infty} \frac{\Lambda(n)\chi_0(n)}{n^{\sigma}}=\frac{L'}{L}(\sigma,\chi_0), \\
+    -\sum_{n=1}^{+\infty} \frac{\Lambda(n)\chi^2(n)}{n^{\sigma+2it}}=\frac{L'}{L}(\sigma+2it,\chi^2).
+  \end{gather*}
+  Poiché $\chi$ è complesso, $\chi^2$ non è il carattere principale (che aggiungerebbe un polo), quindi possiamo fare come si è fatto per la $\zeta$ quando abbiamo usato la disuguaglianza $3+4\cos{\theta}+\cos(2\theta) \ge 0$. Troviamo così
+  $$\frac{4}{\sigma-\beta_\chi}<\frac{3}{\sigma-1}+O\Big(\log\big(q(|t|+2)\big)\Big)$$
+  e per concludere basta prendere $\sigma=1+\delta/\mathcal{L}$ con $\delta>0$ opportuno.
+\end{proof}
+
+Vediamo ora il caso $\chi$ reale, perciò $\frac{L'}{L}(s,\chi^2)=\frac{L'}{L}(s,\chi_0)$. Si ha
+$$\left|\frac{L'}{L}(s,\chi_0)-\frac{\zeta'}{\zeta}(s)\right| \le \log{q},$$
+quindi a meno di un termine trascurabile passiamo da $-\mathfrak{Re}\,\frac{L'}{L}(\sigma+2i\gamma,\chi_0)$ a $-\mathfrak{Re}\,\frac{\zeta'}{\zeta}(\sigma+2i\gamma) \le \mathfrak{Re}\,\frac{1}{\sigma-1+2i\gamma_\chi}+c\mathcal{L}$ (e questo perché abbiamo che vale la stima $-\mathfrak{Re}\,\frac{\zeta'}{\zeta}(s) \ll \mathfrak{Re}\,\frac{1}{s-1}+O\big(\log(|t|+2)\big)$). Si ha dunque
+$$\frac{4}{\sigma-\beta_\chi}<\frac{3}{\sigma-1}+\mathfrak{Re}\left(\frac{1}{\sigma-1+2i\gamma_\chi}\right)+c\mathcal{L}.$$
+Supponiamo che $|\gamma_\chi| \ge \frac{\delta}{\log{q}}$; allora prendendo $\sigma=1+\frac{\delta}{\mathcal{L}}$ otteniamo
+\begin{gather*}
+  \frac{4\mathcal{L}}{\delta+(1-\beta_\chi)\mathcal{L}}<\frac{3 \mathcal{L}}{\delta}+\frac{\delta\mathcal{L}}{5\delta^2}+c\mathcal{L} \implies \\
+  \implies 1-\beta_\chi>\frac{4-5c\delta}{16+5c\delta}\cdot\frac{\delta}{\mathcal{L}}=\frac{c'}{\mathcal{L}},
+\end{gather*}
+dunque anche in questo caso $\beta_\chi<1-\frac{c_0}{\mathcal{L}}$. Ne segue la seguente proposizione.
+
+\begin{prop}
+  Se $\chi$ è reale modulo $q$ e $|\gamma_\chi| \ge \frac{1}{\log{q}}$, esiste $c_0>0$ t.c.
+  $$\beta_\chi<1-\frac{c_0}{\mathcal{L}}.$$
+\end{prop}
+
+Mostriamo adesso la seguente.
+
+\begin{prop}
+  Se $\chi$ è reale modulo $q$ e $\rho_\chi=\beta_\chi+i\gamma_\chi$ con $\gamma_\chi \le \frac{1}{\log{q}}$ e $\beta_\chi>1-\frac{c}{\mathcal{L}}$, allora $\rho_\chi$ è reale e semplice. Inoltre, $\rho_\chi$ è unico.
+\end{prop}
+
+\begin{proof}
+  (Da rivedere meglio)
+  $$-\frac{L'}{L}(\sigma,\chi)<c\log{q}-\sum_{\rho_\chi} \frac{1}{\sigma-\rho_\chi}.$$
+  Se fosse $L(\beta_0\pm i\gamma_0,\chi)=0$, avremmo
+  $$-\frac{L'}{L}(\sigma,\chi)<c\log{q}-\frac{2(\sigma-\beta_0)}{(\sigma-\beta_0)^2+\gamma_0^2};$$
+  si ha anche
+  \begin{gather*}
+    -\frac{L'}{L}(\sigma,\chi)=\sum_{n=1}^{+\infty} \frac{\chi(n)\Lambda(n)}{n^{\sigma}} \ge -\sum_{n=1}^{+\infty} \frac{\Lambda(n)}{n^{\sigma}}= \\
+    =\frac{\zeta'}{\zeta}(\sigma)>-\frac{1}{\sigma-1}+c_1.
+  \end{gather*}
+  Concantenando le due disuguaglianze otteniamo
+  $$-\frac{1}{\sigma-1}<c\log{q}-\frac{2(\sigma-\beta_0)}{(\sigma-\beta_0)^2+\gamma_0^2}.$$
+  Prendendo $\sigma=1+\frac{2\delta}{\log{q}}$ otteniamo un assurdo nell'ipotesi $|\gamma_0|<\frac{\delta}{\log{q}}$.
+
+  Il caso con $\gamma_0=0$ è pure più facile.
+
+  Rivederla quando la rifà in dettaglio, per ora vedere il capitolo 14 di \cite{D}.
+\end{proof}

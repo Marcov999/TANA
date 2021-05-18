@@ -65,8 +65,8 @@ Non mostriamo invece la seguente proposizione, che dovrebbe ormai essere immedia
 
 Si ha $e^a=\xi(0,\chi)$, che è collegato a $L(0,\chi)$, che è collegato a $L(1,\chi) \ll \log{q}$. Vedremo che $\displaystyle \mathfrak{Re}\,A=-\frac{1}{2}\sum_{\rho_\chi}\left(\frac{1}{\rho_\chi}+\frac{1}{\bar{\rho}_\chi}\right)=-\sum_{\rho_\chi} \mathfrak{Re}\left(\frac{1}{\rho_\chi}\right)$, che converge. Le stime per $A$ non sono buonissime ($\ll \sqrt{q}$).
 
-\begin{cor}
-  Sia $K$ un compatto contenuto in $\mathbb{C} \setminus \displaystyle \cup_{\rho_\chi} \{\rho_\chi\}$. Per $s \in K$ si ha
+\begin{cor} \label{derlogxielle}
+  Sia $K$ un compatto contenuto in $\mathbb{C} \setminus \displaystyle \bigcup_{\rho_\chi} \{\rho_\chi\}$. Per $s \in K$ si ha
   $$\frac{\xi'}{\xi}(s,\chi)=A+\sum_{\rho_\chi} \left(\frac{1}{s-\rho_\chi}+\frac{1}{\rho_\chi}\right), \text{ da cui}$$
   $$\frac{L'}{L}(s,\chi)=\frac{1}{2}\log\left(\frac{\pi}{q}\right)-\frac{1}{2}\cdot\frac{\Gamma'}{\Gamma}\left(\frac{s+a}{2}\right)+A+\sum_{\rho_\chi}\left(\frac{1}{s-\rho_\chi}+\frac{1}{\rho_\chi}\right).$$
 \end{cor}
@@ -80,7 +80,35 @@ Si ha $e^a=\xi(0,\chi)$, che è collegato a $L(0,\chi)$, che è collegato a $L(1
   La strategia generale della dimostrazione è la stessa che per la $\zeta$. Dobbiamo fare alcuni accorgimenti: percorreremo in senso antiorario il rettangolo $R$ di vertici $\{5/2-iT,5/2+iT, -3/2+iT, -3/2-iT\}$; questo perché non c'è simmetria tra sotto e sopra (da cui il $\pm iT$), inoltre si becca uno zero banale ($0$ o $1$), che comunque si tratta di un $\pm 1$ nella formula e quindi possiamo ignorarlo. Dall'equazione funzionale,
   $$\arg\xi(\sigma+it,\chi)=c+\arg\xi(1-\sigma-it,\bar{\chi})=\arg\overline{\xi(1-\sigma+it,\chi)}+c.$$
   Allora la meta sinistra e quella destra di $R$ danno contributi che variano solo per una costante, perciò ci basterò stimare $2\cdot\frac{1}{2\pi}\Delta_L$ dove $L$ è la metà destra di $R$. Riprendendo la definizione di $\xi$, ripetendo le stime viste per la $\zeta$ ma facendo attenzione che questa volta il percorso è doppio (sia sopra che sotto), troviamo
-  \marginpar{verificare i conti}
   $$\Delta_L \arg\left(\frac{\pi}{q}\right)^{-\frac{s+a}{2}}=T\log(q/\pi), \quad \Delta_L\arg\Gamma\left(\frac{s+a}{2}\right)=T\log\frac{T}{2}-T+O\left(\frac{1}{T}\right).$$
-  Rimande da stimare il termine dovuto a $L(s,\chi)$ e vedere che ci dà il resto voluto.
+  Rimande da stimare il termine dovuto a $L(s,\chi)$ e vedere che ci dà il resto voluto. Poiché è reale sui reali, dobbiamo stimare $\frac{1}{2\pi}\arg L(1/2\pm iT,\chi)$. Dal corollario \ref{derlogxielle} si ha
+  $$\frac{L'}{L}(s,\chi)=-\frac{1}{2}\log\left(\frac{q}{\pi}\right)+A_\chi-\frac{1}{2}\cdot\frac{\Gamma'}{\Gamma}\left(\frac{s+a}{2}\right)+\sum_{\rho_\chi} \left(\frac{1}{s-\rho_\chi}+\frac{1}{\rho_\chi}\right)$$
+  e $\frac{\xi'}{\xi}(0,\chi)=A_\chi$. Dall'espressione con $L'/L$ valutata in $s=0$ e coniugando opportunamente si trova $A_{\bar{\chi}}=\bar{A}_\chi$. Allora dall'equazione funzionale si ha
+  \begin{gather*}
+    A_\chi=\frac{\xi'}{\xi}(0,\chi)=-\frac{\xi'}{\xi}(1,\bar{\chi})=-A_{\bar{\chi}}-\sum_{\rho_{\bar{\chi}}} \left(\frac{1}{1-\rho_{\bar{\chi}}}+\frac{1}{\rho_{\bar{\chi}}}\right)= \\
+    =-A_{\bar{\chi}}-\sum_{\rho_\chi}\left(\frac{1}{1-\bar{\rho}_\chi}+\frac{1}{\bar{\rho}_\chi}\right)=-A_{\bar{\chi}}-\sum_{\rho_\chi}\left(\frac{1}{\rho_\chi}+\frac{1}{\bar{\rho}_\chi}\right) \implies \\
+    \implies \mathfrak{Re}\,A_\chi=-\sum_{\rho_\chi} \mathfrak{Re}\left(\frac{1}{\rho_\chi}\right).
+  \end{gather*}
+  Si ha dunque
+  \begin{gather*}
+    -\mathfrak{Re}\,\frac{L'}{L}(s,\chi)=\frac{1}{2}\log\left(\frac{q}{\pi}\right)-\mathfrak{Re}\,A_\chi+\frac{1}{2}\mathfrak{Re}\,\frac{\Gamma'}{\Gamma}\left(\frac{s+a}{2}\right)-\sum_{\rho_\chi}\Bigg(\mathfrak{Re}\left(\frac{1}{s-\rho_\chi}\right)+\mathfrak{Re}\left(\frac{1}{\rho_\chi}\right)\Bigg)=\\
+    =\frac{1}{2}\log\left(\frac{q}{\pi}\right)+\frac{1}{2}\mathfrak{Re}\,\frac{\Gamma'}{\Gamma}\left(\frac{s+a}{2}\right)-\sum_{\rho_\chi}\mathfrak{Re}\left(\frac{1}{s-\rho_\chi}\right).
+  \end{gather*}
+  Prendendo $s=\sigma+it$ e stimando $\Gamma'/\Gamma$, abbiamo
+  $$-\mathfrak{Re}\,\frac{L'}{L}(\sigma+it,\chi) \le C\cdot\log\big(q(|t|+2)\big)-\sum_{\rho_\chi} \frac{\sigma-\beta_\chi}{(\sigma-\beta_\chi)^2+(t-\gamma_\chi)^2};$$
+  ragionando come abbiamo fatto a suo tempo per la $\zeta$ troviamo
+  $$\sum_{|\gamma_\chi-t|<1} 1, \,\, \sum_{\gamma_\chi}\frac{1}{1+(t-\gamma_\chi)^2} \ll \log\big(q(|t|+2)\big), \text{ da cui}$$
+  $$\frac{L'}{L}(s,\chi)=\sum_{|\gamma_\chi-t|<1} \frac{1}{s-\rho_\chi}+O\Big(\log\big(q(|t|+2)\big)\Big).$$
+  Di nuovo con ragionamenti analoghi a quelli visti per la $\zeta$, osserviamo che ci interessano solo i tratti da $1/2$ a $1$, ma per quanto ottenuto finora si ha
+  $$O(1)+\arg\frac{L'}{L}(1/2 \pm iT,\chi)=\int_{1/2}^1 \mathfrak{Im}\,\frac{L'}{L}(\sigma \pm iT,\chi)\diff\sigma \ll \log\big(q(|T|+1)\big),$$
+  da cui la tesi.
 \end{proof}
+
+\begin{oss}
+  Se $\chi$ non è primitivo modulo $q$, sia $\chi_1$ modulo $q_1$ che induce $\chi$, allora $\displaystyle L(s,\chi)=L(s,\chi_1)\prod_{p \mid q}\left(1-\frac{\chi_1(p)}{p^s}\right)$ in $\mathbb{C}$, da cui per $\sigma \ge 1/2$
+  \begin{gather*}
+    \frac{L'}{L}(s,\chi)=\frac{L'}{L}(s,\chi_1)+\sum_{p \mid q} \frac{p^{-s}\log{p}\cdot\chi_1(p)}{1-\frac{\chi_1(p)}{p^s}} \implies \\
+    \implies \left|\frac{L'}{L}(s,\chi)-\frac{L'}{L}(s,\chi_1)\right| \le \sum_{p \mid q} \frac{\log{p}}{p^{\sigma}-1} \ll \sum_{p \mid q} \log{p} \le \log{q}.
+  \end{gather*}
+  Ci sono anche gli zeri $0+it$ t.c. $p^{-it}=\pm 1$, cioè $t=\frac{\pi(2k+1)}{\log{p}}$; quelli fino a $T$ si stimano con $T\log{p}$ e quindi abbiamo $\displaystyle \sum_{p \mid q} T\log{p} \le T\log{q}$. Dunque nel caso $\chi$ non primitivo si ha $N(T,\chi)=\frac{T}{2\pi}\log{T}+O(T\log{q})$.
+\end{oss}
