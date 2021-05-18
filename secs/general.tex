@@ -1,0 +1,86 @@
+\begin{prop}
+  Sia $\chi$ primitivo modulo $q$ e sia
+  $$\xi(s,\chi)=\left(\frac{\pi}{q}\right)^{-\frac{s+a}{2}}\Gamma\left(\frac{s+a}{2}\right)L(s,\chi),$$
+  con $a=\begin{cases}
+    0 &\mbox{se }\chi(-1)=1 \\
+    1 &\mbox{se }\chi(-1)=-1
+\end{cases}.$ Allora
+\begin{equation} \label{funelle}
+  \xi(1-s,\bar{\chi})=\frac{i^a\sqrt{q}}{\tau(\chi)}\xi(s,\chi).
+\end{equation}
+In particolare, $\xi(s,\chi)$ è intera (di ordine $1$).
+\end{prop}
+
+\begin{proof}
+  Facciamo il caso $\chi(-1)=1$ ($\implies \chi(-1)=\chi(1), \chi(-n)=\chi(n)$). Con un cambio di variabile $u=\pi n^2x/q$, per $\sigma>1$ si ha
+  \begin{gather*}
+    \Gamma(s/2)=\int_0^{+\infty} e^{-u}u^{s/2}\frac{\diff u}{u}=\int_0^{+\infty} e^{-\pi n^2x/q}x^{s/2}\left(\frac{q}{\pi}\right)^{-s/2}n^s\frac{\diff x}{x} \implies \\
+    \implies \left(\frac{\pi}{q}\right)^{-s/2}\Gamma\left(\frac{s}{2}\right)\sum_{n=1}^{+\infty}=\int_0^{+\infty} \sum_{n=1}^{+\infty} \chi(n)e^{-\pi n^2x/q}x^{s/2}\frac{\diff x}{x}= \\
+    =\frac{1}{2}\int_0^{+\infty} \vartheta(x,\chi)x^{s/2}\frac{\diff x}{x},
+  \end{gather*}
+  dove $\displaystyle \vartheta(x,\chi)=\sum_{n \in \mathbb{Z}} \chi(n)e^{-\pi n^2x/q}$. Abbiamo anche
+  \begin{gather*}
+    \chi(n)=\frac{1}{\tau(\bar{\chi})}\sum_{m=1}^q \bar{\chi}(m)e^{2\pi imn/q} \implies \\
+    \implies \sum_{n \in \mathbb{Z}} \chi(n)e^{-\pi n^2 x/q}=\frac{1}{\tau(\bar{\chi})} \sum_{m=1}^q \bar{\chi}(m) \sum_{n \in \mathbb{Z}} e^{-\pi n^2x/q+2\pi imn/q} \implies \\
+    \implies \vartheta(x,\chi)\tau(\bar{\chi})=\sum_{m=1}^q \bar{\chi}(m) \sum_{n \in \mathbb{Z}} e^{-\pi n^2x/q+2\pi imn/q}.
+  \end{gather*}
+  Usando la \eqref{poiprimo} con $z=x/q$ e $\alpha=m/q$ troviamo
+  \begin{gather*}
+    \vartheta(x,\chi)\tau(\bar{\chi})=\sqrt{\frac{q}{x}}\sum_{m=1}^q \bar{\chi}(m) \sum_{n \in \mathbb{Z}} e^{-\pi\left(n+\frac{m}{q}\right)^2q/x}= \\
+    =\sqrt{\frac{q}{x}}\sum_{m=1}^q \bar{\chi}(m) \sum_{n \in \mathbb{Z}} e^{-\frac{\pi(nq+m)^2}{qx}}=\sqrt{\frac{q}{x}} \sum_{l \in \mathbb{Z}} \bar{\chi}(l)e^{-\frac{\pi l^2}{xq}}=\sqrt{\frac{q}{x}}\vartheta\left(\frac{1}{x},\bar{\chi}\right) \implies \\
+    \implies \xi(s,\chi)=\frac{1}{2}\int_1^{+\infty} \vartheta(x,\chi)x^{s/2}\frac{\diff x}{x}+\frac{1}{2}\int_1^{+\infty} \vartheta\left(\frac{1}{x},\chi\right)x^{-s/2}\frac{\diff x}{x}= \\
+    =\frac{1}{2}\int_1^{+\infty} \vartheta(x,\chi)x^{s/2}\frac{\diff x}{x}+\frac{1}{2}\cdot\frac{\sqrt{q}}{\tau(\bar{\chi})}\int_1^{+\infty} \vartheta(x,\bar{\chi})x^{\frac{1-s}{2}}\frac{\diff x}{x} \implies \\
+    \implies \xi(1-s,\bar{\chi})=\frac{1}{2}\int_1^{+\infty} \vartheta(x,\bar{\chi})x^{\frac{1-s}{2}}\frac{\diff x}{x}+\frac{1}{2}\cdot\frac{\sqrt{q}}{\tau(\chi)}\int_1^{+\infty} \vartheta(x,\chi)x^{\frac{s}{2}}\frac{\diff x}{x}= \\
+    =\frac{\sqrt{q}}{\tau(\chi)}\xi(s,\chi),
+  \end{gather*}
+  dove nell'ultimo passaggio abbiamo usato che, in questo caso, si può mostrare che $\tau(\bar{\chi})=\overline{\tau(\chi)}$ (e ricordiamo $|\tau(\chi)|^2=q$). Si ottiene anche che $L(s,\chi)$ ha zeri banali nei pari negativi e in $0$ (nell'altro caso sono i dispari negativi).
+
+  Caso $\chi(-1)=1$: diamo una breve traccia, i passaggi sono analoghi al caso precedente.
+  \begin{gather*}
+    \left(\frac{\pi}{q}\right)^{-\frac{s+1}{2}}\Gamma\left(\frac{s+1}{2}\right)L(s,\chi)=\int_0^{+\infty}\sum_{n=0}^{+\infty} n\chi(n)e^{-\pi n^2x}x^{\frac{s+1}{2}}\frac{\diff x}{x}= \\
+    =\frac{1}{2}\int_1^{+\infty}\vartheta_1(x,\chi)x^{\frac{s+1}{2}}\frac{\diff x}{x}+\frac{1}{2}\int_1^{+\infty} \vartheta_1\left(\frac{1}{x},\chi\right)x^{-\frac{s+1}{2}}\frac{\diff x}{x},
+  \end{gather*}
+  dove $\displaystyle \vartheta_1(x,\chi)=\sum_{n \in \mathbb{Z}} n\chi(n)e^{-\pi n^2x}$. Usando \eqref{poisecondo} si trova $\vartheta_1(x,\chi)\tau(\bar{\chi})=\dfrac{i\sqrt{q}}{x^{3/2}}\vartheta_1\left(\dfrac{1}{x},\bar{\chi}\right)$,
+  da cui si ottiene $\xi(1-s,\bar{\chi})=\frac{i\sqrt{q}}{\tau(\chi)}\xi(s,\chi)$, usando che in questo caso vale $\chi(-n)=-\chi(n)$ e $\tau(\bar{\chi})=-\overline{\tau(\chi)}$.
+\end{proof}
+
+Vogliamo studiare l'ordine di $\xi(s,\chi)$.
+
+Per $\sigma \ge 1/2$, $\Gamma(s+1/2) \ll e^{c_0|s|\log{|s|}} \ll_{\epsilon} e^{|s|^{1+\epsilon}}$ per ogni $\epsilon>0$. Per $\sigma>1$, $L(s,\chi)| \ll \zeta(\sigma)$. Possiamo dire di più: per $\sigma \ge \epsilon$, per sommazione parziale
+$$\sum_{n \le x} \frac{\chi(n)}{n^s}=\left(\sum_{n \le x}\chi(n)\right)x^{-s}s\int_1^x\left(\sum_{n \le u}\chi(n)\right)u^{-(s+1)}\diff u;$$
+poiché le sommatorie sono $O(q)$, troviamo
+$$L(s,\chi)=s\int_1^{+\infty} \left(\sum_{n \le u}\chi(n)\right)u^{-(s+1)}\diff u.$$
+Per $\sigma \ge 1/2$ questo ci dà $L(s,\chi) \ll 2|s|q$. Per le stime nell'altro semipiano basta, al solito, sfruttare l'equazione funzionale.
+
+Esistono infiniti zeri $\rho_\chi=\beta_\chi+i\gamma_\chi$ della funzione $L(s,\chi)$ con $0 \le \beta_\chi \le 1$. Si ha $\displaystyle \sum_{\rho_\chi} \frac{1}{|\rho_\chi|^{1+\epsilon}}<+\infty$ per ogni $\epsilon>0$ e $\displaystyle \sum_{\rho_\chi} \frac{1}{|\rho_\chi|}=+\infty$.
+Non ci sono le stesse simmetrie della $\zeta$: $L(\bar{s},\chi)=\overline{L(s,\bar{\chi})}\not=\overline{L(s,\chi)}$. Da questo otteniamo che, se $\rho_\chi$ è uno zero di $L(s,\chi)$, allora $\bar{\rho}_\chi=\rho'_{\bar{\chi}}$ è uno zero di $L(s,\bar{\chi})$; dall'equazione funzionale troviamo anche che $1-\rho'_{\bar{\chi}}=\rho''_\chi$ è un altro zero di $L(s,\chi)$.
+Un altro problema, che vedremo in dettaglio tra poco, è che $\gamma_\chi$ può essere molto piccolo: questo renderà le stime che andremo a fare, analoghe a quelle per la $\zeta$, dipendenti anche da $q$.
+
+Non mostriamo invece la seguente proposizione, che dovrebbe ormai essere immediata.
+
+\begin{prop}
+  Si ha il seguente prodotto di Weierstrass:
+  $$\xi(s,\chi)=e^{a+As}\prod_{\rho_\chi}\left(1-\frac{s}{\rho_\chi}\right)e^{\frac{s}{\rho_\chi}}.$$
+\end{prop}
+
+Si ha $e^a=\xi(0,\chi)$, che è collegato a $L(0,\chi)$, che è collegato a $L(1,\chi) \ll \log{q}$. Vedremo che $\displaystyle \mathfrak{Re}\,A=-\frac{1}{2}\sum_{\rho_\chi}\left(\frac{1}{\rho_\chi}+\frac{1}{\bar{\rho}_\chi}\right)=-\sum_{\rho_\chi} \mathfrak{Re}\left(\frac{1}{\rho_\chi}\right)$, che converge. Le stime per $A$ non sono buonissime ($\ll \sqrt{q}$).
+
+\begin{cor}
+  Sia $K$ un compatto contenuto in $\mathbb{C} \setminus \displaystyle \cup_{\rho_\chi} \{\rho_\chi\}$. Per $s \in K$ si ha
+  $$\frac{\xi'}{\xi}(s,\chi)=A+\sum_{\rho_\chi} \left(\frac{1}{s-\rho_\chi}+\frac{1}{\rho_\chi}\right), \text{ da cui}$$
+  $$\frac{L'}{L}(s,\chi)=\frac{1}{2}\log\left(\frac{\pi}{q}\right)-\frac{1}{2}\cdot\frac{\Gamma'}{\Gamma}\left(\frac{s+a}{2}\right)+A+\sum_{\rho_\chi}\left(\frac{1}{s-\rho_\chi}+\frac{1}{\rho_\chi}\right).$$
+\end{cor}
+
+\begin{prop}
+  (formula di Riemann-Von Mangoldt) Sia $\chi$ primitivo modulo $q$ e $T \ge 2$. Posto $N(T,\chi)=\frac{1}{2}\sharp\{\rho_\chi=\beta_\chi+i\gamma_\chi \mid 0 \le \beta_\chi \le 1, |\gamma_\chi|<T\}$, si ha
+  $$N(T,\chi)=\frac{T}{2\pi}\log\left(\frac{qT}{2\pi}\right)-\frac{T}{2\pi}+O\big(\log(qT)\big).$$
+\end{prop}
+
+\begin{proof}
+  La strategia generale della dimostrazione è la stessa che per la $\zeta$. Dobbiamo fare alcuni accorgimenti: percorreremo in senso antiorario il rettangolo $R$ di vertici $\{5/2-iT,5/2+iT, -3/2+iT, -3/2-iT\}$; questo perché non c'è simmetria tra sotto e sopra (da cui il $\pm iT$), inoltre si becca uno zero banale ($0$ o $1$), che comunque si tratta di un $\pm 1$ nella formula e quindi possiamo ignorarlo. Dall'equazione funzionale,
+  $$\arg\xi(\sigma+it,\chi)=c+\arg\xi(1-\sigma-it,\bar{\chi})=\arg\overline{\xi(1-\sigma+it,\chi)}+c.$$
+  Allora la meta sinistra e quella destra di $R$ danno contributi che variano solo per una costante, perciò ci basterò stimare $2\cdot\frac{1}{2\pi}\Delta_L$ dove $L$ è la metà destra di $R$. Riprendendo la definizione di $\xi$, ripetendo le stime viste per la $\zeta$ ma facendo attenzione che questa volta il percorso è doppio (sia sopra che sotto), troviamo
+  \marginpar{verificare i conti}
+  $$\Delta_L \arg\left(\frac{\pi}{q}\right)^{-\frac{s+a}{2}}=T\log(q/\pi), \quad \Delta_L\arg\Gamma\left(\frac{s+a}{2}\right)=T\log\frac{T}{2}-T+O\left(\frac{1}{T}\right).$$
+  Rimande da stimare il termine dovuto a $L(s,\chi)$ e vedere che ci dà il resto voluto.
+\end{proof}

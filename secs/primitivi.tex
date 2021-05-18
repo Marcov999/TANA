@@ -61,7 +61,9 @@ Andiamo adesso a dimostrare una generalizzazione dell'equazione funzionale per l
 
 \begin{prop}
   Sia $\alpha \in \mathbb{R}$ fissato, allora per $\mathfrak{Re}\,z>0$ si ha
-  $$\sum_{n \in \mathbb{Z}} e^{-\pi n^2z-2\pi i\alpha n}=\frac{1}{\sqrt{z}}\sum_{n \in \mathbb{Z}} e^{-\frac{\pi(n+\alpha)^2}{z}}.$$
+  \begin{equation} \label{poiprimo}
+    \sum_{n \in \mathbb{Z}} e^{-\pi n^2z-2\pi i\alpha n}=\frac{1}{\sqrt{z}}\sum_{n \in \mathbb{Z}} e^{-\frac{\pi(n+\alpha)^2}{z}}.
+  \end{equation}
 \end{prop}
 
 \begin{proof}
@@ -78,3 +80,9 @@ Andiamo adesso a dimostrare una generalizzazione dell'equazione funzionale per l
   \end{gather*}
   Per la formula di Poisson si ha la tesi.
 \end{proof}
+
+Derivando la formula \eqref{poiprimo} in $\alpha$ (cambiando i segni convenientemente a sinistra, che tanto si può fare), otteniamo
+$$2\pi i \sum_{n \in \mathbb{Z}} ne^{-\pi n^2z+2\pi i\alpha n}=-\frac{2\pi}{z\sqrt{z}}\sum_{n \in \mathbb{Z}} (n+\alpha)e^{-\pi(n+\alpha)^2/z}, \text{ da cui}$$
+\begin{equation} \label{poisecondo}
+  \sum_{n \in \mathbb{Z}} ne^{-\pi n^2z+2\pi i\alpha n}=\frac{i}{z\sqrt{z}}\sum_{n \in \mathbb{Z}} (n+\alpha)e^{-\pi(n+\alpha)^2/z}.
+\end{equation}
