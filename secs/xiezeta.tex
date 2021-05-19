@@ -73,10 +73,9 @@ $$\lim_{\sigma \longrightarrow 1} \zeta^3(\sigma)\zeta(\sigma+it)^4\zeta(\sigma+
 in contraddizione con la disuguaglianza trovata.
 
 Diamo un'altra dimostrazione di questo fatto, dovuta a Ingham (si veda \cite{T}, capitolo III paragrafo 3.4). Dati $a,b \in \mathbb{C}$, usiamo che
-$$\frac{\zeta(s)\zeta(s-a)\zeta(s-a-b)}{\zeta(2s-a-b)}=\sum_{n=1}^{+\infty} \frac{\sigma_a(n)\sigma_b(n)}{n^s},$$
+$$\frac{\zeta(s)\zeta(s-a)\zeta(s-b)\zeta(s-a-b)}{\zeta(2s-a-b)}=\sum_{n=1}^{+\infty} \frac{\sigma_a(n)\sigma_b(n)}{n^s},$$
 dove $\displaystyle \sigma_{\alpha}(n)=\sum_{d \mid n} d^{\alpha}$. Prendendo $a=-b=i\gamma$ troviamo
 $$\frac{\zeta^2(s)\zeta(s-i\gamma)\zeta(s+i\gamma)}{\zeta(2s)}=\sum_{n=1}^{+\infty} \frac{\sigma_{i\gamma}(n)\sigma_{-i\gamma}(n)}{n^s}=\sum_{n=1}^{+\infty} \frac{|\sigma_{i\gamma}(n)|^2}{n^s}.$$
-%da verificare: affermazione sul polo in \sigma_0
 Sia $\sigma_0$ l'ascissa di convergenza dell'ultima serie che abbiamo scritto. Poiché i coefficienti della stessa sono maggiori o uguali a zero, abbiamo che la funzione $\frac{\zeta^2(s)\zeta(s-i\gamma)\zeta(s+i\gamma)}{\zeta(2s)}$ ha un polo in $\sigma_0$. Supponiamo per assurdo che abbia uno zero in $1+i\gamma$, dunque anche in $1-i\gamma$; allora per $s=1$ c'è un doppio zero che annulla il polo doppio di $\zeta^2(s)$ al numeratore. Dunque il primo polo che si incontra dev'essere in uno zero del denominatore, cioè (ci stiamo restringendo alla retta reale perché i coefficienti della serie sono non negativi) in $s=-1$. Allora dev'essere $\sigma_0 \le -1$, ma prendendo $s=1/2$ troviamo facilmente un assurdo (la funzione si annulla grazie al polo al denominatore, la serie no).
 
 Andiamo ora a cercare una regione in cui sono contenuti gli zeri non banali di $\zeta$. Abbiamo già visto che

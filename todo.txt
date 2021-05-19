@@ -25,4 +25,7 @@ Dopo aver prolungato la zeta di Riemann, discorso sugli zeri: guardando anche gl
 
 Calcolo del resto di \psi_0: ricontrollare, c'è la versione corretta (ma che salta alcuni passaggi) sul Davenport a pag 108-109
 
+Lezione 11 appunti a mano: cambiare p con rho quando nomini gli zeri di xi
+Lezione 13 appunti a mano: la formula all'inizio con zeta(s-a), zeta(s-a-b) ecc: non è simmetrica, manca uno zeta(s-b) al numeratore
+
 Scrivere un README decente
