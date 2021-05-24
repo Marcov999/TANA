@@ -15,7 +15,7 @@ In particolare, $\xi(s,\chi)$ è intera (di ordine $1$).
   Facciamo il caso $\chi(-1)=1$ ($\implies \chi(-1)=\chi(1), \chi(-n)=\chi(n)$). Con un cambio di variabile $u=\pi n^2x/q$, per $\sigma>1$ si ha
   \begin{gather*}
     \Gamma(s/2)=\int_0^{+\infty} e^{-u}u^{s/2}\frac{\diff u}{u}=\int_0^{+\infty} e^{-\pi n^2x/q}x^{s/2}\left(\frac{q}{\pi}\right)^{-s/2}n^s\frac{\diff x}{x} \implies \\
-    \implies \left(\frac{\pi}{q}\right)^{-s/2}\Gamma\left(\frac{s}{2}\right)\sum_{n=1}^{+\infty}=\int_0^{+\infty} \sum_{n=1}^{+\infty} \chi(n)e^{-\pi n^2x/q}x^{s/2}\frac{\diff x}{x}= \\
+    \implies \left(\frac{\pi}{q}\right)^{-s/2}\Gamma\left(\frac{s}{2}\right)\sum_{n=1}^{+\infty}\frac{\chi(n)}{n^s}=\int_0^{+\infty} \sum_{n=1}^{+\infty} \chi(n)e^{-\pi n^2x/q}x^{s/2}\frac{\diff x}{x}= \\
     =\frac{1}{2}\int_0^{+\infty} \vartheta(x,\chi)x^{s/2}\frac{\diff x}{x},
   \end{gather*}
   dove $\displaystyle \vartheta(x,\chi)=\sum_{n \in \mathbb{Z}} \chi(n)e^{-\pi n^2x/q}$. Abbiamo anche
