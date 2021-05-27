@@ -1,0 +1,93 @@
+\begin{defn}
+  Dato $\chi$ un carattere modulo $q$, si pone $\displaystyle \psi(x,\chi)=\sum_{n \le x} \chi(n)\Lambda(n)$.
+\end{defn}
+
+\begin{oss}
+  Se $\chi=\chi_0$, allora
+  \begin{gather*}
+    \psi(x,\chi_0)=\sum_{\substack{n \le x,\\ (n,q)=1}} \Lambda(n)=\psi(x)-\sum_{\substack{n \le x,\\ (n,q)>1}} \Lambda(n)= \\
+    =\psi(x)+O\left(\sum_{p \mid q} \sum_{a \le \frac{\log{x}}{\log{p}}}\log{p}\right)=\psi(x)+O\left(\log{x}\sum_{p \mid q} 1\right)= \\
+    =\psi(x)+O(\log{x}\log{q})=\psi(x)+O\big(\log^2(qx)\big).
+  \end{gather*}
+\end{oss}
+
+Poniamo $\displaystyle \psi_0(x,\chi)=\sum_{n<x} \chi(n)\Lambda(n)+\frac{1}{2}\chi(x)\Lambda(x)$, dove al solito $\Lambda(x)=0$ se $x \not\in \mathbb{N}$. Se $\chi\not=\chi_0$, prendendo di nuovo $c=1+1/\log{x}$ e ripetendo quanto già fatto per $\psi_0(x)$ troviamo
+$$\psi_0(x,\chi)=\frac{1}{2\pi i} \int_{c-iT}^{c+iT} -\frac{L'}{L}(s,\chi)\frac{x^s}{s}\diff s+O\left(\frac{x\log^2{x}}{T}+\log{x}\min\left\{1,\frac{x}{T\langle x\rangle}\right\}\right).$$
+
+\begin{enumerate}
+  \item Se $\chi(-1)=-1$ ($a=1$), i residui sono:
+  $$-\frac{x^{\rho_\chi}}{\rho_\chi}, \,\,\, -\frac{L'}{L}(0,\chi), \,\,\, \frac{x^{-2m+1}}{2m-1}.$$
+  \item Se $\chi(-1)=1$ ($a=0$), i residui sono:
+  $$-\frac{x^{\rho_\chi}}{\rho_\chi}, \,\,\, -\log{x}-\lim_{s \longrightarrow 0} \left(\frac{L'}{L}(s,\chi)-\frac{1}{s}\right), \,\,\, \frac{x^{-2m}}{2m}.$$
+\end{enumerate}
+
+Consideriamo di nuovo il rettangolo con parte reale compresa tra $-U$ e $C$ e parte immaginaria tra $-T$ e $T$. Ripetendo i passaggi già visti, troviamo $\displaystyle \frac{L'}{L}(s,\chi)=\sum_{|\gamma_\chi| \le 1} \frac{1}{s-\rho_\chi}+O\big(\log(qT)\big)$. Imponendo $|\gamma_\chi\pm T| \gg 1/\log(qT)$ abbiamo $\frac{L'}{L}(s,\chi) \ll \log^2(qT)$.
+Per gli altri pezzi, ripetendo le stime, si ha $\frac{L'}{L}(s,\chi) \ll \log(qT)$. Otteniamo dunque
+$$\psi_0(x,\chi)=-\sum_{|\gamma_\chi|<T} \frac{x^{\rho_\chi}}{\rho_\chi}-b_\chi-(1-a)\log{x}-\sum_{m=1}^{+\infty} \frac{x^{-2m+a}}{a-2m}+O\left(\frac{x\log^2(qTx)}{T}+\log{x}\min\left\{1,\frac{x}{T\langle x\rangle}\right\}\right),$$
+dove $b_\chi=\begin{cases}
+  \dfrac{L'}{L}(0,\chi) \\ \displaystyle\lim_{s \longrightarrow 0} \left(\frac{L'}{L}(s,\chi)-\frac{1}{s}\right)
+\end{cases}$.
+
+Per calcolare il limite, ricordiamo che
+$$\frac{L'}{L}(s,\chi)=-\frac{1}{2}\log\left(\frac{q}{\pi}\right)+A_\chi-\frac{1}{2}\cdot\frac{\Gamma'}{\Gamma}\left(\frac{s+a}{2}\right)+\sum_{\rho_\chi} \left(\frac{1}{s-\rho_\chi}+\frac{1}{\rho_\chi}\right);$$
+portando il pezzo con $\Gamma$ a sinistra e sostituendo $s=0$, troviamo che vale
+$b_\chi=-\frac{1}{2}\log\left(\frac{q}{\pi}\right)+A_\chi$. Scegliendo $s=2$, allora
+\begin{gather*}
+  \frac{L'}{L}(2,\chi)=-\frac{1}{2}\log\left(\frac{q}{\pi}\right)+O(1)+\sum_{\rho_\chi}\left(\frac{1}{2-\rho_\chi}+\frac{1}{\rho_\chi}\right)+A_\chi \implies \\
+  \implies b_\chi=-\sum_{\rho_\chi}\left(\frac{1}{2-\rho_\chi}+\frac{1}{\rho_\chi}\right)+O(1).
+\end{gather*}
+Si ha
+$$\left|\sum_{|\gamma_\chi| \ge 1} \left(\frac{1}{2-\rho_\chi}+\frac{1}{\rho_\chi}\right)\right| \le \sum_{|\gamma_\chi| \ge 1} \frac{2}{|\rho_\chi||2-\rho_\chi|} \ll \sum_{|\gamma_\chi| \ge 1} \frac{1}{1+\gamma_\chi^2} \ll \log{q}$$
+e
+$$\left|\sum_{|\gamma_\chi|<1} \frac{1}{2-\rho_\chi} \right| \ll \sum_{|\gamma_\chi|<1} 1 \ll \log{q},$$
+da cui $\displaystyle b_\chi=-\sum_{|\gamma_\chi|<1} \frac{1}{\rho_\chi}+O(\log{q})$.
+Indicando con $\beta_1$ l'eventuale zero di Siegel e scrivendo $\displaystyle \sum'$ per indicare che sommiamo su tutti gli altri zeri, per $x \in \mathbb{N}$ e $T \le x$ otteniamo
+$$\psi(x,\chi)=-\sum_{|\gamma_\chi|<T}' \frac{x^{\rho_\chi}}{\rho_\chi}+\sum_{|\gamma_\chi|<1}' \frac{1}{\rho_\chi}-\left(\frac{x^{1-\beta_1}}{\beta_1}-\frac{1}{\beta_1}\right)-\left(\frac{x^{\beta_1}}{1-\beta_1}-\frac{1}{1-\beta_1}\right)+O\left(\frac{x\log^2(qx)}{T}\right).$$
+Abbiamo $q \ge 3 \implies \log{q}>1$, inoltre esiste $0<c_0<1/4$ t.c. $\beta_1>1-c_0/\log{q}>3/4$, dunque $1/\beta_1=O(1)$. Inoltre esiste $0 \le \sigma_0 \le 1-\beta_1<1/4$ t.c.
+$$\frac{x^{1-\beta_1}-1}{1-\beta_1}=x^{\sigma_0}\log{x} \ll x^{1/4}\log{x}.$$
+Inoltre, usando che per gli zeri non di Siegel $\beta_\chi \ge c/\log{q}$ e che $\displaystyle \sum_{|\gamma_\chi|<1} 1 \ll \log{q}$, otteniamo
+$$\sum_{|\gamma_\chi|<1}' \frac{1}{\rho_\chi} \ll \sum_{|\gamma_\chi|<1}' \frac{1}{\beta_\chi} \ll \log^2{q},$$
+per cui dato $\chi$ un carattere primitivo modulo $q$ la formula esplicita per $\psi(x,\chi)$ è
+
+\begin{equation} \label{expl}
+  \psi(x,\chi)=-\sum_{|\gamma_\chi| \le T} \frac{x^{\rho_\chi}}{\rho_\chi}-\frac{x^{\beta_1}}{\beta_1}+O\left(\frac{x\log^2(qx)}{T}+x^{1/4}\log{x}\right).
+\end{equation}
+
+\begin{oss}
+  Se $\chi$ è non primitivo e $\chi$ induce $\chi$, allora
+  $$\left| \sum_{n \le x} \Lambda(n)\chi(n)-\sum_{n \le x}\Lambda(n)\chi_1(n)\right| \le \sum_{\substack{n \le x,\\ (n,q)>1}} \Lambda(n) \ll \log^2(qx).$$
+  Allora l'equazione \eqref{expl} vale per ogni $\chi$ modulo $q$ non principale.
+\end{oss}
+
+\begin{cor}
+  Se $(a,q)=1$, allora
+  \begin{gather*}
+    \psi(x;q,a):=\sum_{\substack{n \le x,\\ n \equiv a \pmod{q}}} \Lambda(n)=\frac{1}{\phi(q)} \sum_{\chi\textnormal{ modulo }q} \bar{\chi}(a)\psi(x,\chi)= \\
+    =\frac{x}{\phi(q)}+\frac{1}{\phi(q)}\sum_{\chi\not=\chi_0} \bar{\chi}(a)\psi(x,\chi)+O\left(\frac{x\exp(-c\sqrt{\log x})}{\phi(q)}\right).
+  \end{gather*}
+  In realtà, non ho controllato in dettaglio ma credo che questa stima valga sotto le ipotesi aggiuntive su $q$ che introdurremo a breve.
+\end{cor}
+
+Vogliamo ora stimare la somma, che contiene $\psi(x,\chi)$, dunque la somma in \eqref{expl}. Abbiamo
+$$\left|\sum_{|\gamma_\chi|<T}' \frac{x^{\rho_\chi}}{\rho_\chi}\right| \le \sum_{1 \le |\gamma_\chi|<T} \frac{x^{\beta_\chi}}{|\gamma_\chi|}+\sum_{|\gamma_\chi| < 1} \frac{x^{\beta_\chi}}{|\rho_\chi|}=\Sigma_1+\Sigma_2.$$
+Per $\Sigma_1$, usiamo $x^{\beta_\chi} \le x^{1-\frac{c}{\log(qT)}}=x\exp\left(-\frac{c\log{x}}{\log(qT)}\right)$, mentre per la somma, sommando per parti e usando Riemann-Von Mangoldt, troviamo che è $\ll \log^2(qT) \ll \log^2(qx)$. Per $\Sigma_2$ abbiamo la stessa stima per $x^{\beta_\chi}$, mentre la somma avevamo già visto essere $\ll \log^2{q}$.
+Prendendo allora $q \le \exp\big(C(\log{x})^{1/2}\big)=T$ con $C$ un'opportuna costante, stimiamo tutto con $x\exp(-c_1\sqrt{\log{x}})$. In conclusione si ha
+$$\psi(x;q,a)=\frac{x}{\phi(q)}+O\big(x\exp(-c_1\sqrt{\log{x}})\big)-\frac{\chi(a)}{\phi(q)}\cdot\frac{x^{\beta_1}}{\beta_1},$$
+dove abbiamo tolto il coniugio all'unico carattere per cui eventualmente compare $\beta_1$ perché sappiamo che deve essere reale. Ponendo $z=\exp\big(C(\log{x})^{1/2}\big)$, allora la stima è uniforme in $q$ per $q \le z$ e contiene, appunti, al più un unico termine con $\beta_1$ (e $\beta_1>1-c_0/\log{q}$).
+Usando che $\beta_1 \le 1-\frac{c'}{\sqrt{q_1}\log^2{q_1}}$ dove $q_1$ è il modulo speciale per cui appare $\beta_1$, troviamo $x^{\beta_1} \le x\exp\left(-\frac{c'\log{x}}{\sqrt{q_1}\log^2{q_1}}\right)$.
+Imponendo $q_1\log^4{q_1} \l \log{x}$ (con limiti molto costrittivi come ad esempio $q_1 \le (\log{x})^{1-\delta}$), otteniamo
+$$\psi(x;q,a)=\frac{x}{\phi(q)}+O\big(x\exp(-c_1\sqrt{\log{x}})\big)$$
+uniformemente per $q \le (\log{x})^{1-\delta}$. Questa è l'unica formula effettiva in tutte le variabili.
+
+La GRH ($\beta_\chi=1/2$ per ogni $\rho_\chi$ e per ogni $\chi$ modulo $q$) ci darebbe $\psi(x,\chi)=O(x^{1/2}\log^2{x})$ prendendo $q \le \sqrt{x}=T$; allora avremmo $\psi(x;q,a)=\frac{x}{\phi(q)}+O(x^{1/2}\log^2{x})$.
+
+\begin{prop}
+  (Bombieri) Posto $E(x,q,a)=\psi(x;q,a)-\frac{x}{\phi(q)}$, si ha che per ogni $A>0$ esiste $B>0$ t.c.
+  $$\sum_{q \le \frac{\sqrt{x}}{(\log{x})^B}} \max_{(a,q)=1}\max_{y \le x} |E(y,q,a)| \ll \frac{x}{(\log{x})^A}.$$
+\end{prop}
+
+\begin{oss}
+  Usando GRH, avremmo
+  $$\sum_{q \le \frac{\sqrt{x}}{(\log{x})^B}} \max_{(a,q)=1} |E(x,q,a)| \ll \sqrt{x}\log^2{x} \sum_{q \le \frac{\sqrt{x}}{(\log{x})^B}} 1 \ll \frac{x}{(\log{x})^{B-2}}.$$
+  Allora basterebbe $B=A+2$; nel risultato dovuto a Bombieri, $B=A+5$.
+\end{oss}

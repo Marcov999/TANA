@@ -40,8 +40,7 @@ Mostriamo adesso la seguente.
 \end{prop}
 
 \begin{proof}
-  (Da rivedere meglio)
-  $$-\frac{L'}{L}(\sigma,\chi)<c\log{q}-\sum_{\rho_\chi} \frac{1}{\sigma-\rho_\chi}.$$
+  $$-\frac{L'}{L}(\sigma,\chi)<c\log{q}-\sum_{\rho_\chi} \mathfrak{Re}\left(\frac{1}{\sigma-\rho_\chi}\right).$$
   Se fosse $L(\beta_0\pm i\gamma_0,\chi)=0$, avremmo
   $$-\frac{L'}{L}(\sigma,\chi)<c\log{q}-\frac{2(\sigma-\beta_0)}{(\sigma-\beta_0)^2+\gamma_0^2};$$
   si ha anche
@@ -51,9 +50,81 @@ Mostriamo adesso la seguente.
   \end{gather*}
   Concantenando le due disuguaglianze otteniamo
   $$-\frac{1}{\sigma-1}<c\log{q}-\frac{2(\sigma-\beta_0)}{(\sigma-\beta_0)^2+\gamma_0^2}.$$
-  Prendendo $\sigma=1+\frac{2\delta}{\log{q}}$ otteniamo un assurdo nell'ipotesi $|\gamma_0|<\frac{\delta}{\log{q}}$.
+  Prendendo $\sigma=1+\frac{2\delta}{\log{q}}$ otteniamo $|\gamma_0|<\frac{\delta}{\log{q}}=(\sigma-1)/2 \le (\sigma-\beta_0)/2$, da cui
+  \begin{gather*}
+    -\frac{1}{\sigma-1}<c\log{q}-\frac{8}{5(\sigma-\beta_0)} \\
+    \frac{8}{5(\sigma-\beta_0)}<c\log{q}+\frac{1}{\sigma-1}=\left(c+\frac{1}{2\delta}\right)\log{q} \\
+    \frac{8}{10\delta+5(1-\beta_0)\log{q}}<\frac{1+2\delta c}{2\delta} \\
+    10\delta+5(1-\beta_0)\log{q}>\frac{16\delta}{1+2\delta c} \\
+    1-\beta_0>\frac{6-20\delta c}{5+10\delta c}\cdot \frac{\delta}{\log{q}},
+  \end{gather*}
+  da cui con $\delta$ piccolo si ha l'assurdo.
 
   Il caso con $\gamma_0=0$ è pure più facile.
+\end{proof}
 
-  Rivederla quando la rifà in dettaglio, per ora vedere il capitolo 14 di \cite{D}.
+Abbiamo così dimostrato la seguente proposizione.
+
+\begin{prop}
+  Esiste $c_0>0$ t.c. se $\chi$ è primitivo modulo $q$ e $\beta_\chi+i\gamma_\chi$ è uno zero di $L(s,\chi)$, allora
+  $$\beta_\chi<\begin{cases}
+    1-\dfrac{c_0}{\log(q|\gamma_\chi|)} &\mbox{se }|\gamma_\chi| \ge 1 \\
+    1-\dfrac{c_0}{\log{q}} &\mbox{se } |\gamma_\chi| \le 1
+\end{cases};$$
+se inoltre $\chi$ è reale, esiste al più un solo zero $\beta_0$ reale semplice t.c. $L(\beta_0,\chi)=0$ e $\beta_0$ non soddisfa la disuguaglianza. Questi sono detti zeri di Siegel.
+\end{prop}
+
+Adesso un risultato che non dimostreremo.
+
+\begin{prop} \label{landauq1q2}
+  (Landau) Siano $\chi_1$ modulo $q_1$ e $\chi_2$ modulo $q_2$ reali primitivi con $\chi_1\not=\chi_2$, e siano $\beta_1,\beta_2$ t.c. $L(\beta_1,\chi_1)=0,L(\beta_2,\chi_2)=0$. Allora esiste $c_1>0$ t.c.
+  $$\min\{\beta_1,\beta_2\}<1-\frac{c_1}{\log(q_1q_2)}.$$
+\end{prop}
+
+\begin{cor}
+  Se $q_1=q_2=q$, allora $\min\{\beta_1,\beta_2\}<1-\dfrac{c_1}{2\log{q}}=1-\dfrac{c_2}{\log{q}}$.
+\end{cor}
+
+\begin{cor}
+  Siano $q_1<q_2<\dots$ e siano $\chi_j$ modulo $q_j$ reali primitivi e $L(\beta_j,\chi_j)=0$ con $\beta_j>1-\dfrac{c_3}{\log{q_j}}$, dove $c_3=c_1/3$. Allora $q_{j+1}>q_j^2$.
+\end{cor}
+
+\begin{proof}
+  Per assurdo $q_{j+1} \le q_j^2$. Allora
+  $$\min\{\beta_j,\beta_{j+1}\}<1-\frac{c_1}{\log(q_jq_{j+1})} \le 1-\frac{c_1}{3\log{q_j}} < 1-\frac{c_3}{\log{q_{j+1}}}.$$
+\end{proof}
+
+\begin{cor}
+  (lemma di Page) Esiste $c_4>0$ t.c. esiste un unico $q \le z$ ed un unico $\chi$ reale primitivo modulo $q$ con $L(\beta_\chi,\chi)=0$ e $\beta_\chi>1-\frac{c_4}{\log{z}}$.
+\end{cor}
+
+\begin{proof}
+  Per assurdo siano $(\beta_1,\chi_1,q_1)$ e $(\beta_2,\chi_2,q_2)$ con $q_1,q_2 \le z$ t.c. $\beta_j>1-\frac{c_4}{\log{z}}$. Poiché $q_1q_2 \le z^2$, prendendo $c_4=c_1/2$ dalla proposizione \ref{landauq1q2} otteniamo l'assurdo $\min\{\beta_1,\beta_2\}<1-\frac{c_1}{2\log{z}}$.
+\end{proof}
+
+Un'altra proposizione che non dimostreremo.
+
+\begin{prop}
+  Sia $\chi$ reale primitivo modulo $q$. Vale la disuguaglianza
+  $$L(1,\chi)>\frac{c_0}{\sqrt{q}}.$$
+\end{prop}
+
+\begin{oss}
+  $L(\beta_0,\chi)=0 \implies L(1,\chi)=L(1,\chi)-L(\beta_0,\chi)=$\\
+  $=L'(\sigma_0,\chi)(1-\beta_0)$ con $\beta_0 \le \sigma_0 \le 1$. Scegliendo un'opportuna costante $c$, se $\beta_0$ è uno zero di Siegel allora $\sigma_0 \ge \beta_0 \ge 1-c/\log{q}$, e in realtà possiamo prendere $c=1$ perché le costanti in gioco sono sempre più piccole di $1$.
+  Allora per il lemma che vedremo tra poco $L'(\sigma_0,\chi)(1-\beta_0) \ll (1-\beta_0)\log^2{q}$ e mettendo tutto assieme troviamo $1-\beta_0 \ge \frac{c_1}{\sqrt{q}\log^2{q}}$.
+\end{oss}
+
+\begin{lm}
+  Sia $1-(\log{q})^{-1} \le \sigma \le 1$. Si ha $L'(\sigma,\chi) \ll \log^2{q}$, dove $\chi$ modulo $q$ è un carattere qualunque.
+\end{lm}
+
+\begin{proof}
+  Per $\sigma>1$ e sommando per parti,
+  $$L'(\sigma,\chi)=-\sum_{n=1}^{+\infty} \frac{\chi(n)\log{n}}{n^\sigma}=\sigma\int_2^{+\infty} \left(\sum_{n \le u} \chi(u)\right) \frac{1+\sigma\log{u}}{u^{\sigma+1}}\diff u,$$
+  che converge uniformemente per $\sigma \ge \epsilon$.
+  In realtà, per stimare tronchiamo la somma a $q$ e integriamo per parti la coda. Il primo pezzo si maggiora così:
+  $$\left| \sum_{n=1}^q \frac{\chi(n)\log{n}}{n^{\sigma}}\right| \le \frac{1}{e}\sum_{n=1}^q \frac{\log{n}}{n} \ll \log^2{q},$$
+  dove la prima disuguaglianza segue da $n^\sigma \ge \exp\big((1-1/\log{q})\log{n}\big) \ge n/e$. Per l'altro pezzo usiamo che $(\log{n})/n^{\sigma}$ decresce per $n>q$, dunque la maggiorazione è
+  $$\left|\sum_{n=1+1}^{+\infty} \chi(n)(\log{n})n^{-\sigma}\right| \le (\log{q})q^{-\sigma}\max_N \left|\sum_{n=q+1}^N \chi(n)\right| \le \log{q}\cdot eq^{-1}q.$$
 \end{proof}
