@@ -123,8 +123,8 @@ Un'altra proposizione che non dimostreremo.
   Per $\sigma>1$ e sommando per parti,
   $$L'(\sigma,\chi)=-\sum_{n=1}^{+\infty} \frac{\chi(n)\log{n}}{n^\sigma}=\sigma\int_2^{+\infty} \left(\sum_{n \le u} \chi(u)\right) \frac{1+\sigma\log{u}}{u^{\sigma+1}}\diff u,$$
   che converge uniformemente per $\sigma \ge \epsilon$.
-  In realtà, per stimare tronchiamo la somma a $q$ e integriamo per parti la coda. Il primo pezzo si maggiora così:
-  $$\left| \sum_{n=1}^q \frac{\chi(n)\log{n}}{n^{\sigma}}\right| \le \frac{1}{e}\sum_{n=1}^q \frac{\log{n}}{n} \ll \log^2{q},$$
+  In realtà, per stimare tronchiamo la somma a $q$ e stimiamo i due pezzi. Il primo pezzo si maggiora così:
+  $$\left| \sum_{n=1}^q \frac{\chi(n)\log{n}}{n^{\sigma}}\right| \le e\sum_{n=1}^q \frac{\log{n}}{n} \ll \log^2{q},$$
   dove la prima disuguaglianza segue da $n^\sigma \ge \exp\big((1-1/\log{q})\log{n}\big) \ge n/e$. Per l'altro pezzo usiamo che $(\log{n})/n^{\sigma}$ decresce per $n>q$, dunque la maggiorazione è
   $$\left|\sum_{n=1+1}^{+\infty} \chi(n)(\log{n})n^{-\sigma}\right| \le (\log{q})q^{-\sigma}\max_N \left|\sum_{n=q+1}^N \chi(n)\right| \le \log{q}\cdot eq^{-1}q.$$
 \end{proof}
