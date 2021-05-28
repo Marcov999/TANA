@@ -21,7 +21,7 @@ $$\psi_0(x,\chi)=\frac{1}{2\pi i} \int_{c-iT}^{c+iT} -\frac{L'}{L}(s,\chi)\frac{
   $$-\frac{x^{\rho_\chi}}{\rho_\chi}, \,\,\, -\log{x}-\lim_{s \longrightarrow 0} \left(\frac{L'}{L}(s,\chi)-\frac{1}{s}\right), \,\,\, \frac{x^{-2m}}{2m}.$$
 \end{enumerate}
 
-Consideriamo di nuovo il rettangolo con parte reale compresa tra $-U$ e $C$ e parte immaginaria tra $-T$ e $T$. Ripetendo i passaggi già visti, troviamo $\displaystyle \frac{L'}{L}(s,\chi)=\sum_{|\gamma_\chi| \le 1} \frac{1}{s-\rho_\chi}+O\big(\log(qT)\big)$. Imponendo $|\gamma_\chi\pm T| \gg 1/\log(qT)$ abbiamo $\frac{L'}{L}(s,\chi) \ll \log^2(qT)$.
+Consideriamo di nuovo il rettangolo con parte reale compresa tra $-U$ e $c$ e parte immaginaria tra $-T$ e $T$. Ripetendo i passaggi già visti, troviamo $\displaystyle \frac{L'}{L}(s,\chi)=\sum_{|\gamma_\chi-T| \le 1} \frac{1}{s-\rho_\chi}+O\big(\log(qT)\big)$. Imponendo $|\gamma_\chi\pm T| \gg 1/\log(qT)$ abbiamo $\frac{L'}{L}(s,\chi) \ll \log^2(qT)$.
 Per gli altri pezzi, ripetendo le stime, si ha $\frac{L'}{L}(s,\chi) \ll \log(qT)$. Otteniamo dunque
 $$\psi_0(x,\chi)=-\sum_{|\gamma_\chi|<T} \frac{x^{\rho_\chi}}{\rho_\chi}-b_\chi-(1-a)\log{x}-\sum_{m=1}^{+\infty} \frac{x^{-2m+a}}{a-2m}+O\left(\frac{x\log^2(qTx)}{T}+\log{x}\min\left\{1,\frac{x}{T\langle x\rangle}\right\}\right),$$
 dove $b_\chi=\begin{cases}
@@ -42,7 +42,7 @@ e
 $$\left|\sum_{|\gamma_\chi|<1} \frac{1}{2-\rho_\chi} \right| \ll \sum_{|\gamma_\chi|<1} 1 \ll \log{q},$$
 da cui $\displaystyle b_\chi=-\sum_{|\gamma_\chi|<1} \frac{1}{\rho_\chi}+O(\log{q})$.
 Indicando con $\beta_1$ l'eventuale zero di Siegel e scrivendo $\displaystyle \sum'$ per indicare che sommiamo su tutti gli altri zeri, per $x \in \mathbb{N}$ e $T \le x$ otteniamo
-$$\psi(x,\chi)=-\sum_{|\gamma_\chi|<T}' \frac{x^{\rho_\chi}}{\rho_\chi}+\sum_{|\gamma_\chi|<1}' \frac{1}{\rho_\chi}-\left(\frac{x^{1-\beta_1}}{\beta_1}-\frac{1}{\beta_1}\right)-\left(\frac{x^{\beta_1}}{1-\beta_1}-\frac{1}{1-\beta_1}\right)+O\left(\frac{x\log^2(qx)}{T}\right).$$
+$$\psi(x,\chi)=-\sum_{|\gamma_\chi|<T}' \frac{x^{\rho_\chi}}{\rho_\chi}+\sum_{|\gamma_\chi|<1}' \frac{1}{\rho_\chi}-\left(\frac{x^{\beta_1}}{\beta_1}-\frac{1}{\beta_1}\right)-\left(\frac{x^{1-\beta_1}}{1-\beta_1}-\frac{1}{1-\beta_1}\right)+O\left(\frac{x\log^2(qx)}{T}\right).$$
 Abbiamo $q \ge 3 \implies \log{q}>1$, inoltre esiste $0<c_0<1/4$ t.c. $\beta_1>1-c_0/\log{q}>3/4$, dunque $1/\beta_1=O(1)$. Inoltre esiste $0 \le \sigma_0 \le 1-\beta_1<1/4$ t.c.
 $$\frac{x^{1-\beta_1}-1}{1-\beta_1}=x^{\sigma_0}\log{x} \ll x^{1/4}\log{x}.$$
 Inoltre, usando che per gli zeri non di Siegel $\beta_\chi \ge c/\log{q}$ e che $\displaystyle \sum_{|\gamma_\chi|<1} 1 \ll \log{q}$, otteniamo
@@ -75,7 +75,7 @@ Prendendo allora $q \le \exp\big(C(\log{x})^{1/2}\big)=T$ con $C$ un'opportuna c
 $$\psi(x;q,a)=\frac{x}{\phi(q)}+O\big(x\exp(-c_1\sqrt{\log{x}})\big)-\frac{\chi(a)}{\phi(q)}\cdot\frac{x^{\beta_1}}{\beta_1},$$
 dove abbiamo tolto il coniugio all'unico carattere per cui eventualmente compare $\beta_1$ perché sappiamo che deve essere reale. Ponendo $z=\exp\big(C(\log{x})^{1/2}\big)$, allora la stima è uniforme in $q$ per $q \le z$ e contiene, appunto, al più un unico termine con $\beta_1$ (e $\beta_1>1-c_0/\log{q}$).
 Usando che $\beta_1 \le 1-\frac{c'}{\sqrt{q_1}\log^2{q_1}}$ dove $q_1$ è il modulo speciale per cui appare $\beta_1$, troviamo $x^{\beta_1} \le x\exp\left(-\frac{c'\log{x}}{\sqrt{q_1}\log^2{q_1}}\right)$.
-Imponendo $q_1\log^4{q_1} \l \log{x}$ (con limiti molto costrittivi come ad esempio $q_1 \le (\log{x})^{1-\delta}$), otteniamo
+Imponendo $q_1\log^4{q_1} \le \log{x}$ (con limiti molto costrittivi come ad esempio $q_1 \le (\log{x})^{1-\delta}$), otteniamo
 $$\psi(x;q,a)=\frac{x}{\phi(q)}+O\big(x\exp(-c_1\sqrt{\log{x}})\big)$$
 uniformemente per $q \le (\log{x})^{1-\delta}$. Questa è l'unica formula effettiva in tutte le variabili.
 
